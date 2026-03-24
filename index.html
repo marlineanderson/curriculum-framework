@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Anchored Learner — Curriculum Framework</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1410;
+  --parchment: #F7F3ED;
+  --cream: #FDFAF6;
+  --terracotta: #B85C38;
+  --terracotta-light: #F2E0D8;
+  --gold: #C9953A;
+  --gold-light: #F5EDD8;
+  --sage: #5C7A5F;
+  --sage-light: #DFE9E0;
+  --slate: #4A6278;
+  --slate-light: #DCE5ED;
+  --plum: #6B4E71;
+  --plum-light: #EDE3EF;
+  --navy: #2C3E5A;
+  --navy-light: #DCE4EF;
+  --muted: #7A6E65;
+  --border: rgba(26,20,16,0.1);
+}
+ 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.75;
+  font-size: 16px;
+}
+ 
+/* ── COVER ── */
+.cover {
+  min-height: 100vh;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 80px 10vw;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,149,58,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cover::after {
+  content: '';
+  position: absolute; bottom: -100px; left: -100px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,92,56,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cover-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; }
+.cover h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 300; line-height: 1.05; color: var(--cream); }
+.cover h1 span { display: block; font-style: italic; color: var(--terracotta); }
+.cover-tagline { font-size: 1.05rem; font-weight: 300; color: rgba(253,250,246,0.6); margin-top: 28px; max-width: 520px; line-height: 1.85; }
+.cover-divider { width: 48px; height: 2px; background: var(--gold); margin: 36px 0; }
+.cover-meta { font-size: 0.82rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,250,246,0.35); }
+.cover-symbol { position: absolute; right: 10vw; top: 50%; transform: translateY(-50%); font-size: 18vw; color: rgba(253,250,246,0.03); font-family: 'Cormorant Garamond', serif; font-style: italic; pointer-events: none; user-select: none; line-height: 1; }
+ 
+/* ── TOC ── */
+.toc { background: var(--cream); padding: 64px 10vw; border-bottom: 1px solid var(--border); }
+.toc-label { font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 32px; }
+.toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; }
+.toc-item { padding: 16px 0; border-top: 1px solid var(--border); }
+.toc-num { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; color: var(--gold); display: block; margin-bottom: 4px; }
+.toc-title { font-size: 0.9rem; font-weight: 400; }
+ 
+/* ── SECTIONS ── */
+.section { padding: 96px 10vw; border-bottom: 1px solid var(--border); }
+.section:nth-child(even) { background: var(--cream); }
+.section-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 48px; }
+.section-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: rgba(26,20,16,0.08); line-height: 1; flex-shrink: 0; }
+.section-titles { flex: 1; }
+.section-label { font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 8px; display: block; }
+.section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 600; line-height: 1.2; color: var(--ink); }
+.section h2 em { font-style: italic; color: var(--terracotta); }
+.body-text { font-size: 1rem; line-height: 1.9; color: #3D3028; max-width: 700px; margin-bottom: 20px; }
+ 
+.pull-quote { border-left: 3px solid var(--gold); padding: 28px 36px; margin: 48px 0; background: var(--gold-light); border-radius: 0 8px 8px 0; max-width: 680px; }
+.pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--ink); line-height: 1.65; }
+ 
+/* ── THEORETICAL FOUNDATIONS ── */
+.theo-section { background: var(--ink) !important; }
+.theo-section .section-num { color: rgba(253,250,246,0.06); }
+.theo-section .section-label { color: var(--gold); }
+.theo-section .section h2 { color: var(--cream); }
+.theo-section .section h2 em { color: var(--terracotta); }
+.theo-section .body-text { color: rgba(253,250,246,0.75); }
+ 
+.theo-block {
+  border-radius: 12px; padding: 40px; margin: 40px 0; max-width: 840px;
+}
+.disposition-block { background: rgba(201,149,58,0.08); border: 1px solid rgba(201,149,58,0.2); }
+.empirical-block { background: rgba(184,92,56,0.1); border: 1px solid rgba(184,92,56,0.25); }
+.theo-block-label { font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.theo-block-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--cream); margin-bottom: 8px; }
+.theo-block-content .theo-scholar { font-size: 0.82rem; font-style: italic; color: rgba(253,250,246,0.45); letter-spacing: 0.05em; margin-bottom: 20px; }
+.theo-block-content p { font-size: 0.92rem; line-height: 1.85; color: rgba(253,250,246,0.78); margin-bottom: 14px; max-width: 700px; }
+ 
+.theo-label-row { margin: 48px 0 28px; }
+.theo-divider-label { font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(253,250,246,0.4); padding-bottom: 12px; border-bottom: 1px solid rgba(253,250,246,0.1); }
+ 
+.theo-frameworks { display: flex; flex-direction: column; gap: 16px; max-width: 840px; }
+.theo-card { border-radius: 10px; overflow: hidden; }
+.theo-card-header { padding: 20px 28px; }
+.theo-card-header.crp { background: rgba(92,122,95,0.25); }
+.theo-card-header.ccw { background: rgba(107,78,113,0.25); }
+.theo-card-header.muniz { background: rgba(74,98,120,0.25); }
+.theo-card-header.fok { background: rgba(201,149,58,0.2); }
+.theo-card-header.pcc { background: rgba(184,92,56,0.2); }
+.theo-card-scholars { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; color: rgba(253,250,246,0.55); margin-bottom: 6px; }
+.theo-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--cream); }
+.theo-card-body { background: rgba(253,250,246,0.04); padding: 24px 28px; }
+.theo-card-body p { font-size: 0.88rem; line-height: 1.85; color: rgba(253,250,246,0.72); margin-bottom: 12px; }
+.theo-card-body p:last-child { margin-bottom: 0; }
+.theo-connection { font-size: 0.8rem; font-style: italic; color: rgba(253,250,246,0.4); border-top: 1px solid rgba(253,250,246,0.08); padding-top: 12px; margin-top: 12px; line-height: 1.6; }
+ 
+.muniz-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 16px 0; }
+.muniz-item { font-size: 0.8rem; line-height: 1.6; color: rgba(253,250,246,0.7); display: flex; gap: 10px; align-items: flex-start; }
+.muniz-num { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: rgba(201,149,58,0.3); color: var(--gold); font-size: 0.7rem; font-weight: 600; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+ 
+/* ── PRINCIPLES ── */
+.principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; margin-top: 40px; background: var(--border); }
+.principle { background: var(--parchment); padding: 36px 32px; }
+.section:nth-child(even) .principle { background: var(--cream); }
+.p-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: var(--terracotta); opacity: 0.4; line-height: 1; margin-bottom: 16px; }
+.principle.mll-principle { background: var(--plum-light); }
+.principle.mll-principle .p-num { color: var(--plum); opacity: 0.6; }
+.principle h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-bottom: 12px; line-height: 1.3; }
+.principle p { font-size: 0.88rem; line-height: 1.8; color: var(--muted); }
+ 
+/* ── ARC ── */
+.arc-phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; margin-top: 48px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.phase { padding: 40px 32px; border-right: 1px solid var(--border); position: relative; overflow: hidden; }
+.phase:last-child { border-right: none; }
+.phase::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+.phase.p1::before { background: var(--sage); }
+.phase.p2::before { background: var(--slate); }
+.phase.p3::before { background: var(--terracotta); }
+.phase.p4::before { background: var(--gold); }
+.phase-grades { font-size: 10px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 12px; }
+.phase.p1 .phase-grades { color: var(--sage); }
+.phase.p2 .phase-grades { color: var(--slate); }
+.phase.p3 .phase-grades { color: var(--terracotta); }
+.phase.p4 .phase-grades { color: var(--gold); }
+.phase-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; line-height: 1.2; color: var(--ink); margin-bottom: 16px; }
+.phase-desc { font-size: 0.85rem; line-height: 1.8; color: var(--muted); margin-bottom: 20px; }
+.phase-orientation { font-size: 0.8rem; font-style: italic; color: var(--muted); border-top: 1px solid var(--border); padding-top: 16px; line-height: 1.6; }
+ 
+/* ── SCOPE & SEQUENCE ── */
+.scope-bands { margin-top: 48px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.band-header { padding: 16px 28px; font-size: 10px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; display: grid; grid-template-columns: 70px 160px 1fr 160px 130px; gap: 20px; background: var(--ink); color: rgba(253,250,246,0.5); }
+.grade-row { display: grid; grid-template-columns: 70px 160px 1fr 160px 130px; gap: 20px; padding: 22px 28px; border-top: 1px solid var(--border); align-items: start; }
+.grade-row.band-k2 { background: rgba(92,122,95,0.03); }
+.grade-badge { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; font-size: 0.78rem; font-weight: 600; }
+.grade-badge.k2 { background: var(--sage-light); color: var(--sage); }
+.grade-badge.ms35 { background: var(--slate-light); color: var(--slate); }
+.grade-domain { font-size: 0.88rem; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.grade-subdomain { font-size: 0.76rem; color: var(--muted); }
+.grade-question { font-family: 'Cormorant Garamond', serif; font-size: 0.97rem; font-style: italic; color: #3D3028; line-height: 1.6; }
+.grade-wida { font-size: 0.76rem; line-height: 1.6; color: var(--plum); }
+.grade-wida strong { font-weight: 500; display: block; margin-bottom: 2px; }
+.grade-phase { font-size: 0.76rem; font-weight: 500; color: var(--muted); line-height: 1.4; }
+ 
+/* ── ANCHORS ── */
+.anchors-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+.anchor-card { border: 1px solid var(--border); border-radius: 12px; padding: 36px 32px; position: relative; overflow: hidden; background: var(--cream); }
+.anchor-card::after { content: attr(data-num); position: absolute; bottom: -20px; right: 16px; font-family: 'Cormorant Garamond', serif; font-size: 7rem; font-weight: 300; color: rgba(26,20,16,0.04); line-height: 1; pointer-events: none; }
+.anchor-icon { font-size: 1.5rem; margin-bottom: 16px; }
+.anchor-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+.anchor-card p { font-size: 0.88rem; line-height: 1.8; color: var(--muted); margin-bottom: 14px; }
+.anchor-examples { font-size: 0.78rem; font-style: italic; color: var(--terracotta); line-height: 1.6; }
+ 
+/* ── WATER EXEMPLAR ── */
+.exemplar-intro { background: var(--ink); border-radius: 12px; padding: 40px 40px 32px; margin-bottom: 28px; }
+.exemplar-intro .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.exemplar-intro h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--cream); margin-bottom: 16px; }
+.exemplar-intro p { color: rgba(253,250,246,0.75); font-size: 0.92rem; line-height: 1.85; max-width: 640px; }
+.exemplar-bands { display: flex; flex-direction: column; gap: 16px; }
+.ex-band { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.ex-band.p1 { border-left: 4px solid var(--sage); }
+.ex-band.p2 { border-left: 4px solid var(--slate); }
+.ex-band.p3 { border-left: 4px solid var(--terracotta); }
+.ex-band.p4 { border-left: 4px solid var(--gold); }
+.ex-band-header { display: grid; grid-template-columns: 180px 1fr; }
+.ex-band-label { padding: 24px 28px; display: flex; flex-direction: column; justify-content: center; }
+.ex-phase-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.ex-grades { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
+.ex-band.p1 .ex-grades { color: var(--sage); }
+.ex-band.p2 .ex-grades { color: var(--slate); }
+.ex-band.p3 .ex-grades { color: var(--terracotta); }
+.ex-band.p4 .ex-grades { color: var(--gold); }
+.ex-content { padding: 24px 28px; border-left: 1px solid var(--border); background: var(--cream); }
+.ex-big-idea { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--ink); margin-bottom: 12px; }
+.ex-subjects { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.subject-tag { font-size: 0.72rem; font-weight: 500; padding: 3px 10px; border-radius: 20px; background: var(--parchment); color: var(--muted); border: 1px solid var(--border); }
+.ex-project { font-size: 0.85rem; line-height: 1.75; color: #4A3E35; margin-bottom: 12px; }
+.ex-project strong { font-weight: 500; color: var(--ink); }
+.ex-lang-obj { font-size: 0.8rem; line-height: 1.75; background: var(--plum-light); border: 1px solid rgba(107,78,113,0.15); border-radius: 6px; padding: 12px 16px; color: var(--plum); }
+.ex-lang-obj strong { font-weight: 500; display: block; margin-bottom: 4px; color: var(--plum); }
+ 
+/* ── MLL SECTION ── */
+.mll-banner { background: var(--plum); border-radius: 12px; padding: 40px; margin-bottom: 40px; color: var(--cream); }
+.mll-banner .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(253,250,246,0.6); margin-bottom: 12px; }
+.mll-banner h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--cream); margin-bottom: 16px; line-height: 1.3; }
+.mll-banner p { font-size: 0.95rem; line-height: 1.85; color: rgba(253,250,246,0.8); max-width: 640px; margin-bottom: 12px; }
+ 
+.wida-levels { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 32px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.wida-level { padding: 20px 16px; border-right: 1px solid var(--border); text-align: center; }
+.wida-level:last-child { border-right: none; }
+.wida-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--plum); line-height: 1; margin-bottom: 6px; }
+.wida-name { font-size: 0.78rem; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+.wida-desc { font-size: 0.72rem; line-height: 1.6; color: var(--muted); }
+ 
+.lang-obj-model { margin-top: 32px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.lang-obj-header { background: var(--plum); padding: 16px 24px; color: var(--cream); font-size: 0.85rem; font-weight: 500; }
+.lang-obj-row { display: grid; grid-template-columns: 140px 1fr 1fr; border-top: 1px solid var(--border); }
+.lang-obj-cell { padding: 16px 20px; border-right: 1px solid var(--border); font-size: 0.82rem; line-height: 1.7; color: #3D3028; }
+.lang-obj-cell:last-child { border-right: none; }
+.lang-obj-cell.label { font-weight: 500; color: var(--plum); background: var(--plum-light); font-size: 0.78rem; }
+ 
+.scaffold-menu { margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.scaffold-domain { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.scaffold-domain-header { background: var(--ink); padding: 14px 20px; color: var(--cream); font-size: 0.8rem; font-weight: 500; }
+.scaffold-list { padding: 16px 20px; background: var(--cream); }
+.scaffold-list li { font-size: 0.82rem; line-height: 1.75; color: #4A3E35; padding: 4px 0 4px 18px; border-bottom: 1px solid rgba(26,20,16,0.05); list-style: none; position: relative; }
+.scaffold-list li::before { content: '→'; position: absolute; left: 0; color: var(--plum); font-size: 0.7rem; top: 6px; }
+.scaffold-list li:last-child { border-bottom: none; }
+ 
+.home-lang-box { background: var(--plum-light); border: 1px solid rgba(107,78,113,0.2); border-radius: 10px; padding: 32px; margin-top: 32px; max-width: 700px; }
+.home-lang-box h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--plum); margin-bottom: 12px; }
+.home-lang-box p { font-size: 0.88rem; line-height: 1.85; color: #4A3E35; margin-bottom: 10px; }
+.home-lang-box ul { padding-left: 0; margin-top: 8px; }
+.home-lang-box ul li { font-size: 0.84rem; line-height: 1.75; color: #4A3E35; list-style: none; padding: 4px 0 4px 18px; position: relative; }
+.home-lang-box ul li::before { content: '✦'; position: absolute; left: 0; color: var(--plum); font-size: 0.6rem; top: 7px; }
+ 
+/* ── COMPETENCIES ── */
+.competency-table { width: 100%; border-collapse: collapse; margin-top: 40px; font-size: 0.83rem; }
+.competency-table th { text-align: left; padding: 14px 16px; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 2px solid var(--ink); color: var(--ink); }
+.competency-table th:first-child { color: var(--terracotta); width: 150px; }
+.competency-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.7; color: #4A3E35; }
+.competency-table td:first-child { font-weight: 500; color: var(--ink); font-size: 0.86rem; }
+.competency-table tr:last-child td { border-bottom: none; }
+ 
+/* ── PLANNING ── */
+.template-steps { display: flex; flex-direction: column; gap: 0; margin-top: 40px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.template-step { display: grid; grid-template-columns: 64px 1fr; border-bottom: 1px solid var(--border); }
+.template-step:last-child { border-bottom: none; }
+.step-num-block { display: flex; align-items: center; justify-content: center; background: var(--ink); padding: 28px 0; }
+.step-num-block span { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: rgba(253,250,246,0.3); }
+.step-num-block.mll-step { background: var(--plum); }
+.step-content { padding: 28px 32px; background: var(--cream); }
+.step-content.mll-step { background: var(--plum-light); }
+.step-title { font-weight: 500; font-size: 0.95rem; color: var(--ink); margin-bottom: 8px; }
+.step-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+.step-fields { display: flex; flex-wrap: wrap; gap: 8px; }
+.field-tag { font-size: 0.75rem; padding: 4px 12px; border-radius: 4px; background: var(--parchment); color: var(--slate); border: 1px solid var(--border); }
+.field-tag.mll { background: var(--plum-light); color: var(--plum); border-color: rgba(107,78,113,0.2); }
+ 
+/* ── LOCALIZATION ── */
+.localization-examples { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 32px; }
+.local-card { border: 1px solid var(--border); border-radius: 10px; padding: 28px 24px; background: var(--cream); }
+.local-place { font-size: 10px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.local-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+.local-card p { font-size: 0.84rem; line-height: 1.8; color: var(--muted); }
+ 
+/* ── BACK COVER ── */
+.back-cover { background: var(--terracotta); padding: 96px 10vw; color: var(--cream); }
+.back-cover .section-label { color: rgba(253,250,246,0.6); }
+.back-cover h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.3; color: var(--cream); max-width: 640px; margin-bottom: 32px; }
+.back-cover h2 em { font-style: italic; }
+.back-cover p { font-size: 1rem; line-height: 1.85; color: rgba(253,250,246,0.8); max-width: 580px; margin-bottom: 16px; }
+.back-divider { width: 48px; height: 2px; background: rgba(253,250,246,0.4); margin: 40px 0; }
+.back-author { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: rgba(253,250,246,0.7); }
+ 
+@media (max-width: 900px) {
+  .section, .toc, .back-cover { padding-left: 6vw; padding-right: 6vw; }
+  .cover { padding: 60px 6vw; }
+  .band-header, .grade-row { grid-template-columns: 60px 1fr; }
+  .band-header :nth-child(n+3), .grade-row :nth-child(n+3) { display: none; }
+  .arc-phases, .anchors-grid { grid-template-columns: 1fr; }
+  .phase { border-right: none; border-bottom: 1px solid var(--border); }
+  .ex-band-header { grid-template-columns: 1fr; }
+  .ex-content { border-left: none; border-top: 1px solid var(--border); }
+  .wida-levels { grid-template-columns: repeat(3, 1fr); }
+  .lang-obj-row { grid-template-columns: 1fr; }
+  .lang-obj-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .cover-symbol { display: none; }
+  .muniz-grid { grid-template-columns: 1fr; }
+  .theo-frameworks { gap: 12px; }
+}
+</style>
+</head>
+<body>
+ 
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-eyebrow">Curriculum Framework · Working Document · 2026</div>
+  <h1>The<br><span>Anchored</span><br>Learner</h1>
+  <div class="cover-tagline">An equity-centered, problem-based integrated curriculum framework for K–12 — designed for every classroom in America, and built from the ground up so that every learner — including those most often failed by traditional schooling — is centered in every design decision.</div>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">Marline Anderson &nbsp;·&nbsp; Equity-Centered Curriculum Design</div>
+  <div class="cover-symbol">⚓</div>
+</div>
+ 
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-label">Contents</div>
+  <div class="toc-grid">
+    <div class="toc-item"><span class="toc-num">00</span><span class="toc-title">Theoretical Foundations</span></div>
+    <div class="toc-item"><span class="toc-num">01</span><span class="toc-title">Why This Curriculum Exists</span></div>
+    <div class="toc-item"><span class="toc-num">02</span><span class="toc-title">Four Design Principles</span></div>
+    <div class="toc-item"><span class="toc-num">03</span><span class="toc-title">The Developmental Arc</span></div>
+    <div class="toc-item"><span class="toc-num">04</span><span class="toc-title">The Year Structure</span></div>
+    <div class="toc-item"><span class="toc-num">05</span><span class="toc-title">The Five Anchor Domains</span></div>
+    <div class="toc-item"><span class="toc-num">06</span><span class="toc-title">Career-Connected Learning</span></div>
+    <div class="toc-item"><span class="toc-num">07</span><span class="toc-title">Scope &amp; Sequence</span></div>
+    <div class="toc-item"><span class="toc-num">08</span><span class="toc-title">Vertical Alignment: Water in Our Community</span></div>
+    <div class="toc-item"><span class="toc-num">09</span><span class="toc-title">Lesson Design Framework</span></div>
+    <div class="toc-item"><span class="toc-num">10</span><span class="toc-title">Science of Reading</span></div>
+    <div class="toc-item"><span class="toc-num">11</span><span class="toc-title">Multilingual Learner Framework</span></div>
+    <div class="toc-item"><span class="toc-num">12</span><span class="toc-title">Universal Design for Learning</span></div>
+    <div class="toc-item"><span class="toc-num">13</span><span class="toc-title">Portrait of the Anchored Learner</span></div>
+    <div class="toc-item"><span class="toc-num">14</span><span class="toc-title">The Planning Process</span></div>
+    <div class="toc-item"><span class="toc-num">15</span><span class="toc-title">Localization Guidance</span></div>
+    <div class="toc-item"><span class="toc-num">16</span><span class="toc-title">A Note on What This Is</span></div>
+  </div>
+</div>
+ 
+<!-- 00: THEORETICAL FOUNDATIONS -->
+<div class="section theo-section" id="s00">
+  <div class="section-header">
+    <div class="section-num">00</div>
+    <div class="section-titles">
+      <span class="section-label">Theoretical Foundations</span>
+      <h2>The Scholarship That <em>Grounds This Work</em></h2>
+    </div>
+  </div>
+ 
+  <p class="body-text">The Anchored Learner does not emerge from good intentions alone. It is grounded in a constellation of scholarly frameworks that explain why the curriculum is designed as it is and provide the intellectual foundation for every design decision that follows. These frameworks are not applied as checklists; they are inhabited as lenses through which teaching and learning are understood and enacted.</p>
+  <p class="body-text">The theoretical foundation is organized in three layers: an orienting disposition that shapes the overall approach; a set of theoretical frameworks that inform specific design commitments; and empirical grounding in original action research that demonstrates how the approach functions in practice.</p>
+  <p class="body-text">At its core, this work is grounded in a belief that learning is most powerful when it is contextual, relational, and connected to the lived experiences of learners and their communities.</p>
+ 
+  <div class="theo-block disposition-block">
+    <div class="theo-block-label">The Orienting Disposition</div>
+    <div class="theo-block-content">
+      <h3>Culturally Responsive Teaching as a Way of Being</h3>
+      <p class="theo-scholar">H. Richard Milner IV (2011)</p>
+      <p>Culturally responsive teaching is not a checklist of strategies. It is not a unit to teach in February. It is not an add-on to an otherwise complete instructional program. It is, as Milner (2011) argues, a <em>way of being</em> — a disposition that shapes how educators build relationships, select and evaluate materials, design learning environments, and engage students in meaning-making every single day.</p>
+      <p>This distinction is foundational to The Anchored Learner. The curriculum is not designed to be culturally responsive in isolated moments. It is designed so that cultural responsiveness is structurally embedded in every decision — the driving questions, the localization process, the language objectives, the community partnerships, the action projects. You cannot implement this curriculum without the community. You cannot teach it without the students. That is not an accident. It is the design.</p>
+      <p>Milner's framing explains why this curriculum cannot be prescriptive. A way of being is not a script — it is a stance from which educators continuously reflect, adapt, and respond to the specific cultural identities and experiences of the learners in front of them. The four design principles that follow are not rules to follow. They are expressions of this stance.</p>
+    </div>
+  </div>
+ 
+  <div class="theo-label-row">
+    <div class="theo-divider-label">Theoretical Frameworks</div>
+  </div>
+ 
+  <div class="theo-frameworks">
+ 
+    <div class="theo-card">
+      <div class="theo-card-header crp">
+        <div class="theo-card-scholars">Gay (2002, 2018) · Ladson-Billings (1995) · Paris (2012)</div>
+        <div class="theo-card-title">Culturally Responsive & Sustaining Pedagogy</div>
+      </div>
+      <div class="theo-card-body">
+        <p>Geneva Gay's foundational work defines culturally responsive teaching as using the cultural knowledge, prior experiences, frames of reference, and performance styles of ethnically diverse students to make learning more relevant and effective. Gay's three commitments — academic rigor, cultural competence, and critical consciousness — are the pedagogical backbone of every unit in this curriculum.</p>
+        <p>Gloria Ladson-Billings' Culturally Relevant Pedagogy (1995) establishes that truly responsive education must develop students' ability to critically examine and challenge inequitable systems — not just reflect their culture, but use education as a tool for social change. This is why every unit in The Anchored Learner culminates in action, not just awareness.</p>
+        <p>Django Paris' Culturally Sustaining Pedagogy (2012) pushes further — arguing that relevance is not enough. Education must actively <em>sustain</em> the linguistic and cultural practices of communities of color, not merely reference them. This is the theoretical grounding for the curriculum's commitment to home languages and community knowledge not as bridges to mainstream content but as valuable in their own right.</p>
+        <div class="theo-connection">→ <em>Design expression:</em> Principles 1, 2, 4 · The localization guidance · The community partnership model · The action project structure</div>
+      </div>
+    </div>
+ 
+    <div class="theo-card">
+      <div class="theo-card-header ccw">
+        <div class="theo-card-scholars">Tara Yosso (2005)</div>
+        <div class="theo-card-title">Community Cultural Wealth</div>
+      </div>
+      <div class="theo-card-body">
+        <p>Deficit-based models of education ask what students lack. Community Cultural Wealth asks what students already bring. Yosso (2005) identifies six forms of capital that students from marginalized communities carry into every classroom: <strong>aspirational capital</strong> (maintaining hopes and dreams despite barriers), <strong>linguistic capital</strong> (intellectual and social skills developed through multilingual and multi-dialectal communication), <strong>familial capital</strong> (community history, memory, and cultural intuitions), <strong>social capital</strong> (networks of community support), <strong>navigational capital</strong> (skills to maneuver through institutions not designed for you), and <strong>resistant capital</strong> (knowledge and skills forged through opposition to inequality).</p>
+        <p>Critically, linguistic capital is broader than multilingualism. It explicitly includes speakers of language varieties such as African American Vernacular English (AAVE) — a fully rule-governed, intellectually rich language system that schools have historically devalued and corrected rather than honored. The Anchored Learner's commitment to linguistic capital means honoring both multilingual learners' home languages <em>and</em> the linguistic traditions of Black students and other speakers of non-dominant language varieties. Linguistic wealth is not a deficit to be remediated. It is a resource to be activated.</p>
+        <div class="theo-connection">→ <em>Design expression:</em> Principle 7 · The MLL framework · Home language guidance · Community partnership design · The localization model</div>
+      </div>
+    </div>
+ 
+    <div class="theo-card">
+      <div class="theo-card-header muniz">
+        <div class="theo-card-scholars">Jenny Muñiz · New America (2019)</div>
+        <div class="theo-card-title">Eight Competencies for Culturally Responsive Teaching</div>
+      </div>
+      <div class="theo-card-body">
+        <p>Muñiz (2019) provides the most operationally precise definition of what culturally responsive teaching looks like in practice — moving from the philosophical to the actionable through eight educator competencies. These competencies served as the structural foundation of the researcher's own CRI Learning Circles intervention (Anderson, 2025) and directly inform the design of The Anchored Learner. The curriculum is designed to create conditions in which teachers practice and develop these competencies as a natural consequence of implementation:</p>
+        <div class="muniz-grid">
+          <div class="muniz-item"><span class="muniz-num">1</span>Reflecting on one's own cultural lens</div>
+          <div class="muniz-item"><span class="muniz-num">2</span>Recognizing and addressing systemic bias</div>
+          <div class="muniz-item"><span class="muniz-num">3</span>Drawing on students' cultures as assets in instruction</div>
+          <div class="muniz-item"><span class="muniz-num">4</span>Connecting learning to real-world issues</div>
+          <div class="muniz-item"><span class="muniz-num">5</span>Modeling high expectations for all learners</div>
+          <div class="muniz-item"><span class="muniz-num">6</span>Promoting respect for difference</div>
+          <div class="muniz-item"><span class="muniz-num">7</span>Collaborating with families and communities</div>
+          <div class="muniz-item"><span class="muniz-num">8</span>Communicating in linguistically and culturally responsive ways</div>
+        </div>
+        <div class="theo-connection">→ <em>Design expression:</em> All four design principles · The planning process · The language objective requirement · Community partnership model · Localization guidance</div>
+      </div>
+    </div>
+ 
+    <div class="theo-card">
+      <div class="theo-card-header fok">
+        <div class="theo-card-scholars">Moll, Amanti, Neff & Gonzalez (1992)</div>
+        <div class="theo-card-title">Funds of Knowledge</div>
+      </div>
+      <div class="theo-card-body">
+        <p>Funds of Knowledge research established that households and communities possess historically accumulated bodies of knowledge that are essential for functioning and well-being — and that schools almost never access or build upon. Families know things. Communities know things. That knowledge is intellectual, practical, and profound — and it has historically been treated as invisible by formal education.</p>
+        <p>The Anchored Learner is designed so that community and family knowledge is not a supplement to the curriculum — it is the curriculum's content. The localization model, the community partnership structure, and the driving questions themselves are all designed to surface and build upon what students' families and communities already know about the equity issues under investigation.</p>
+        <div class="theo-connection">→ <em>Design expression:</em> Principle 2 · Community partnership design · Localization guidance · Family and community knowledge as curriculum content</div>
+      </div>
+    </div>
+ 
+    <div class="theo-card">
+      <div class="theo-card-header pcc">
+        <div class="theo-card-scholars">Vasuthavan & Kunaratnam (2017)</div>
+        <div class="theo-card-title">Problem-Centered Curriculum Design</div>
+      </div>
+      <div class="theo-card-body">
+        <p>Problem-centered curriculum design organizes learning around relevant real-world problems rather than around subjects or content areas. According to Vasuthavan and Kunaratnam (2017), this approach helps students learn by researching, putting theory into practice, and using what they know to solve real-life problems — empowering students to become agents of change in their communities.</p>
+        <p>This is the structural design logic of The Anchored Learner. Subjects are not the organizing principle — problems are. Math, science, literacy, social studies, and the arts are all in service of the inquiry. The driving question comes first. The disciplines follow because the problem demands them. This is what makes the integration authentic rather than forced.</p>
+        <div class="theo-connection">→ <em>Design expression:</em> Principles 1, 3 · The driving question model · The unit arc structure · Standards-follow-the-learning approach</div>
+      </div>
+    </div>
+ 
+    <div class="theo-card">
+      <div class="theo-card-header" style="background:rgba(92,122,95,0.2);">
+        <div class="theo-card-scholars">Zaretta Hammond (2015)</div>
+        <div class="theo-card-title">Culturally Responsive Teaching and the Brain: Building Intellective Capacity</div>
+      </div>
+      <div class="theo-card-body">
+        <p>Zaretta Hammond's work bridges the equity case for culturally responsive teaching with the neuroscientific case — arguing that CRT is not only the right thing to do, it is the most effective way to activate learning for students who have been historically underserved. Her central concept, <strong>intellective capacity</strong>, refers to the brain's ability to process complex information independently. Building intellective capacity is the long-term goal of CRT — moving students from dependent learners who need constant scaffolding to independent learners who can drive their own meaning-making.</p>
+        <p>Hammond's information processing framework describes three stages through which the brain turns new information into usable knowledge. During <strong>Input</strong>, the brain sorts what is worth paying attention to — and cultural relevance is the primary mechanism by which attention is earned. Information that connects to a student's existing cultural schema is flagged as important; information that feels disconnected is filtered out. During <strong>Elaboration</strong>, the brain actively organizes new material into recognizable patterns — a process that can only be sustained for 12 to 20 minutes before cognitive fatigue sets in. During <strong>Application</strong>, new knowledge is applied and strengthened — and the brain must revisit and use new learning within 24 to 48 hours or it fades. The implications for lesson design are direct and non-negotiable: lessons must be culturally grounded from the first moment, must be broken into digestible chunks, and must always include an application opportunity before the learning is lost.</p>
+        <p>This framework is the neuroscientific foundation for The Anchored Learner's <strong>Lesson Design Framework</strong> — the five-phase instructional sequence (Connect · Discover · Make Sense · Apply · Reflect) that structures every lesson in this curriculum. Connect corresponds to Input — the cultural ignition that earns the brain's attention. Discover and Make Sense correspond to Elaboration — chunked, student-active processing within the brain's natural window. Apply and Reflect correspond to Application — using new knowledge before it fades and reflecting to consolidate learning. The framework is not a stylistic preference. It is a neurologically grounded design recommendation.</p>
+        <div class="theo-connection">→ <em>Design expression:</em> The Lesson Design Framework (Connect · Discover · Make Sense · Apply · Reflect) · The community building launch · The Funds of Knowledge work · The MLL framework's activation of home language and cultural schema · Short, varied lesson blocks at K–2</div>
+      </div>
+    </div>
+ 
+    <div class="theo-card">
+      <div class="theo-card-header fok" style="background:rgba(184,92,56,0.18);">
+        <div class="theo-card-scholars">Learning for Justice / Southern Poverty Law Center (2022)</div>
+        <div class="theo-card-title">Social Justice Standards: The Anti-Bias Framework</div>
+      </div>
+      <div class="theo-card-body">
+        <p>Learning for Justice's Social Justice Standards provide the anti-bias framework that gives the equity lens of this curriculum its operational structure. Organized into four domains — <strong>Identity, Diversity, Justice, and Action</strong> (IDJA) — the standards describe what anti-bias, culturally responsive education looks like in practice across K–12, with grade-band learning outcomes and scenarios at every level.</p>
+        <p>The four domains map directly onto the design logic of The Anchored Learner. <em>Identity</em> aligns with the curriculum's commitment to Community Cultural Wealth — every student knowing and valuing who they are. <em>Diversity</em> aligns with the MLL framework's honoring of linguistic and cultural difference as assets. <em>Justice</em> aligns with the equity problem structure at the heart of every unit — students learning to name and analyze unfairness in the world around them. <em>Action</em> aligns with Design Principle 4 — learning that culminates in a community-facing response, not merely awareness.</p>
+        <p>The LFJ standards are referenced across unit designs as an anti-bias alignment layer — distinct from content standards and WIDA ELD standards, but cited with equal intentionality. They are not a checklist to complete but a lens through which the equity depth of each unit can be examined and sharpened.</p>
+        <div class="theo-connection">→ <em>Design expression:</em> All four design principles · The equity problem structure of every unit · The action project model · The developmental arc from Wonder to Action · LFJ IDJA alignment noted in unit planning</div>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div class="theo-block empirical-block">
+    <div class="theo-block-label">Original Research</div>
+    <div class="theo-block-content">
+      <h3>The Scholarship That Inspired This Work</h3>
+      <p class="theo-scholar">Anderson (2025) · From Awareness to Action: Advancing Culturally Responsive Instruction in Elementary Education · Northeastern University</p>
+      <p>The Anchored Learner is grounded in the researcher's own action research dissertation (Anderson, 2025), which examined the factors that enable and hinder culturally responsive instruction in elementary schools and evaluated a professional learning intervention — the CRI Learning Circles — designed to improve it. The curriculum is not a theoretical exercise. It is a direct response to what the research revealed.</p>
+      <p>Key findings that shaped this curriculum's design: Teachers who developed the deepest understanding of CRI moved from seeing it as an add-on to seeing it as a way of being — embedded across all aspects of teaching: routines, relationships, planning, and daily interaction. This shift was not achieved through one-time training but through sustained, collaborative, reflective professional learning grounded in real classroom practice.</p>
+      <p>Most critically: the research demonstrated that teachers' barriers to CRI implementation were not primarily motivational — they were structural. Teachers wanted to teach responsively. What they lacked was a curriculum architecture designed to make it possible. The Anchored Learner is a direct response to that finding. Every design decision in this curriculum exists because the research showed that without structural support, even the most committed educators cannot consistently deliver the culturally responsive instruction their students deserve.</p>
+      <div class="theo-connection">→ <em>Design expression:</em> The entire curriculum architecture · The localization model · The planning process · The non-prescriptive, community-grounded design philosophy throughout</div>
+    </div>
+  </div>
+ 
+  <div class="theo-block" style="background:rgba(74,98,120,0.07);border:1px solid rgba(74,98,120,0.2);border-radius:12px;padding:40px;margin:40px 0;max-width:840px;">
+    <div class="theo-block-label" style="color:var(--slate);">The Evidence Base</div>
+    <div class="theo-block-content">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--cream);margin-bottom:8px;">What the Research Shows</h3>
+      <p class="theo-scholar">Hammond (2015) · Lucas Education Research (2021) · TNTP (2025)</p>
+      <p>The Anchored Learner's design is validated by a converging body of research across four domains: the academic and social-emotional outcomes of culturally responsive teaching, the neuroscience that explains why CRT works in the brain, the academic outcomes of project-based learning, and the instructional coherence research that explains why integrated curriculum design accelerates learning — particularly for students who have historically been underserved.</p>
+ 
+      <p><strong style="color:var(--cream);">Culturally Responsive Teaching Works Academically.</strong> Hammond (2015) demonstrates that CRT is not only culturally affirming — it is neurologically activating. When instruction connects to students' cultural schema, the brain's attention systems engage more readily, cognitive load is reduced, and new information is processed more deeply. The result is measurable academic gains, not just increased engagement. The broader research base confirms this consistently: culturally responsive practices help close the opportunity gap, increase motivation, and affirm the value of students' contributions to the classroom (Brown et al., 2019; Cherfas et al., 2021; Farinde-Wu et al., 2017; Solas &amp; Kamalodeen, 2022). When learning is aligned with students' cultural perspectives, engagement increases, which results in a positive learning environment and improved academic outcomes (Gay, 2002; Walker &amp; Hutchison, 2021). Research shows that CRT produces more equitable educational outcomes for culturally diverse students (Cruz et al., 2020; Farinde-Wu et al., 2017), increased student enthusiasm (Farinde-Wu et al., 2017), and improved performance on standardized assessments (Cherfas et al., 2021; Whaley et al., 2019). Importantly, when implemented by effective teachers, these benefits extend to all students regardless of cultural, ethnic, or socioeconomic background (Abdulrahim &amp; Orosco, 2020; Bonner et al., 2017).</p>
+ 
+      <p><strong style="color:var(--cream);">Culturally Responsive Teaching Fosters Civic Engagement and Social-Emotional Wellbeing.</strong> The benefits of CRT extend well beyond academic achievement. Through intentional instruction, educators help students analyze societal inequities and see themselves as capable of challenging injustice (Bassey, 2016; Ladson-Billings, 1995). In culturally responsive classrooms, students are encouraged to ask why injustice exists, examine its root causes, and explore how they can take action — cultivating active citizenship and social consciousness. CRT also supports students' social-emotional wellbeing in ways that align with broader education reform: when students feel positively about their racial and ethnic identities, they report higher self-esteem, more positive academic attitudes, and greater resilience in the face of bias (Byrd, 2016; Muñiz, 2019). Research shows that culturally responsive teaching encourages students to be more cooperative and kind, and can protect their mental health by reducing the negative effects of discrimination (Goodwin &amp; Long, 2022). This is the foundational argument for why this curriculum centers equity, identity, and community action — because the evidence shows that doing so is not only the right thing but also the most academically and developmentally effective approach to education.</p>
+ 
+      <p><strong style="color:var(--cream);">Project-Based Learning Raises Academic Achievement.</strong> Lucas Education Research (2021) released the most rigorous evidence base to date on PBL outcomes across four randomized controlled trials. Third-grade students in PBL classrooms scored 8 percentage points higher on state science assessments — effects that held regardless of reading level. Second-grade students from low-income backgrounds and underrepresented racial and ethnic groups gained 5 to 6 additional months of learning in social studies and 2 additional months in informational reading. AP students outperformed peers by 8 to 10 percentage points. Most significantly: English language learners in PBL classrooms scored up to 28 percentage points higher on language proficiency assessments — a finding that directly validates this curriculum's commitment to centering multilingual learners in a problem-based, integrated design. As Linda Darling-Hammond observed, well-designed PBL experiences combined with equitable collaboration practices can boost achievement for historically underserved students.</p>
+ 
+      <p><strong style="color:var(--cream);">Instructional Coherence Accelerates Learning.</strong> TNTP's research on instructional coherence (2025) demonstrates that fragmented learning experiences — where students encounter disconnected curricula, different routines, and unrelated content across subjects — actively slow learning, particularly for the students who most need acceleration. In trajectory-changing schools where all supports were coherently aligned, students gained more than 1.3 years of learning per year. The integrated, problem-centered design of The Anchored Learner is a structural response to that finding: when students investigate a single driving question across literacy, science, math, and social studies, they encounter consistent vocabulary, context, and purpose across the full school day. That is instructional coherence by design.</p>
+ 
+      <div class="theo-connection" style="border-top:1px solid rgba(74,98,120,0.2);">→ <em>Design expression:</em> The Lesson Design Framework · The integrated curriculum architecture · The problem-centered design logic · The MLL framework · The action project structure · The community building launch</div>
+    </div>
+  </div>
+</div>
+ 
+<!-- 01: VISION -->
+<div class="section" id="s01">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-titles">
+      <span class="section-label">Vision</span>
+      <h2>Why This Curriculum <em>Exists</em></h2>
+    </div>
+  </div>
+  <p class="body-text">Traditional schooling fragments knowledge into subjects that live apart from life. It trains students to recall, repeat, and comply — when what the world demands are humans who can think critically, act ethically, and adapt continuously. This curriculum exists to close that gap.</p>
+  <p class="body-text">The Anchored Learner is <strong>learner-centered, culturally responsive, and problem-centered</strong> — and these three orientations are inseparable. Learner-centered means the curriculum begins with who the student is: their identity, their language, their community, their prior knowledge, and their genuine questions about the world. It does not begin with content to be delivered. Culturally responsive means students' cultural wealth is not a supplement to learning — it is the substance of it. Problem-centered means the organizing force of every unit is a real equity issue that students investigate, analyze, and respond to. Together, these three orientations produce something no single one of them could achieve alone: learning that is rigorous because it is meaningful, and meaningful because it is real.</p>
+  <p class="body-text">The Anchored Learner is designed for every classroom in America. It is built on the conviction that education's deepest purpose is to empower every young person — regardless of zip code, language, culture, or background — to become an agent of change. And it is designed from the ground up to ensure that the students most often failed by traditional schooling: students of color, multilingual learners, and students whose identities and communities have been erased from the curriculum — are centered in every design decision. Because when curriculum is built for those students, it becomes better for everyone.</p>
+  <p class="body-text">The name reflects the philosophy. An anchored learner knows who they are, where they come from, and what they are working toward. They are grounded in community and identity — not adrift in disconnected content — and that groundedness is what makes rigorous, joyful, transformative learning possible.</p>
+  <div class="pull-quote">
+    <p>The curriculum begins in kindergarten by building wonder and stewardship — children learning to care for themselves, each other, and their world. Each subsequent year deepens that foundation, moving students from personal awareness to community investigation to systemic understanding and action.</p>
+  </div>
+  <p class="body-text">This framework was born from a pivotal classroom moment: a 5th grader who, after a lesson on European exploration, concluded that Asian, African, and Indigenous people must be unimportant because the curriculum had erased them. That moment crystallized what it costs children when curriculum fails to reflect and respect who they are. The Anchored Learner is a response to that cost — and a commitment that every child, in every language, from every community, sees themselves as a capable, valued thinker and changemaker.</p>
+</div>
+ 
+<!-- 02: PRINCIPLES -->
+<div class="section" id="s02">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-titles">
+      <span class="section-label">Design Principles</span>
+      <h2>Four Principles That <em>Guide Every Decision</em></h2>
+    </div>
+  </div>
+  <p class="body-text">These principles are foundational elements, not aspirational statements. Every unit, every driving question, every lesson should be measurable against them. They are not ideals to aim for — they are the mechanism by which this curriculum works. They emerge from the theoretical constellation described in Section 00 — not reducible to any single framework, but coherent with all of them.</p>
+ 
+  <div class="whole-child-frame" style="background:var(--gold-light);border:1px solid rgba(201,149,58,0.25);border-radius:10px;padding:28px 36px;margin-bottom:40px;max-width:840px;">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--ink);line-height:1.75;">These principles operate within a whole child philosophy — and that philosophy is fundamentally learner-centered. The curriculum does not begin with content and ask how students can access it. It begins with students and asks what content, community, and inquiry will unlock their fullest potential. Every design decision attends not just to academic development but to students' social, emotional, cultural, and identity development. A student cannot be an anchored learner if they do not first feel safe, seen, and valued. Every unit, every driving question, and every classroom interaction is held against that standard.</p>
+  </div>
+ 
+  <div class="principles-grid">
+    <div class="principle">
+      <div class="p-num">1</div>
+      <h3>Universal Problem,<br>Local Manifestation</h3>
+      <p>Equity issues are universal. How they appear in a community is local. The curriculum provides the problem structure; the community provides the content. A unit on food access looks different in the South Bronx than in rural North Carolina — and both are right. Same problem, different data, different action.</p>
+    </div>
+    <div class="principle">
+      <div class="p-num">2</div>
+      <h3>Culturally Responsive<br>by Design</h3>
+      <p>This curriculum cannot be prescriptive. It is designed to be localized — by teachers, for their students, in their community. Cultural knowledge, family experience, and community identity are not supplements to the curriculum. They are the curriculum. This is the direct expression of Milner's way of being and Moll et al.'s Funds of Knowledge.</p>
+      <p style="font-size:0.85rem;line-height:1.8;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);"><em>A note on who this is for:</em> Culturally responsive teaching is not a framework for students of color or multilingual learners only. It is a philosophy of teaching that honors every child's identity, background, and lived experience. A white child in a rural farming community whose family's agricultural knowledge is centered in the curriculum is experiencing culturally responsive teaching. The misconception that CRT is only relevant in diverse urban classrooms is exactly that — a misconception. Every community has a culture. Every child has a family. Every student deserves a curriculum that treats what they know and where they come from as worthy of the classroom.</p>
+    </div>
+    <div class="principle">
+      <div class="p-num">3</div>
+      <h3>Integration Is Authentic,<br>Not Forced</h3>
+      <p>Subjects are integrated because the problems demand it. A child investigating food access needs literacy to read, math to analyze data, science to understand nutrition, and social studies to understand systems. The problem makes integration inevitable and meaningful — not a design exercise in connecting subjects artificially.</p>
+    </div>
+    <div class="principle">
+      <div class="p-num">4</div>
+      <h3>Learning Culminates<br>in Action</h3>
+      <p>Every unit ends with a genuine, community-facing call to action. Students do not just learn about equity issues — they respond to them. Action projects are developmentally appropriate and genuinely meaningful to the students who create them. Learning that doesn't move is incomplete.</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- 03: ARC -->
+<div class="section" id="s03">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-titles">
+      <span class="section-label">Developmental Arc</span>
+      <h2>Four Phases from <em>Wonder to Action</em></h2>
+    </div>
+  </div>
+  <p class="body-text">The Anchored Learner is organized into four developmental phases spanning K through 12th grade. Each phase has a distinct orientation — a way of being in relationship to learning, community, and the world. The phases build on one another deliberately, so that each year of schooling deepens what came before.</p>
+  <div class="arc-phases">
+    <div class="phase p1">
+      <div class="phase-grades">K–2 · Early Childhood</div>
+      <div class="phase-name">Wonder &<br>Stewardship</div>
+      <p class="phase-desc">Children learn to care for themselves, each other, and their world. Learning is personal, sensory, and rooted in family and community identity. Equity is introduced through noticing and wondering — planting seeds of curiosity and care that will deepen in later years.</p>
+      <div class="phase-orientation">"What do I notice? What do I wonder? How do I care for what I love?"</div>
+    </div>
+    <div class="phase p2">
+      <div class="phase-grades">3–5 · Upper Elementary</div>
+      <div class="phase-name">Systems &<br>Impact</div>
+      <p class="phase-desc">Students zoom out from personal experience to examine the systems that shape their communities. They begin asking not just "what is happening?" but "why?" Inquiry becomes evidence-based and community-facing. Action projects have real reach beyond the classroom.</p>
+      <div class="phase-orientation">"Why does this happen? Who is impacted? What systems are at work?"</div>
+    </div>
+    <div class="phase p3">
+      <div class="phase-grades">6–8 · Middle School</div>
+      <div class="phase-name">Inquiry &<br>Analysis</div>
+      <p class="phase-desc">Students develop analytical tools to examine equity issues with depth and rigor. Historical context, data analysis, multiple perspectives, and critical examination of power become central. Students develop their voice as thinkers, researchers, and emerging advocates.</p>
+      <div class="phase-orientation">"How did this come to be? What does the evidence show? Where do I stand?"</div>
+    </div>
+    <div class="phase p4">
+      <div class="phase-grades">9–12 · High School</div>
+      <div class="phase-name">Innovation &<br>Action</div>
+      <p class="phase-desc">Students apply cumulative knowledge, analytical skills, community relationships, and agency to design and implement real solutions. Learning is rigorous, career-connected, and community-partnered. Students graduate not just prepared for the future but actively shaping it.</p>
+      <div class="phase-orientation">"What solution can I design? What action can I take? What change can I lead?"</div>
+    </div>
+  </div>
+</div>
+ 
+<!-- 04: YEAR STRUCTURE -->
+<div class="section" id="s04">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-titles">
+      <span class="section-label">Year Structure</span>
+      <h2>How the Year <em>Is Organized</em></h2>
+    </div>
+  </div>
+  <p class="body-text">Each school year in The Anchored Learner is organized into six intentional blocks. The first six weeks are the <strong>Launch</strong> — not a warm-up before the real work begins, but the foundational work that makes everything that follows possible. Standards-aligned instruction begins on Day 1. What the Launch provides is the context, the relationships, and the culture that make rigorous inquiry possible. This is when teachers begin the Funds of Knowledge work — including the <strong>Family Portrait Questionnaire</strong>, which goes home in Week 1 in all home languages present in the classroom. It is not an administrative form. It is an invitation — the teacher's first signal to families that their knowledge, traditions, and expertise are the curriculum.</p>
+  <p class="body-text">Every day throughout the Launch and across all five units, two dedicated blocks run alongside <strong>Anchored Inquiry</strong>: <strong>Anchored Literacy</strong> and <strong>Anchored Math</strong>. The name carries the philosophy — every subject is anchored to something real. Anchored Literacy delivers explicit, systematic phonics and phonemic awareness instruction aligned to the Science of Reading; vocabulary, texts, and writing connect to the community and identity themes of the unit. Anchored Math delivers explicit, standards-aligned math instruction; problem contexts are drawn from real data in the classroom community. These blocks are not replaced by Anchored Inquiry — they run in parallel, connected thematically, rigorous in their own right.</p>
+  <p class="body-text">The remaining thirty weeks are organized into five six-week project units, each anchored in one of the five anchor domains. Which anchors are taught and in what order is determined locally, in conversation with students and community. Because the Launch is centered on identity, community, and belonging, <strong>Identity &amp; Community is the recommended anchor domain for Unit 1</strong> — the inquiry deepens naturally what students have already begun to explore. That said, teachers know their students. If the Launch surfaces a strong and genuine student interest in another anchor domain, teachers have the autonomy and professional judgment to follow that interest. The curriculum provides the recommendation. The classroom provides the answer.</p>
+  <p class="body-text">The framework also explicitly makes room for student-generated inquiry. If students are genuinely passionate about a problem — something that emerged from their lives, their community, or their own observations — that passion is the curriculum. One or more units in a given year may be co-designed with students in this way. The anchor domains don't disappear in these units; often an anchor provides a useful lens for deepening the inquiry. But the key distinction is that sometimes the anchor reveals itself <em>after</em> students identify the problem, rather than being selected in advance. Both paths are valid. What matters is that the inquiry is authentic, the community is centered, and the learning is rigorous.</p>
+ 
+  <div style="background:var(--terracotta-light);border:1px solid rgba(184,92,56,0.2);border-radius:10px;padding:24px 28px;margin:32px 0;max-width:780px;">
+    <div style="font-size:9px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px;">Companion Document</div>
+    <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:10px;">The Anchored Learner Launch Guide</h4>
+    <p style="font-size:0.85rem;line-height:1.85;color:#4A3020;margin-bottom:10px;">The six-week Launch is detailed in its own companion document — <em>The Anchored Learner Launch Guide</em> — which is the first document that makes this framework operational. It includes the daily schedule, week-by-week framework with standards alignment, non-negotiables, the Family Portrait Questionnaire, and the bridge into Unit 1. The framework describes the architecture. The Launch Guide is the first room you walk into.</p>
+    <p style="font-size:0.82rem;line-height:1.75;color:#4A3020;">The Kindergarten Launch Guide is the first fully developed version. Grade-band versions for Grades 1–2, Grades 3–5, Grades 6–8, and Grades 9–12 are in development. Note: the middle and high school launch guides require additional design work to address the distinct challenges of departmentalized scheduling — a curriculum design conversation in progress.</p>
+  </div>
+  <div style="margin-top:40px;display:grid;grid-template-columns:180px repeat(5,1fr);gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+    <div style="padding:24px 20px;border-right:1px solid var(--border);background:var(--gold-light);">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Weeks 1–6</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:10px;line-height:1.3;">Community Building &amp; Launch</div>
+      <p style="font-size:0.78rem;line-height:1.7;color:var(--muted);">Getting to know students. Establishing routines. Surfacing student and family knowledge. Selecting anchor domains for the year.</p>
+    </div>
+    <div style="padding:24px 20px;border-right:1px solid var(--border);background:var(--cream);">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;">Weeks 7–12</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:10px;">Unit 1</div>
+      <p style="font-size:0.78rem;line-height:1.7;color:var(--muted);">First anchor domain. Driving question developed with students and community in mind.</p>
+    </div>
+    <div style="padding:24px 20px;border-right:1px solid var(--border);background:var(--cream);">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;">Weeks 13–18</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:10px;">Unit 2</div>
+      <p style="font-size:0.78rem;line-height:1.7;color:var(--muted);">Second anchor domain. Community partnerships deepen.</p>
+    </div>
+    <div style="padding:24px 20px;border-right:1px solid var(--border);background:var(--cream);">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;">Weeks 19–24</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:10px;">Unit 3</div>
+      <p style="font-size:0.78rem;line-height:1.7;color:var(--muted);">Third anchor domain. Action project scope expands.</p>
+    </div>
+    <div style="padding:24px 20px;border-right:1px solid var(--border);background:var(--cream);">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;">Weeks 25–30</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:10px;">Unit 4</div>
+      <p style="font-size:0.78rem;line-height:1.7;color:var(--muted);">Fourth anchor domain. Students connect patterns across units.</p>
+    </div>
+    <div style="padding:24px 20px;background:var(--cream);">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;">Weeks 31–36</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:10px;">Unit 5</div>
+      <p style="font-size:0.78rem;line-height:1.7;color:var(--muted);">Fifth unit. Culminates in year-end exhibition and reflection.</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- 05: ANCHOR DOMAINS -->
+<div class="section" id="s05">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div class="section-titles">
+      <span class="section-label">Anchor Domains</span>
+      <h2>Five Anchors That <em>Organize the Learning</em></h2>
+    </div>
+  </div>
+  <p class="body-text">All learning in The Anchored Learner is organized within five anchor domains. Each anchor is a broad lens for examining the world — a domain of inquiry that houses multiple equity issues and can be explored at any grade level, across any community. Anchors rotate across the year so content never repeats — students encounter the same deep questions through fresh, locally-grounded content each year. Topics do not belong exclusively to one anchor. Real equity issues are complex and interconnected — a unit on housing can live in Economics &amp; Opportunity and Identity &amp; Community simultaneously.</p>
+  <div class="anchors-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+    <div class="anchor-card" style="border-top:4px solid var(--plum);" data-num="1">
+      <div class="anchor-icon">🤝</div>
+      <h3>Identity &amp; Community</h3>
+      <p>Who are we, and where do we come from? How do identity, culture, and history shape our sense of place and belonging? Who belongs and who is excluded? Whose stories get told — and whose get erased?</p>
+      <div class="anchor-examples">Cultural identity · Immigration · Language rights · Representation · Neighborhood · Civic life · Indigenous history · Belonging</div>
+    </div>
+    <div class="anchor-card" style="border-top:4px solid var(--terracotta);" data-num="2">
+      <div class="anchor-icon">💚</div>
+      <h3>Health &amp; Wellbeing</h3>
+      <p>What does it mean to be healthy — body, mind, and heart? How do social conditions shape health outcomes? Why do some communities have less access to the resources they need to be well?</p>
+      <div class="anchor-examples">Healthcare access · Nutrition · Mental health · Physical activity · Safety · Health disparities · Community wellness · Food access</div>
+    </div>
+    <div class="anchor-card" style="border-top:4px solid var(--sage);" data-num="3">
+      <div class="anchor-icon">🌿</div>
+      <h3>Environment &amp; Sustainability</h3>
+      <p>How do humans and natural systems interact? How do environmental conditions shape health, opportunity, and community wellbeing? Who bears the greatest burden when environments are harmed — and why?</p>
+      <div class="anchor-examples">Climate change · Water access · Urban green space · Pollution disparities · Food systems · Conservation · Environmental health</div>
+    </div>
+    <div class="anchor-card" style="border-top:4px solid var(--slate);" data-num="4">
+      <div class="anchor-icon">💡</div>
+      <h3>Economics &amp; Opportunity</h3>
+      <p>How do economic systems shape life chances? Why do some people and communities have more resources and opportunities than others? What does it look like to build economic power and possibility?</p>
+      <div class="anchor-examples">Wealth gaps · Housing · Wages · Social mobility · Entrepreneurship · Digital equity · Generational wealth · Economic development</div>
+    </div>
+    <div class="anchor-card" style="border-top:4px solid var(--gold);" data-num="5">
+      <div class="anchor-icon">⚖️</div>
+      <h3>Justice &amp; Systems</h3>
+      <p>How do we understand fairness, power, and change? How do historical decisions shape present-day inequities? What does it look like when systems fail communities — and how do communities push back?</p>
+      <div class="anchor-examples">Educational equity · Criminal justice · Voting rights · Redlining · Policy · Historical redress · Systemic racism · Civic advocacy</div>
+    </div>
+  </div>
+  <div style="background:var(--slate-light);border:1px solid rgba(74,98,120,0.2);border-radius:10px;padding:28px 32px;margin-top:32px;max-width:700px;">
+    <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--slate);margin-bottom:10px;">Technology &amp; Digital Equity: A Cross-Cutting Dimension</h4>
+    <p style="font-size:0.88rem;line-height:1.8;color:#3D4A55;">Technology and digital equity are not a separate anchor but a dimension that cuts across all five. Digital access lives in Economics &amp; Opportunity. Algorithmic bias lives in Justice &amp; Systems. Online identity lives in Identity &amp; Community. AI and labor displacement span Economics &amp; Opportunity and Justice &amp; Systems simultaneously. Teachers are encouraged to consider the technology dimension when designing units within any anchor.</p>
+  </div>
+</div>
+ 
+<!-- 06: CAREER-CONNECTED LEARNING -->
+<div class="section" id="s06">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div class="section-titles">
+      <span class="section-label">Career-Connected Learning</span>
+      <h2>Community as Co-Educator:<br><em>Partnerships That Make Learning Real</em></h2>
+    </div>
+  </div>
+ 
+  <p class="body-text">Career-connected learning is not a high school initiative. It is a K–12 commitment — one that begins in kindergarten with wonder and ends in twelfth grade with action. The Anchored Learner is designed from the ground up to bridge the space between academic inquiry and real-world experience, ensuring that students don't just learn about the world but learn alongside the people who shape it.</p>
+ 
+  <p class="body-text">Community partnership is the mechanism through which career-connected learning happens. Community experts — from families, local businesses, civic organizations, cultural institutions, and industries — are co-educators. They bring the driving question to life in ways no classroom can replicate alone. Their presence is not supplementary to the curriculum. It is the curriculum made real. And it is through these sustained relationships with community partners that students begin to see themselves as future participants in the industries and professions they are investigating.</p>
+ 
+  <div class="pull-quote">
+    <p>The goal is not just for students to learn about careers. It is for them to begin, from the earliest grades, to see themselves in those careers — and to understand that their community already holds the knowledge, the expertise, and the pathways they need.</p>
+  </div>
+ 
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin:40px 0 16px;">All Knowledge Is Expertise</h3>
+  <p class="body-text">Community partners do not need formal credentials to be valuable co-educators. All knowledge is expertise — whether it was gained through years of formal schooling and professional practice, or through years of working alongside a parent, farming land that has been in a family for generations, running a small business, raising children, or caring for elders. A grandmother who grows medicinal herbs brings expertise to a Health & Wellbeing unit that no textbook can replicate. A carpenter who learned his trade from his uncle brings expertise to an Economics & Opportunity unit about how communities are built. A public health nurse and a farmer both bring essential, different knowledge to the same inquiry. All are equally valued. All are the curriculum.</p>
+  <p class="body-text">This commitment also means that the people students see as experts look like their communities. Multilingual community members bring linguistic and cultural expertise. Tradespeople and farmers bring practical knowledge rooted in place. Elders bring historical memory. Young entrepreneurs bring possibility. The diversity of who walks through the classroom door is itself a curriculum in what expertise looks like and who gets to hold it.</p>
+ 
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin:40px 0 16px;">The Career-Connected Learning Arc</h3>
+  <p class="body-text">Career-connected learning in The Anchored Learner follows a developmental progression that deepens across the four phases — from early career awareness in the primary grades through to work-based learning and pre-apprenticeships in high school. This progression is not accidental. It is built into the curriculum's developmental arc.</p>
+ 
+  <div style="margin-top:28px;border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:900px;">
+    <div style="display:grid;grid-template-columns:140px 1fr;border-bottom:1px solid var(--border);">
+      <div style="background:var(--sage);padding:20px 18px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:4px;">Awareness</div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(253,250,246,0.7);">K–2 · Wonder & Stewardship</div>
+      </div>
+      <div style="padding:20px 24px;background:var(--cream);">
+        <p style="font-size:0.85rem;line-height:1.85;color:#3D3028;">Community experts visit and share who they are and what they do. Students ask questions, observe real work, and begin to understand that adults in their community do meaningful work that matters — and that there are many different kinds of expertise in the world. The goal is wonder and recognition: <em>people like me do important work.</em></p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:140px 1fr;border-bottom:1px solid var(--border);">
+      <div style="background:var(--slate);padding:20px 18px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:4px;">Exploration</div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(253,250,246,0.7);">3–5 · Systems & Impact</div>
+      </div>
+      <div style="padding:20px 24px;background:var(--cream);">
+        <p style="font-size:0.85rem;line-height:1.85;color:#3D3028;">Students connect their inquiry to real industries and career families. They interview professionals, investigate how different kinds of work connect to the equity issues they are studying, and begin to imagine themselves in those roles. The goal is connection and possibility: <em>the problems I care about are the problems real professionals work on.</em></p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:140px 1fr;border-bottom:1px solid var(--border);">
+      <div style="background:var(--terracotta);padding:20px 18px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:4px;">Preparation</div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(253,250,246,0.7);">6–8 · Inquiry & Analysis</div>
+      </div>
+      <div style="padding:20px 24px;background:var(--cream);">
+        <p style="font-size:0.85rem;line-height:1.85;color:#3D3028;">Students research career pathways, conduct structured interviews with professionals, and may shadow or observe community partners in their work settings. Action projects are designed with real-world stakeholders. The goal is investigation and aspiration: <em>I can see myself doing this work — and I am already developing the skills it requires.</em></p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:140px 1fr;">
+      <div style="background:var(--ink);padding:20px 18px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:4px;">Participation</div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(253,250,246,0.6);">9–12 · Innovation & Action</div>
+      </div>
+      <div style="padding:20px 24px;background:var(--cream);">
+        <p style="font-size:0.85rem;line-height:1.85;color:#3D3028;">Students work alongside professionals on real problems — through internships, pre-apprenticeships, mentorships, and community-based capstone projects with real-world stakeholders and real-world consequences. The curriculum's community partnerships, built over years, become the pathways into this work. The goal is agency and contribution: <em>I am already doing this work — and it matters.</em></p>
+      </div>
+    </div>
+  </div>
+ 
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin:48px 0 16px;">Anchor Domains as Career Pathways</h3>
+  <p class="body-text">Each anchor domain connects to a broad range of career families and industries. These connections are not exhaustive — real careers cross domains, defy categorization, and emerge from intersections we cannot fully predict. The examples below are starting points for teachers building community partner networks and for students beginning to see themselves in the world of work.</p>
+ 
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:24px;">
+    <div style="border:1px solid var(--border);border-top:3px solid var(--plum);border-radius:8px;padding:20px 20px;background:var(--cream);">
+      <div style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--plum);margin-bottom:8px;">Identity & Community</div>
+      <p style="font-size:0.82rem;line-height:1.8;color:#4A3E35;">Community organizing · Social work · Education · Cultural preservation · Journalism · Public history · Faith leadership · Nonprofit management · Translation & interpretation · Urban planning</p>
+    </div>
+    <div style="border:1px solid var(--border);border-top:3px solid var(--terracotta);border-radius:8px;padding:20px 20px;background:var(--cream);">
+      <div style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px;">Health & Wellbeing</div>
+      <p style="font-size:0.82rem;line-height:1.8;color:#4A3E35;">Medicine · Nursing · Public health · Nutrition · Mental health counseling · Environmental health · Fitness & recreation · Traditional medicine · Pharmacy · Health policy</p>
+    </div>
+    <div style="border:1px solid var(--border);border-top:3px solid var(--sage);border-radius:8px;padding:20px 20px;background:var(--cream);">
+      <div style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage);margin-bottom:8px;">Environment & Sustainability</div>
+      <p style="font-size:0.82rem;line-height:1.8;color:#4A3E35;">Environmental science · Agriculture & farming · Conservation · Urban planning · Engineering · Climate policy · Forestry · Renewable energy · Food systems · Land stewardship</p>
+    </div>
+    <div style="border:1px solid var(--border);border-top:3px solid var(--slate);border-radius:8px;padding:20px 20px;background:var(--cream);">
+      <div style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;">Economics & Opportunity</div>
+      <p style="font-size:0.82rem;line-height:1.8;color:#4A3E35;">Entrepreneurship · Finance · Housing advocacy · Workforce development · Small business · Skilled trades · Economic development · Real estate · Technology · Supply chain & logistics</p>
+    </div>
+    <div style="border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:8px;padding:20px 20px;background:var(--cream);">
+      <div style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#8B6820;margin-bottom:8px;">Justice & Systems</div>
+      <p style="font-size:0.82rem;line-height:1.8;color:#4A3E35;">Law · Public policy · Civic advocacy · Journalism · Nonprofit leadership · Community organizing · Public service · Criminal justice reform · Civil rights work · Research & academia</p>
+    </div>
+  </div>
+ 
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin:48px 0 16px;">Building and Sustaining the Partner Network</h3>
+  <p class="body-text">Community partnerships are identified through multiple channels — not a single tool or survey. The Family Portrait Questionnaire sent home in Week 1 is one important starting point: it surfaces family expertise and community connections that might otherwise go unrecognized. But partner identification is ongoing. Teachers build relationships with local businesses, civic organizations, cultural institutions, and employers over time. Community listening sessions reveal what local industries and professionals are willing to offer. Students themselves, as they grow older, become sources of connections.</p>
+  <p class="body-text">In a teacher's second year, the partner network is already established and deepening. Community partnership gets richer as the curriculum takes root in a school — and as partners see their knowledge honored, their contribution credited at exhibitions, and their relationship with the school sustained beyond a single visit.</p>
+  <p class="body-text">Partners are prepared for — students develop questions in advance, understand the partner's role, and know what they are trying to learn. Partners are debriefed after — students reflect, add to the wonder wall, and connect the visit to the driving question. Partners are honored at the unit exhibition as co-educators, not guests. Their contribution to the inquiry is visible, named, and celebrated.</p>
+</div>
+ 
+<!-- 07: SCOPE & SEQUENCE -->
+<div class="section" id="s07">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div class="section-titles">
+      <span class="section-label">Scope &amp; Sequence</span>
+      <h2>What Learning Looks Like<br><em>Across the Phases</em></h2>
+    </div>
+  </div>
+  <p class="body-text">The scope and sequence of The Anchored Learner describes how inquiry deepens across the four developmental phases — what kinds of questions students are ready to ask, what kinds of evidence they can analyze, and what kinds of action they can take. Within each phase, teachers and students select which anchor domains to explore and which equity problems to investigate, guided by community context and local relevance. The driving questions below are illustrative samples, not prescriptions.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:40px;">
+    <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="padding:16px 24px;background:var(--sage);">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:2px;">Wonder &amp; Stewardship</div>
+        <div style="font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,250,246,0.7);">Grades K–2</div>
+      </div>
+      <div style="padding:20px 24px;background:var(--cream);">
+        <p style="font-size:0.85rem;line-height:1.8;color:#3D3028;margin-bottom:12px;">Personal, sensory, and rooted in students' immediate world. Equity is introduced through noticing and caring — not analyzing systems.</p>
+        <ul style="list-style:none;padding:0;">
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Environment:</strong> <em>"Where does our food come from, and how do we care for our earth?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Identity &amp; Community:</strong> <em>"Who are the people in our community, and what makes our neighborhood special?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Health &amp; Wellbeing:</strong> <em>"What does it mean to be healthy — body, mind, and heart?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Economics &amp; Opportunity:</strong> <em>"How do people in our community take care of their families?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Justice &amp; Systems:</strong> <em>"What does fairness look like — and what do we do when something isn't fair?"</em></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="padding:16px 24px;background:var(--slate);">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:2px;">Systems &amp; Impact</div>
+        <div style="font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,250,246,0.7);">Grades 3–5</div>
+      </div>
+      <div style="padding:20px 24px;background:var(--cream);">
+        <p style="font-size:0.85rem;line-height:1.8;color:#3D3028;margin-bottom:12px;">Students zoom out to examine the systems shaping their communities — moving from noticing to investigating, from caring to understanding why.</p>
+        <ul style="list-style:none;padding:0;">
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Environment:</strong> <em>"Why do some communities have more pollution and less access to clean air and water?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Identity &amp; Community:</strong> <em>"Why don't all communities have the same resources — and who decides?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Health &amp; Wellbeing:</strong> <em>"Why doesn't everyone in our community have what they need to be healthy?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Economics &amp; Opportunity:</strong> <em>"Why do some people have more opportunities than others?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Justice &amp; Systems:</strong> <em>"Why don't all children get the same quality of education?"</em></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="padding:16px 24px;background:var(--terracotta);">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:2px;">Inquiry &amp; Analysis</div>
+        <div style="font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,250,246,0.7);">Grades 6–8</div>
+      </div>
+      <div style="padding:20px 24px;background:var(--cream);">
+        <p style="font-size:0.85rem;line-height:1.8;color:#3D3028;margin-bottom:12px;">Historical depth, data rigor, and critical analysis. Students develop voice as researchers, advocates, and emerging change agents.</p>
+        <ul style="list-style:none;padding:0;">
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Environment:</strong> <em>"How have environmental policies historically disadvantaged communities of color?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Identity &amp; Community:</strong> <em>"How has immigration policy shaped who is seen as belonging in America — and who has been made to feel like they don't?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Health &amp; Wellbeing:</strong> <em>"What structural factors explain health outcome disparities in our community?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Economics &amp; Opportunity:</strong> <em>"How did redlining shape wealth distribution — and what are its legacies today?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Justice &amp; Systems:</strong> <em>"How do systems of power perpetuate inequality — and where are the pressure points for change?"</em></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="padding:16px 24px;background:#8B6914;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:2px;">Innovation &amp; Action</div>
+        <div style="font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,250,246,0.7);">Grades 9–12</div>
+      </div>
+      <div style="padding:20px 24px;background:var(--cream);">
+        <p style="font-size:0.85rem;line-height:1.8;color:#3D3028;margin-bottom:12px;">Design thinking, leadership, and real-world innovation. Students apply cumulative learning to create solutions and lead change.</p>
+        <ul style="list-style:none;padding:0;">
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Environment:</strong> <em>"How can we design a community solution to reduce environmental harm in our neighborhood?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Identity &amp; Community:</strong> <em>"How can we use storytelling or advocacy to amplify our community's voice?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Health &amp; Wellbeing:</strong> <em>"What policy or community intervention could improve health outcomes here?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;border-bottom:1px solid rgba(26,20,16,0.05);position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Economics &amp; Opportunity:</strong> <em>"How can we build economic power and opportunity in our community?"</em></li>
+          <li style="font-size:0.82rem;line-height:1.7;color:var(--muted);padding:5px 0 5px 16px;position:relative;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">→</span><strong style="font-weight:500;color:var(--ink);">Justice &amp; Systems:</strong> <em>"What systemic change would we advocate for — and how do we build a campaign to pursue it?"</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+ 
+  <div style="margin-top:56px;">
+    <div style="font-size:10px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px;">Example Year Map</div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--ink);margin-bottom:12px;">What a Kindergarten Year <em>Could Look Like</em></h3>
+    <p style="font-size:0.88rem;line-height:1.85;color:#3D3028;max-width:680px;margin-bottom:28px;">The following is one possible Kindergarten year — not a prescription. Which anchors are explored and in what order is always determined locally, in conversation with students and community. This example shows how five six-week units rotate across different anchor domains while the community building launch and year-end exhibition frame the full year.</p>
+    <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:900px;">
+      <div style="display:grid;grid-template-columns:120px repeat(6,1fr);background:var(--ink);">
+        <div style="padding:14px 16px;font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,250,246,0.4);">Block</div>
+        <div style="padding:14px 8px;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(253,250,246,0.4);text-align:center;">Wks 1–6</div>
+        <div style="padding:14px 8px;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(253,250,246,0.4);text-align:center;">Wks 7–12</div>
+        <div style="padding:14px 8px;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(253,250,246,0.4);text-align:center;">Wks 13–18</div>
+        <div style="padding:14px 8px;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(253,250,246,0.4);text-align:center;">Wks 19–24</div>
+        <div style="padding:14px 8px;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(253,250,246,0.4);text-align:center;">Wks 25–30</div>
+        <div style="padding:14px 8px;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(253,250,246,0.4);text-align:center;">Wks 31–36</div>
+      </div>
+      <div style="display:grid;grid-template-columns:120px repeat(6,1fr);border-top:1px solid var(--border);">
+        <div style="padding:16px;font-size:0.78rem;font-weight:500;color:var(--muted);border-right:1px solid var(--border);background:var(--parchment);">Block Type</div>
+        <div style="padding:16px 10px;text-align:center;background:var(--gold-light);border-right:1px solid var(--border);">
+          <div style="font-size:0.75rem;font-weight:600;color:#8B6820;margin-bottom:4px;">Community Building</div>
+          <div style="font-size:0.72rem;color:var(--muted);line-height:1.5;">Launch · Funds of Knowledge · Wonder Wall</div>
+        </div>
+        <div style="padding:16px 10px;text-align:center;background:var(--plum-light);border-right:1px solid var(--border);">
+          <div style="font-size:0.75rem;font-weight:600;color:var(--plum);margin-bottom:4px;">Unit 1</div>
+          <div style="font-size:0.72rem;color:var(--muted);line-height:1.5;">Identity &amp; Community</div>
+        </div>
+        <div style="padding:16px 10px;text-align:center;background:var(--terracotta-light);border-right:1px solid var(--border);">
+          <div style="font-size:0.75rem;font-weight:600;color:var(--terracotta);margin-bottom:4px;">Unit 2</div>
+          <div style="font-size:0.72rem;color:var(--muted);line-height:1.5;">Health &amp; Wellbeing</div>
+        </div>
+        <div style="padding:16px 10px;text-align:center;background:var(--sage-light);border-right:1px solid var(--border);">
+          <div style="font-size:0.75rem;font-weight:600;color:var(--sage);margin-bottom:4px;">Unit 3</div>
+          <div style="font-size:0.72rem;color:var(--muted);line-height:1.5;">Environment &amp; Sustainability</div>
+        </div>
+        <div style="padding:16px 10px;text-align:center;background:var(--slate-light);border-right:1px solid var(--border);">
+          <div style="font-size:0.75rem;font-weight:600;color:var(--slate);margin-bottom:4px;">Unit 4</div>
+          <div style="font-size:0.72rem;color:var(--muted);line-height:1.5;">Economics &amp; Opportunity</div>
+        </div>
+        <div style="padding:16px 10px;text-align:center;background:var(--gold-light);">
+          <div style="font-size:0.75rem;font-weight:600;color:#8B6820;margin-bottom:4px;">Unit 5</div>
+          <div style="font-size:0.72rem;color:var(--muted);line-height:1.5;">Justice &amp; Systems <em>or</em> Student-Generated</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:120px repeat(6,1fr);border-top:1px solid var(--border);">
+        <div style="padding:16px;font-size:0.78rem;font-weight:500;color:var(--muted);border-right:1px solid var(--border);background:var(--parchment);">Sample Driving Question</div>
+        <div style="padding:16px 10px;background:var(--gold-light);border-right:1px solid var(--border);">
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.8rem;color:#8B6820;line-height:1.6;">Who are we, and what does our community look like?</div>
+        </div>
+        <div style="padding:16px 10px;background:var(--plum-light);border-right:1px solid var(--border);">
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.8rem;color:var(--plum);line-height:1.6;">Who are the people in our community and what makes us special?</div>
+        </div>
+        <div style="padding:16px 10px;background:var(--terracotta-light);border-right:1px solid var(--border);">
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.8rem;color:var(--terracotta);line-height:1.6;">What does it mean to be healthy — body, mind, and heart?</div>
+        </div>
+        <div style="padding:16px 10px;background:var(--sage-light);border-right:1px solid var(--border);">
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.8rem;color:var(--sage);line-height:1.6;">Where does our food come from and how do we care for our earth?</div>
+        </div>
+        <div style="padding:16px 10px;background:var(--slate-light);border-right:1px solid var(--border);">
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.8rem;color:var(--slate);line-height:1.6;">How do people in our community take care of their families?</div>
+        </div>
+        <div style="padding:16px 10px;background:var(--gold-light);">
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.8rem;color:#8B6820;line-height:1.6;">What does fairness look like — and what do we do when something isn't fair?</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:120px repeat(6,1fr);border-top:1px solid var(--border);">
+        <div style="padding:16px;font-size:0.78rem;font-weight:500;color:var(--muted);border-right:1px solid var(--border);background:var(--parchment);">Action Project</div>
+        <div style="padding:16px 10px;background:var(--gold-light);border-right:1px solid var(--border);">
+          <div style="font-size:0.76rem;color:#8B6820;line-height:1.6;">Class community agreements · School map · Family portraits</div>
+        </div>
+        <div style="padding:16px 10px;background:var(--plum-light);border-right:1px solid var(--border);">
+          <div style="font-size:0.76rem;color:var(--plum);line-height:1.6;">Community story book or neighborhood map exhibition</div>
+        </div>
+        <div style="padding:16px 10px;background:var(--terracotta-light);border-right:1px solid var(--border);">
+          <div style="font-size:0.76rem;color:var(--terracotta);line-height:1.6;">Health Keepers book or poster shared with families</div>
+        </div>
+        <div style="padding:16px 10px;background:var(--sage-light);border-right:1px solid var(--border);">
+          <div style="font-size:0.76rem;color:var(--sage);line-height:1.6;">School garden or food systems infographic for community</div>
+        </div>
+        <div style="padding:16px 10px;background:var(--slate-light);border-right:1px solid var(--border);">
+          <div style="font-size:0.76rem;color:var(--slate);line-height:1.6;">Community needs proposal or helper spotlight presentation</div>
+        </div>
+        <div style="padding:16px 10px;background:var(--gold-light);">
+          <div style="font-size:0.76rem;color:#8B6820;line-height:1.6;">Year-end exhibition celebrating all five units and community partners</div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:0.78rem;font-style:italic;color:var(--muted);margin-top:12px;max-width:680px;">This example shows one possible year for Kindergarten. Anchor order, driving questions, and action projects will differ by school, classroom, and community. Student-generated inquiry can emerge and shape any unit throughout the year — it is not reserved for Unit 5.</p>
+  </div>
+</div>
+ 
+<!-- 08: WATER EXEMPLAR -->
+<div class="section" id="s08">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div class="section-titles">
+      <span class="section-label">Vertical Alignment Exemplar</span>
+      <h2>Water in Our Community:<br><em>One Thread, Four Depths</em></h2>
+    </div>
+  </div>
+  <p class="body-text">To understand how the developmental arc works in practice, consider water as an inquiry thread. The same topic is explored across all four phase bands, but the questions asked, the skills demanded, and the actions taken deepen dramatically at each level. Each band also includes a sample language objective — showing how content and language development are designed together from the start.</p>
+  <div class="exemplar-intro">
+    <div class="eyebrow">Anchor Domain · Environment & Sustainability</div>
+    <h3>Water as Vertical Alignment Exemplar</h3>
+    <p>Water is used here to demonstrate what the developmental arc looks like in practice — how one topic within the Environment &amp; Sustainability anchor deepens across the full K–12 arc. Any topic within any anchor domain can be mapped this way. The topic changes; the developmental logic stays constant.</p>
+  </div>
+  <div class="exemplar-bands">
+    <div class="ex-band p1">
+      <div class="ex-band-header">
+        <div class="ex-band-label"><div class="ex-phase-name">Wonder & Stewardship</div><div class="ex-grades">K–2</div></div>
+        <div class="ex-content">
+          <div class="ex-big-idea">"Where does water come from, and why do we need to take care of it?"</div>
+          <div class="ex-subjects"><span class="subject-tag">Science: water cycle, states of matter</span><span class="subject-tag">Social Studies: local maps, community water use</span><span class="subject-tag">Literacy: informational texts, storytelling</span><span class="subject-tag">Math: measuring rainfall, counting containers</span></div>
+          <div class="ex-project"><strong>Water Keepers Campaign:</strong> Students create picture books, songs, or posters teaching the community to protect local water sources. Community connection: park ranger or city water employee. Purpose: cultivate curiosity and care.</div>
+          <div class="ex-lang-obj"><strong>Sample Language Objective (WIDA ELD Standard 4 · Science)</strong> Students will <em>describe</em> where water comes from using sentence frames ("Water comes from ___ because ___") — from labeled diagrams (Level 1–2) to oral explanations with academic vocabulary (Level 3–4) to written informational paragraphs (Level 5).</div>
+        </div>
+      </div>
+    </div>
+    <div class="ex-band p2">
+      <div class="ex-band-header">
+        <div class="ex-band-label"><div class="ex-phase-name">Systems & Impact</div><div class="ex-grades">3–5</div></div>
+        <div class="ex-content">
+          <div class="ex-big-idea">"What happens when water gets polluted, and how does that affect living things?"</div>
+          <div class="ex-subjects"><span class="subject-tag">Science: ecosystems, pollution, filtration</span><span class="subject-tag">Social Studies: community infrastructure</span><span class="subject-tag">Literacy: research and persuasive writing</span><span class="subject-tag">Math: interpreting data, fractions</span></div>
+          <div class="ex-project"><strong>Pollution Solutions:</strong> Students investigate pollution sources and design public awareness materials or simple engineering prototypes. Community connection: local environmental organizations, water sample testing.</div>
+          <div class="ex-lang-obj"><strong>Sample Language Objective (WIDA ELD Standards 2 & 4 · Social Studies & Science)</strong> Students will <em>explain</em> cause-and-effect relationships between human actions and water pollution — from illustrated charts with sentence stems (Level 1–2) to structured paragraphs with academic connectives (Level 3–4) to independent persuasive writing (Level 5).</div>
+        </div>
+      </div>
+    </div>
+    <div class="ex-band p3">
+      <div class="ex-band-header">
+        <div class="ex-band-label"><div class="ex-phase-name">Inquiry & Analysis</div><div class="ex-grades">6–8</div></div>
+        <div class="ex-content">
+          <div class="ex-big-idea">"How healthy is our local water, and what can we do about it?"</div>
+          <div class="ex-subjects"><span class="subject-tag">Science: water quality testing, chemistry</span><span class="subject-tag">Social Studies: civic responsibility, policy</span><span class="subject-tag">Literacy: technical writing, presentations</span><span class="subject-tag">Math: statistics, proportional reasoning</span></div>
+          <div class="ex-project"><strong>Water Quality Investigation:</strong> Teams collect and test water samples, analyze patterns, create reports and dashboards, and present to local agencies with action proposals. Community connection: city environmental staff or university.</div>
+          <div class="ex-lang-obj"><strong>Sample Language Objective (WIDA ELD Standards 2, 3 & 4)</strong> Students will <em>argue</em> for a community action using data evidence — from annotated data displays with starters (Level 1–2) to structured oral presentations (Level 3–4) to independently crafted written proposals (Level 5).</div>
+        </div>
+      </div>
+    </div>
+    <div class="ex-band p4">
+      <div class="ex-band-header">
+        <div class="ex-band-label"><div class="ex-phase-name">Innovation & Action</div><div class="ex-grades">9–12</div></div>
+        <div class="ex-content">
+          <div class="ex-big-idea">"How can we design solutions to improve water access, quality, or conservation in our community?"</div>
+          <div class="ex-subjects"><span class="subject-tag">Science/Engineering: design thinking, sustainability</span><span class="subject-tag">Social Studies: policy, environmental justice</span><span class="subject-tag">Literacy: grant writing, advocacy</span><span class="subject-tag">Math: modeling, budgeting, cost analysis</span></div>
+          <div class="ex-project"><strong>Community Water Innovation Studio:</strong> Students identify a local need, design and prototype solutions, and pitch to real partners. Projects may include rain gardens, awareness campaigns, low-cost filters, or policy recommendations.</div>
+          <div class="ex-lang-obj"><strong>Sample Language Objective (WIDA ELD Standards 1, 2 & 3)</strong> Students will <em>advocate</em> for a community solution using genre-appropriate language — from supported templates (Level 1–2) to collaborative multi-genre productions (Level 3–4) to independently authored public-facing documents (Level 5).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- 09: LESSON DESIGN FRAMEWORK -->
+<div class="section" id="s09">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-titles">
+      <span class="section-label">Lesson Design Framework</span>
+      <h2>Connect · Discover · Make Sense<br><em>· Apply · Reflect</em></h2>
+    </div>
+  </div>
+  <p class="body-text">Every lesson in The Anchored Learner — across Anchored Literacy, Anchored Math, and Anchored Inquiry — is structured around five phases. This is not a stylistic preference. It is a neurologically grounded design recommendation rooted in Zaretta Hammond's research on information processing and intellective capacity (2015). The five phases map directly onto the three stages through which the brain turns new information into usable knowledge: Input, Elaboration, and Application.</p>
+  <p class="body-text">The framework applies across all three blocks — but it looks different in each. In <strong>Anchored Inquiry</strong>, the five phases structure the full inquiry experience around the driving question and community context. In <strong>Anchored Literacy</strong> and <strong>Anchored Math</strong>, the five phases operate as a cultural and cognitive wrapper around the subject-specific instructional sequence — systematic phonics instruction in literacy, explicit math instruction in math — providing the cultural ignition at the start and the metacognitive close at the end that strengthen retention across all learning.</p>
+  <p class="body-text">The framework operates at the <strong>lesson level</strong>, not the week level. The weekly arc is a thematic organizer — it tells teachers what the class is investigating and why. The lesson framework tells teachers how each day's learning is structured so that what is taught actually moves into long-term memory.</p>
+ 
+ 
+ 
+  <div style="margin-top:40px;border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+ 
+    <div style="display:grid;grid-template-columns:140px 1fr;border-bottom:1px solid var(--border);">
+      <div style="background:var(--plum);padding:28px 24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--cream);margin-bottom:4px;">Connect</div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,250,246,0.6);">Phase 1 · Input</div>
+      </div>
+      <div style="padding:24px 28px;background:var(--cream);">
+        <p style="font-size:0.88rem;line-height:1.85;color:#3D3028;margin-bottom:10px;"><strong style="color:var(--ink);">Cultural ignition — earn the brain's attention.</strong> The lesson opens by activating students' prior knowledge, cultural experience, and community connections. This is Hammond's Input stage: the brain is sorting what is worth paying attention to, and cultural relevance is the primary mechanism by which attention is earned. Information that connects to a student's existing cultural schema is flagged as important. Information that feels disconnected is filtered out before learning can begin.</p>
+        <p style="font-size:0.84rem;line-height:1.8;color:var(--muted);">Suggested approaches: call and response, provocations, community artifacts, music, family knowledge, wonder questions, culturally-relevant read-aloud hooks, connecting to the driving question.</p>
+        <p style="font-size:0.8rem;font-style:italic;color:var(--plum);margin-top:8px;">Approximate time: 5–10 minutes</p>
+      </div>
+    </div>
+ 
+    <div style="display:grid;grid-template-columns:140px 1fr;border-bottom:1px solid var(--border);">
+      <div style="background:var(--sage);padding:28px 24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--cream);margin-bottom:4px;">Discover</div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,250,246,0.6);">Phase 2 · Elaboration</div>
+      </div>
+      <div style="padding:24px 28px;background:var(--cream);">
+        <p style="font-size:0.88rem;line-height:1.85;color:#3D3028;margin-bottom:10px;"><strong style="color:var(--ink);">Chunked new input — right-sized, inquiry-driven.</strong> New content is introduced in digestible pieces — no more than 12 to 20 minutes of active cognitive engagement at a time. This is the Elaboration stage beginning: the brain is organizing new material into recognizable patterns. Content is chunked deliberately — one concept at a time, with visual supports, vocabulary anchors, and comprehensible input. For MLL students, scaffolds are critical here and throughout all phases — ensuring access to new content at every stage of the lesson, not only during input.</p>
+        <p style="font-size:0.84rem;line-height:1.8;color:var(--muted);">Suggested approaches: read-alouds with think-alouds, short direct instruction, inquiry stations, video clips, primary sources, science experiments, community partner input, structured note-taking.</p>
+        <p style="font-size:0.8rem;font-style:italic;color:var(--sage);margin-top:8px;">Approximate time: 10–20 minutes</p>
+      </div>
+    </div>
+ 
+    <div style="display:grid;grid-template-columns:140px 1fr;border-bottom:1px solid var(--border);">
+      <div style="background:var(--slate);padding:28px 24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--cream);margin-bottom:4px;">Make Sense</div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,250,246,0.6);">Phase 3 · Elaboration</div>
+      </div>
+      <div style="padding:24px 28px;background:var(--cream);">
+        <p style="font-size:0.88rem;line-height:1.85;color:#3D3028;margin-bottom:10px;"><strong style="color:var(--ink);">Active processing — students do the cognitive work.</strong> This is the heart of Elaboration: students actively make sense of what they encountered in Discover. They discuss, sort, question, compare, draw, write, argue, and connect. The teacher's role shifts from delivering information to facilitating meaning-making. Students are not receiving — they are processing. This phase must be student-active; teacher-led explanation at this point interrupts the processing the brain needs to do.</p>
+        <p style="font-size:0.84rem;line-height:1.8;color:var(--muted);">Suggested approaches: think-pair-share, small group discussion, concept mapping, graphic organizers, partner work, collaborative writing, debate, gallery walks, sorting activities.</p>
+        <p style="font-size:0.8rem;font-style:italic;color:var(--slate);margin-top:8px;">Approximate time: 10–15 minutes</p>
+      </div>
+    </div>
+ 
+    <div style="display:grid;grid-template-columns:140px 1fr;border-bottom:1px solid var(--border);">
+      <div style="background:var(--terracotta);padding:28px 24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--cream);margin-bottom:4px;">Apply</div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(253,250,246,0.6);">Phase 4 · Application</div>
+      </div>
+      <div style="padding:24px 28px;background:var(--cream);">
+        <p style="font-size:0.88rem;line-height:1.85;color:#3D3028;margin-bottom:10px;"><strong style="color:var(--ink);">Use it or lose it — connect new learning to the inquiry.</strong> Students apply what they have processed to the driving question, the project, or a real-world task. This is Hammond's Application stage: new neural pathways must be strengthened within 24 to 48 hours or the learning fades. Every lesson must include an application opportunity — not as an extension for those who finish early, but as a required phase for every learner. The application connects back to the unit's authentic context, making the learning purposeful and retainable.</p>
+        <p style="font-size:0.84rem;line-height:1.8;color:var(--muted);">Suggested approaches: contributing to the class project, updating a journal or portfolio, answering the driving question with new evidence, creating something, teaching a peer, connecting to community context.</p>
+        <p style="font-size:0.8rem;font-style:italic;color:var(--terracotta);margin-top:8px;">Approximate time: 10–15 minutes</p>
+      </div>
+    </div>
+ 
+    <div style="display:grid;grid-template-columns:140px 1fr;">
+      <div style="background:var(--gold);padding:28px 24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);margin-bottom:4px;">Reflect</div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(26,20,16,0.5);">Phase 5 · Application</div>
+      </div>
+      <div style="padding:24px 28px;background:var(--cream);">
+        <p style="font-size:0.88rem;line-height:1.85;color:#3D3028;margin-bottom:10px;"><strong style="color:var(--ink);">Metacognitive close — consolidate and wonder forward.</strong> The lesson closes with structured reflection: what did I learn, what do I still wonder, how does this connect to what I already knew? Reflection strengthens the neural pathways formed during application and creates the conditions for transfer. It also surfaces misconceptions before they harden, and gives the teacher formative data about where each student is. In K–2, reflection is brief and often oral or drawn. In upper grades it becomes increasingly written and self-directed.</p>
+        <p style="font-size:0.84rem;line-height:1.8;color:var(--muted);">Suggested approaches: exit ticket (drawing, written, or verbal), Wonder Wall addition, learning journal entry, turn-and-tell a partner, portfolio documentation, teacher observation and anecdotal notes.</p>
+        <p style="font-size:0.8rem;font-style:italic;color:#8B6820;margin-top:8px;">Approximate time: 5–10 minutes</p>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div style="margin-top:32px;background:var(--plum-light);border:1px solid rgba(107,78,113,0.2);border-radius:10px;padding:28px 32px;max-width:780px;">
+    <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--plum);margin-bottom:12px;">A Note on Timing and Flexibility</h4>
+    <p style="font-size:0.85rem;line-height:1.85;color:#3D2840;margin-bottom:10px;">The approximate times above are guidelines, not scripts. A lesson might spend more time in Make Sense if students are in deep discussion, or compress Discover if prior knowledge is strong. What cannot be skipped is the sequence: every lesson must Connect first, and every lesson must include Apply and Reflect before students leave. These are the neurologically non-negotiable moments — earning attention at the start and strengthening pathways at the end.</p>
+    <p style="font-size:0.85rem;line-height:1.85;color:#3D2840;">For multilingual learners: the Connect phase is especially critical — home language activation and cultural connection at the start of a lesson significantly reduce the cognitive load of processing new content in English. The Make Sense phase is where structured talk in home languages should be explicitly invited. The Reflect phase should offer multiple modes — drawing, speaking, writing, home language — so that every learner can demonstrate what they actually understood.</p>
+  </div>
+</div>
+ 
+<!-- 10: SCIENCE OF READING -->
+<div class="section" id="s10">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div class="section-titles">
+      <span class="section-label">Literacy Framework</span>
+      <h2>The Science of Reading:<br><em>An Essential Foundation</em></h2>
+    </div>
+  </div>
+  <p class="body-text">The Anchored Learner does not attempt to replace structured literacy instruction — it gives it thematic purpose. Anchored Literacy delivers systematic, explicit phonics and phonemic awareness instruction every day, rooted in the Science of Reading. What the curriculum transforms is the context of that instruction: vocabulary connects to the unit's driving question, read-alouds reflect the community's cultural wealth, and writing is purposeful because it connects to something real. The instruction is rigorous and sequential. The context is meaningful and alive.</p>
+  <p class="body-text">The Science of Reading represents the converging body of research — across cognitive science, linguistics, and education — that identifies how the brain learns to read. That research is unambiguous: most children do not learn to decode print through immersion, exposure, or meaning-making alone. They require explicit, systematic instruction in the phonological and alphabetic foundations of written language. This instruction is not culturally neutral — how it is delivered, the texts used, the vocabulary built, and the identities reflected in read-alouds all carry cultural weight. But the cognitive architecture of decoding is universal, and the instructional implications are clear.</p>
+ 
+  <div class="pull-quote">
+    <p>Structured literacy instruction and culturally responsive curriculum are not opposites. One teaches children how to decode the code. The other ensures that what they read — and why they read it — is worth the effort.</p>
+  </div>
+ 
+  <p class="body-text">In The Anchored Learner, literacy instruction is organized into two parallel and connected tracks:</p>
+ 
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px;max-width:840px;">
+    <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="background:var(--ink);padding:16px 24px;">
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Track 1 · Daily · Non-Negotiable</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);">Anchored Literacy</div>
+      </div>
+      <div style="padding:20px 24px;background:var(--cream);">
+        <p style="font-size:0.85rem;line-height:1.8;color:#4A3E35;margin-bottom:12px;">Systematic, explicit instruction in the foundational skills of reading, delivered daily and sequentially. This block runs alongside the project — not inside it.</p>
+        <ul style="padding-left:0;">
+          <li style="list-style:none;padding:4px 0 4px 16px;position:relative;font-size:0.82rem;line-height:1.7;color:#4A3E35;border-bottom:1px solid var(--border);"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">›</span>Phonemic awareness — hearing, identifying, and manipulating sounds</li>
+          <li style="list-style:none;padding:4px 0 4px 16px;position:relative;font-size:0.82rem;line-height:1.7;color:#4A3E35;border-bottom:1px solid var(--border);"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">›</span>Systematic phonics — explicit letter-sound correspondence, taught in sequence</li>
+          <li style="list-style:none;padding:4px 0 4px 16px;position:relative;font-size:0.82rem;line-height:1.7;color:#4A3E35;border-bottom:1px solid var(--border);"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">›</span>Fluency — accurate, automatic decoding that frees cognitive resources for comprehension</li>
+          <li style="list-style:none;padding:4px 0 4px 16px;position:relative;font-size:0.82rem;line-height:1.7;color:#4A3E35;"><span style="position:absolute;left:0;color:var(--terracotta);font-size:0.7rem;top:7px;">›</span>Spelling and encoding — reinforcing the phonics code through writing</li>
+        </ul>
+      </div>
+    </div>
+    <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="background:var(--sage);padding:16px 24px;">
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:rgba(253,250,246,0.7);margin-bottom:4px;">Track 2 · Integrated · Thematically Connected</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);">Anchored Literacy — Project-Connected Track</div>
+      </div>
+      <div style="padding:20px 24px;background:var(--cream);">
+        <p style="font-size:0.85rem;line-height:1.8;color:#4A3E35;margin-bottom:12px;">Literacy experiences that are woven through the project — building vocabulary, knowledge, and comprehension through the unit's content and community context.</p>
+        <ul style="padding-left:0;">
+          <li style="list-style:none;padding:4px 0 4px 16px;position:relative;font-size:0.82rem;line-height:1.7;color:#4A3E35;border-bottom:1px solid var(--border);"><span style="position:absolute;left:0;color:var(--sage);font-size:0.7rem;top:7px;">›</span>Vocabulary instruction drawn from unit content — academic and community vocabulary built intentionally</li>
+          <li style="list-style:none;padding:4px 0 4px 16px;position:relative;font-size:0.82rem;line-height:1.7;color:#4A3E35;border-bottom:1px solid var(--border);"><span style="position:absolute;left:0;color:var(--sage);font-size:0.7rem;top:7px;">›</span>Diverse, culturally-relevant read-alouds tied to weekly themes — building knowledge and love of reading simultaneously</li>
+          <li style="list-style:none;padding:4px 0 4px 16px;position:relative;font-size:0.82rem;line-height:1.7;color:#4A3E35;border-bottom:1px solid var(--border);"><span style="position:absolute;left:0;color:var(--sage);font-size:0.7rem;top:7px;">›</span>Shared reading and shared writing connected to project topics — making literacy purposeful and community-grounded</li>
+          <li style="list-style:none;padding:4px 0 4px 16px;position:relative;font-size:0.82rem;line-height:1.7;color:#4A3E35;"><span style="position:absolute;left:0;color:var(--sage);font-size:0.7rem;top:7px;">›</span>Oral language development through discussion, questioning, and community inquiry — the foundation of comprehension</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+ 
+  <p class="body-text" style="margin-top:32px;">The connection between the two tracks is thematic, not structural. Phonics skills introduced in the Anchored Literacy block are reinforced through writing connected to project topics. Vocabulary from the unit appears in decodable and shared texts. The letter, sound, or pattern being learned is practiced using words drawn from the week's inquiry. The Anchored Literacy block does not become the project — but it draws energy and meaning from it. This is instructional coherence in practice.</p>
+  <p class="body-text">For multilingual learners, both tracks carry additional considerations. The Science of Reading applies across languages — phonemic awareness and phonics instruction should be delivered with explicit attention to the phonological systems of students' home languages, which may differ significantly from English. The project-connected literacy track is where multilingual learners' linguistic capital is most visibly honored — through home-language vocabulary, multilingual word walls, and texts that reflect students' linguistic communities. These considerations are detailed further in the Multilingual Learner Framework (Section 10).</p>
+  <div style="background:var(--slate-light);border:1px solid rgba(74,98,120,0.2);border-radius:10px;padding:20px 24px;margin-top:24px;max-width:700px;">
+    <h4 style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--slate);margin-bottom:8px;">A Note on Anchored Math</h4>
+    <p style="font-size:0.84rem;line-height:1.8;color:#3D4A55;">Just as Anchored Literacy runs in parallel with Anchored Inquiry, <strong>Anchored Math</strong> delivers explicit, standards-aligned mathematics instruction daily — NC SCoS aligned, rigorous, and sequential. The connection to the unit comes through problem contexts: the numbers students count, measure, graph, and calculate are drawn from real data in their classroom community and unit inquiry. A kindergartener counting the languages spoken on the class word wall is doing mathematics. A third grader graphing water quality data is doing mathematics. The math is real because the context is real.</p>
+  </div>
+</div>
+ 
+<!-- 11: MLL FRAMEWORK -->
+<div class="section" id="s11">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div class="section-titles">
+      <span class="section-label">Multilingual Learner Framework</span>
+      <h2>Designed For Multilingual Learners.<br><em>From the Ground Up.</em></h2>
+    </div>
+  </div>
+  <div class="mll-banner">
+    <div class="eyebrow">Why This Matters</div>
+    <h3>Multilingual learners are not students who lack English. They are students who have an entire language system, a cultural wealth, and a cognitive flexibility that enriches every classroom they enter.</h3>
+    <p>Multilingual learners are the fastest-growing student population in the United States — present in urban districts, rural counties, and communities people don't expect. An equity-centered curriculum that doesn't center multilingual learners isn't equity-centered. It's just equity for some.</p>
+    <p>The Anchored Learner was designed by a former MLL teacher whose classroom experience is not a footnote — it is in the architecture of every design decision. Combined with the Community Cultural Wealth framework's expansive understanding of linguistic capital — which honors both multilingual learners' home languages and language varieties like AAVE — this curriculum treats every form of linguistic wealth as a resource to be activated, not a deficit to be corrected.</p>
+  </div>
+  <p class="body-text">WIDA English Language Development (ELD) Standards are aligned alongside content standards at every level of the curriculum. The five WIDA ELD Standards correspond to the academic language used across disciplines. Content standards are cited with reference to both national frameworks (CCSS for ELA and mathematics, NGSS for science) and the NC Standard Course of Study — the primary state standards for schools implementing this curriculum in North Carolina. Educators in other states should map to their own state standards using the national frameworks as a bridge.</p>
+  <div class="wida-levels">
+    <div class="wida-level"><div class="wida-num">1</div><div class="wida-name">Social & Instructional Language</div><div class="wida-desc">Language used in school settings across all content areas</div></div>
+    <div class="wida-level"><div class="wida-num">2</div><div class="wida-name">Language of Language Arts</div><div class="wida-desc">Reading, writing, speaking, listening across literary & informational texts</div></div>
+    <div class="wida-level"><div class="wida-num">3</div><div class="wida-name">Language of Mathematics</div><div class="wida-desc">Mathematical reasoning, problem-solving, and communication</div></div>
+    <div class="wida-level"><div class="wida-num">4</div><div class="wida-name">Language of Science</div><div class="wida-desc">Scientific inquiry, investigation, and explanation</div></div>
+    <div class="wida-level"><div class="wida-num">5</div><div class="wida-name">Language of Social Studies</div><div class="wida-desc">Historical, civic, geographic, and economic discourse</div></div>
+  </div>
+  <p class="body-text" style="margin-top:40px;">Every lesson in The Anchored Learner includes both a <strong>content objective</strong> and a <strong>language objective</strong>. Language objectives are written using WIDA's framework and specify the language function, academic language forms, and proficiency-level differentiation. They are required components of every lesson plan — not optional add-ons.</p>
+  <div class="lang-obj-model">
+    <div class="lang-obj-header">Language Objective Model — How to Write a WIDA-Aligned Language Objective</div>
+    <div class="lang-obj-row">
+      <div class="lang-obj-cell label">Component</div><div class="lang-obj-cell label">Description</div><div class="lang-obj-cell label">Example (Grade K, Health &amp; Wellbeing unit)</div>
+    </div>
+    <div class="lang-obj-row">
+      <div class="lang-obj-cell label">Language Function</div>
+      <div class="lang-obj-cell">The academic verb describing what students do with language — describe, explain, compare, argue, evaluate, justify, sequence, question, propose.</div>
+      <div class="lang-obj-cell"><em>Students will <strong>describe</strong> what their bodies need to stay healthy.</em></div>
+    </div>
+    <div class="lang-obj-row">
+      <div class="lang-obj-cell label">Language Form</div>
+      <div class="lang-obj-cell">The specific academic vocabulary, sentence structures, or discourse features students need to accomplish the language function.</div>
+      <div class="lang-obj-cell"><em>"My body needs ___ because ___" / health and body vocabulary / action words</em></div>
+    </div>
+    <div class="lang-obj-row">
+      <div class="lang-obj-cell label">WIDA Standard</div>
+      <div class="lang-obj-cell">The WIDA ELD Standard(s) aligned to the language function and content area.</div>
+      <div class="lang-obj-cell"><em>WIDA ELD Standard 4 (Science) &amp; Standard 1 (Social &amp; Instructional)</em></div>
+    </div>
+    <div class="lang-obj-row">
+      <div class="lang-obj-cell label">Proficiency Differentiation</div>
+      <div class="lang-obj-cell">How the objective is adapted across WIDA proficiency levels 1–5 so every multilingual learner has a meaningful, achievable entry point.</div>
+      <div class="lang-obj-cell"><em>Level 1–2: Labeled drawings with sentence stems · Level 3–4: Structured oral responses · Level 5: Independent written explanation</em></div>
+    </div>
+  </div>
+  <p class="body-text" style="margin-top:48px;">The following scaffold menu provides a bank of supports organized by language domain — built into unit and lesson design as good instructional design that creates access for all learners.</p>
+  <div class="scaffold-menu">
+    <div class="scaffold-domain">
+      <div class="scaffold-domain-header">🗣 Speaking & Listening</div>
+      <ul class="scaffold-list">
+        <li>Sentence frames and conversation starters posted visibly</li>
+        <li>Think-pair-share with structured roles and language prompts</li>
+        <li>Discussion protocols with accountable talk stems</li>
+        <li>Partner work with bilingual peers or home-language support</li>
+        <li>Strategic use of home language in small-group talk</li>
+        <li>Audio recordings of key content for repeated listening</li>
+        <li>Visual discussion supports (anchor charts, word walls)</li>
+      </ul>
+    </div>
+    <div class="scaffold-domain">
+      <div class="scaffold-domain-header">📖 Reading</div>
+      <ul class="scaffold-list">
+        <li>Pre-teaching key vocabulary with visual and contextual supports</li>
+        <li>Bilingual texts and home-language versions where available</li>
+        <li>Graphic organizers to support text structure comprehension</li>
+        <li>Annotated texts with definitions and visual glossaries</li>
+        <li>Chunked reading with comprehension check-ins</li>
+        <li>Read-alouds with think-alouds modeling comprehension</li>
+        <li>Culturally and linguistically diverse text selection</li>
+      </ul>
+    </div>
+    <div class="scaffold-domain">
+      <div class="scaffold-domain-header">✏️ Writing</div>
+      <ul class="scaffold-list">
+        <li>Mentor texts representing diverse authors and cultural contexts</li>
+        <li>Writing frames that scaffold genre structure</li>
+        <li>Word banks and academic vocabulary banks by unit</li>
+        <li>Shared writing before independent writing</li>
+        <li>Opportunities to draft in home language, then bridge</li>
+        <li>Illustrated writing for early proficiency levels</li>
+        <li>Digital tools for translation support during drafting</li>
+      </ul>
+    </div>
+    <div class="scaffold-domain">
+      <div class="scaffold-domain-header">🔬 Content Access</div>
+      <ul class="scaffold-list">
+        <li>Visual representations of key concepts (diagrams, photos, video)</li>
+        <li>Realia and hands-on materials to ground abstract concepts</li>
+        <li>Concept maps and visual vocabulary webs</li>
+        <li>Multilingual word walls with home-language translations</li>
+        <li>Math supports: manipulatives, graphic organizers, visual models</li>
+        <li>Multimodal options for demonstrating understanding</li>
+        <li>Community and family knowledge as content resource</li>
+      </ul>
+    </div>
+  </div>
+  <div class="home-lang-box">
+    <h4>Honoring Linguistic Capital: Home Languages and Language Varieties</h4>
+    <p>In The Anchored Learner, a student's home language — whether Spanish, Haitian Creole, Arabic, or any other — is never treated as a problem to manage. Neither is African American Vernacular English, or any other non-dominant language variety. Both are expressions of Yosso's linguistic capital: rich, rule-governed, intellectually valid, and worthy of honor in the learning community.</p>
+    <p>Practical commitments across every unit include:</p>
+    <ul>
+      <li>Inviting students to research, discuss, and draft in their home language as a first step before bridging to English</li>
+      <li>Selecting texts, images, and community partners that reflect students' linguistic and cultural communities</li>
+      <li>Building multilingual word walls that honor all languages present in the classroom</li>
+      <li>Inviting families to share knowledge and expertise in their home language — treating that expertise as curriculum</li>
+      <li>Designing action projects where multilingual skills are an asset — community outreach across languages, translation of materials, cultural and linguistic bridging</li>
+      <li>Never requiring students to "code-switch away" from their home language variety as a condition of participation or belonging</li>
+      <li>Positioning multilingual students and speakers of non-dominant language varieties as experts when curriculum content intersects with their cultural and linguistic knowledge</li>
+    </ul>
+  </div>
+</div>
+ 
+<!-- 12: UDL -->
+<div class="section" id="s12">
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <div class="section-titles">
+      <span class="section-label">Universal Design for Learning</span>
+      <h2>Proactively Eliminating Barriers <em>for Every Learner</em></h2>
+    </div>
+  </div>
+  <p class="body-text">The Anchored Learner is designed to proactively eliminate barriers in the learning environment and ensure equal, accessible opportunities for all students — including students with disabilities. This is the goal of Universal Design for Learning (UDL): not to retrofit access after a curriculum is built, but to build access into the architecture from the start.</p>
+  <p class="body-text">UDL is not special education. It is not a substitute for an IEP or a 504 plan. Students with disabilities will continue to be served by special education teachers and specialists in accordance with their individual plans — that expertise is irreplaceable and this curriculum does not claim it. What this curriculum does claim is that its design already reduces the barriers that make learning inaccessible for many students, whether they have a learning difference or not. When a curriculum is built for every learner from the beginning, fewer students require additional intervention to access it.</p>
+  <div class="pull-quote">
+    <p>A curriculum designed for the margins reaches the center. A curriculum designed only for the center leaves everyone else behind.</p>
+  </div>
+  <p class="body-text">UDL is organized around three core principles — multiple means of representation, multiple means of engagement, and multiple means of action and expression. The Anchored Learner enacts all three by design:</p>
+  <div class="principles-grid" style="margin-top:32px;">
+    <div class="principle">
+      <div class="p-num" style="color:var(--slate);opacity:0.5;">I</div>
+      <h3>Multiple Means of Representation</h3>
+      <p>Content is presented through multiple modalities — visual, auditory, hands-on, and text-based — so that learners with different processing strengths can access the same ideas. Multilingual word walls, read-alouds, realia, diagrams, video, and community knowledge all serve as entry points into content. No single mode of representation is treated as the only valid one.</p>
+    </div>
+    <div class="principle">
+      <div class="p-num" style="color:var(--slate);opacity:0.5;">II</div>
+      <h3>Multiple Means of Engagement</h3>
+      <p>Learning is rooted in authentic community context that is personally and culturally meaningful to students — the most powerful form of engagement. Student choice is built into driving questions, action projects, and exhibition formats. Cooperative structures, community partnerships, and flexible grouping give every student multiple pathways into the work. Belonging is a design feature, not an afterthought.</p>
+    </div>
+    <div class="principle">
+      <div class="p-num" style="color:var(--slate);opacity:0.5;">III</div>
+      <h3>Multiple Means of Action &amp; Expression</h3>
+      <p>Students demonstrate learning in multiple ways — through drawing, building, writing, speaking, performing, creating, and presenting. Action projects offer structured choice across modes. Assessment is portfolio-based and observation-driven rather than reliant on a single test format. A student who cannot yet express an idea in written English can express it in their home language, through art, or through demonstration — and that expression counts.</p>
+    </div>
+  </div>
+  <p class="body-text" style="margin-top:40px;">Teachers implementing this curriculum are encouraged to review individual student IEPs and 504 plans and apply the accommodations and modifications they specify within the unit structure. The flexible, multimodal design of The Anchored Learner is well-suited to support those accommodations — but the curriculum is not a replacement for the specialized support students with disabilities are entitled to receive.</p>
+</div>
+ 
+<!-- 13: COMPETENCIES -->
+<div class="section" id="s13">
+  <div class="section-header">
+    <div class="section-num">13</div>
+    <div class="section-titles">
+      <span class="section-label">Portrait of the Anchored Learner</span>
+      <h2>Five Competencies That <em>Define the Anchored Learner</em></h2>
+    </div>
+  </div>
+  <p class="body-text">Academic content knowledge is necessary but not sufficient. The Anchored Learner develops five core competencies that deepen across all four developmental phases — the capacities that allow students to do something meaningful with what they know, and to keep learning when they leave school.</p>
+  <table class="competency-table">
+    <thead>
+      <tr><th>Competency</th><th>K–2: Wonder & Care</th><th>3–5: Systems & Impact</th><th>6–8: Inquiry & Analysis</th><th>9–12: Innovation & Agency</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Inquiry & Research</td><td>Ask questions and make simple observations. Explore through hands-on experiences and stories.</td><td>Investigate local questions using observation and data collection. Begin interpreting evidence.</td><td>Conduct structured research using credible sources and field data. Analyze patterns and causes.</td><td>Design and carry out independent investigations. Use evidence to propose real-world solutions.</td></tr>
+      <tr><td>Collaboration & Communication</td><td>Work with others to share materials and ideas. Listen and take turns.</td><td>Contribute to group discussions and projects. Express ideas through writing, visuals, and oral language.</td><td>Take on group roles and responsibilities. Communicate findings to peers and community audiences.</td><td>Lead teams and partnerships. Engage diverse audiences with persuasive, multimedia communication.</td></tr>
+      <tr><td>Creativity & Design Thinking</td><td>Use imagination to make, build, or draw ideas. Try multiple approaches to a simple problem.</td><td>Generate creative ideas to improve something in the classroom or community. Test and refine prototypes.</td><td>Apply design processes to real challenges. Build, test, and iterate prototypes or proposals.</td><td>Employ advanced design and systems thinking to develop sustainable solutions for authentic audiences.</td></tr>
+      <tr><td>Civic & Cultural Agency</td><td>Identify ways to care for people, animals, and places in the community.</td><td>Explore community issues and how people work together to solve them.</td><td>Examine social, cultural, and environmental systems that shape life locally and globally.</td><td>Take informed action to address community or global challenges through leadership, service, or policy.</td></tr>
+      <tr><td>Reflection & Continuous Learning</td><td>Talk about what was learned and what was interesting or fun.</td><td>Describe what went well, what was challenging, and what might be done differently.</td><td>Evaluate learning processes and outcomes using evidence and feedback.</td><td>Set personal and collective goals for growth. Use reflection to guide future action and lifelong learning.</td></tr>
+      <tr><td>Voice & Self-Advocacy</td><td>Students begin to name their feelings, identify what helps them learn, and practice asking for what they need. They learn that their voice matters — that who they are, how they speak, and what they need are worthy of the classroom.</td><td>Students identify their strengths, learning preferences, and challenges. They practice expressing their needs to teachers and peers, and begin to recognize when something is unfair and that they have the right to name it. They start to see their voice as a tool — not just for themselves, but for their community.</td><td>Students develop a clear sense of their own identity, strengths, and needs as learners and as people. They practice advocating for themselves within institutions — with teachers, counselors, and systems not always designed with them in mind — and begin using their voice on behalf of peers whose needs go unheard.</td><td>Students advocate confidently for themselves in academic, professional, and civic contexts. They understand their rights, know how to navigate institutions, and use the self-knowledge they have built across their entire educational arc as a foundation for advocating for others and for challenging systems that fail their communities.</td></tr>
+    </tbody>
+  </table>
+</div>
+ 
+<!-- 14: PLANNING PROCESS -->
+<div class="section" id="s14">
+  <div class="section-header">
+    <div class="section-num">14</div>
+    <div class="section-titles">
+      <span class="section-label">The Planning Process</span>
+      <h2>Designing Units:<br><em>A Community-First Process</em></h2>
+    </div>
+  </div>
+  <p class="body-text">The Anchored Learner provides fully developed units that teachers can use directly and adapt to their local context. Research shows that structural barriers — not motivational ones — are what prevent teachers from teaching responsively. Teachers should not have to build from scratch. They need a well-designed architecture to inhabit and make their own.</p>
+  <p class="body-text">For teachers and curriculum coordinators adapting units or designing new ones, the following process guides unit design from authentic community context through to standards alignment — in that order. Meaning first. Rigor confirmed. This is a <em>unit design</em> process: the output is a complete unit arc with a driving question, project experience, and unit-level objectives. Lesson-level planning — including individual lesson objectives — happens downstream, once the unit is designed. Steps 4 and 6 are MLL-specific required steps, not optional add-ons.</p>
+  <div class="template-steps">
+    <div class="template-step">
+      <div class="step-num-block"><span>1</span></div>
+      <div class="step-content">
+        <div class="step-title">Identify the Authentic Context</div>
+        <div class="step-desc">Begin with the anchor domain and the real local or global equity issue that will make learning meaningful. What is happening in this community that students should understand and engage with? This question — not a standard — is the starting point. <em>For student-generated units:</em> this step begins differently — with listening. Rather than selecting an anchor first, the teacher observes and listens to what students are genuinely curious about or troubled by. The anchor domain may emerge from that conversation, or it may not. Either way, the inquiry belongs to the students and the process follows from there.</div>
+        <div class="step-fields"><span class="field-tag">Anchor Domain</span><span class="field-tag">Local Equity Issue</span><span class="field-tag">Why This Matters Here</span><span class="field-tag">Working Project Title</span></div>
+      </div>
+    </div>
+    <div class="template-step">
+      <div class="step-num-block"><span>2</span></div>
+      <div class="step-content">
+        <div class="step-title">Craft the Driving Question</div>
+        <div class="step-desc">Write an open-ended question rooted in the authentic context — community-connected and genuinely investigable by students at this phase. A teacher-facing version and a student-facing version are both useful tools; however, if one question does both jobs well, that is the stronger design. The driving question shapes everything that follows.</div>
+        <div class="step-fields"><span class="field-tag">Teacher-Facing Question</span><span class="field-tag">Student-Facing Question</span><span class="field-tag">Sub-Questions by Subject</span></div>
+      </div>
+    </div>
+    <div class="template-step">
+      <div class="step-num-block"><span>3</span></div>
+      <div class="step-content">
+        <div class="step-title">Design the Project Experience &amp; Community Engagement</div>
+        <div class="step-desc">Sketch the weekly arc — themes, big ideas, and key experiences for each of the six weeks — before finalizing the project. The right project grows out of the learning arc, not the other way around. Once the arc is clear, identify the real-world product students will create, the community partners who will co-teach and receive the work, and the core competencies being developed. Community is not an add-on — it is designed here, alongside the project, because who the audience is shapes what the project becomes. The action project should be singular and feasible: generate multiple options during planning, then choose one. For K–2, one whole-class project is the developmentally appropriate norm — student choice operates within that project's form and format, not across multiple competing projects. The exhibition is a celebration of the whole community's contribution across the full unit, not just the students' final product. For K–2, identify 2–3 possible product options to bring to students as guided choices. For grades 3 and up, students take increasing ownership of product selection.</div>
+        <div class="step-fields"><span class="field-tag">Weekly Arc &amp; Themes</span><span class="field-tag">Project Summary</span><span class="field-tag">Core Competencies</span><span class="field-tag">Final Product / Exhibition</span><span class="field-tag">Community Partners</span><span class="field-tag">Partner Roles</span><span class="field-tag mll">Multilingual Community Connections</span></div>
+      </div>
+    </div>
+    <div class="template-step">
+      <div class="step-num-block"><span>3a</span></div>
+      <div class="step-content" style="background:var(--gold-light);border-left:3px solid var(--gold);">
+        <div class="step-title">Build the Weekly Arc Planning Chart</div>
+        <div class="step-desc">Before writing lesson plans, complete a weekly arc chart — one row per week. This is the required middle layer between the unit arc and individual lessons. Suggested columns: Week Theme · Big Idea / Wonder Question · Key Activities · Interdisciplinary Connections · Community Partner · Possible Texts · Rough Standards Connections. Text selection should be evaluated against both the weekly theme and the unit anchor domain — a text can be culturally rich but still be the wrong fit for a specific unit's inquiry. This chart is the foundation from which all lesson planning flows.</div>
+        <div class="step-fields"><span class="field-tag">Week Theme</span><span class="field-tag">Big Idea / Wonder Question</span><span class="field-tag">Key Activities</span><span class="field-tag">Interdisciplinary Connections</span><span class="field-tag">Community Partner</span><span class="field-tag">Possible Texts</span><span class="field-tag">Rough Standards</span></div>
+      </div>
+    </div>
+    <div class="template-step">
+      <div class="step-num-block mll-step"><span>4</span></div>
+      <div class="step-content mll-step">
+        <div class="step-title">Write Unit-Level Content Objectives AND Language Objectives</div>
+        <div class="step-desc">Now that the driving question and project are defined, write the unit-level objectives — what students will know, be able to do, and be able to say by the end of the unit. Unit-level objectives are written for the teacher — precise and standards-informed. Student-facing "I can" statements are written at the lesson level, not here. Content and language objectives carry equal weight. Language objectives are aligned to WIDA ELD Standards and specify the language function, academic language forms, and proficiency-level differentiation across levels 1–5.</div>
+        <div class="step-fields"><span class="field-tag mll">Unit Content Objective</span><span class="field-tag mll">Language Function</span><span class="field-tag mll">Language Form / Vocabulary</span><span class="field-tag mll">WIDA ELD Standard(s)</span><span class="field-tag mll">Proficiency Differentiation (Levels 1–5)</span></div>
+      </div>
+    </div>
+    <div class="template-step">
+      <div class="step-num-block"><span>5</span></div>
+      <div class="step-content">
+        <div class="step-title">Map Standards Across Disciplines</div>
+        <div class="step-desc">Identify which content standards and WIDA ELD standards the unit naturally addresses. Standards are mapped after the learning is designed — they emerge from authentic inquiry, not the other way around. Focus on genuine alignment; do not force coverage. Not every standard in a content area needs to map to every unit — standards are covered across the full year across multiple units. The goal is genuine alignment within each unit, not exhaustive coverage in each one. <strong>A note on state standards:</strong> Unit plans cite NC Standard Course of Study (NC SCoS) as the primary state standards reference alongside national frameworks (CCSS, NGSS). Teachers in other states should substitute their own state standards. All NC SCoS citations should be verified at <em>ncpublicschools.gov</em> as state standards are subject to revision.</div>
+        <div class="step-fields"><span class="field-tag">Science / NC SCoS</span><span class="field-tag">ELA / Literacy</span><span class="field-tag">Math</span><span class="field-tag">Social Studies</span><span class="field-tag">Arts / Technology</span><span class="field-tag mll">WIDA ELD Standards</span></div>
+      </div>
+    </div>
+    <div class="template-step">
+      <div class="step-num-block mll-step"><span>6</span></div>
+      <div class="step-content mll-step">
+        <div class="step-title">Select and Embed MLL Scaffolds</div>
+        <div class="step-desc">From the scaffold menu, select supports to build into unit design — not offered only as interventions after the fact. Consider all four language domains. Identify explicitly where home language and non-dominant language varieties will be welcomed and activated as assets throughout the unit. Multiple modes of expression should be specified by design in the action project — not added afterward as UDL accommodations. Each expression option should be equally valued and equally visible in the exhibition.</div>
+        <div class="step-fields"><span class="field-tag mll">Speaking &amp; Listening Scaffolds</span><span class="field-tag mll">Reading Scaffolds</span><span class="field-tag mll">Writing Scaffolds</span><span class="field-tag mll">Content Access Scaffolds</span><span class="field-tag mll">Linguistic Capital Opportunities</span><span class="field-tag mll">Expression Modes (by design)</span></div>
+      </div>
+    </div>
+    <div class="template-step">
+      <div class="step-num-block"><span>7</span></div>
+      <div class="step-content">
+        <div class="step-title">Alignment &amp; Feasibility Check</div>
+        <div class="step-desc">Verify that key content standards and WIDA ELD standards are genuinely represented, the project is singular and feasible within the available time and resources, and both unit-level objectives are measurable. Final check: can every learner in this classroom — including every multilingual learner — access and demonstrate their learning in this unit? Is the action project connected back to all community partners from across the unit, not just the final week?</div>
+        <div class="step-fields"><span class="field-tag">Content Standards</span><span class="field-tag mll">WIDA ELD Standards</span><span class="field-tag">Community Authenticity</span><span class="field-tag mll">MLL Access &amp; Representation</span><span class="field-tag">Time &amp; Resources</span><span class="field-tag">Project Feasibility</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- 15: LOCALIZATION -->
+<div class="section" id="s15">
+  <div class="section-header">
+    <div class="section-num">15</div>
+    <div class="section-titles">
+      <span class="section-label">Localization Guidance</span>
+      <h2>How This Curriculum <em>Comes Alive</em><br>in Your Community</h2>
+    </div>
+  </div>
+  <p class="body-text">The Anchored Learner cannot be taught without the community. The driving questions are universal; the content that answers them is always local. Teachers are not implementing a curriculum. They are designing learning with and for their specific students, families, and neighbors.</p>
+  <div class="pull-quote">
+    <p>What makes an equity issue in an urban city might not be the same equity issue that children care about in a rural town. This curriculum is designed so that the local context is the curriculum content.</p>
+  </div>
+  <p class="body-text">The same 3rd grade driving question — "Why do some communities have more pollution and less access to clean air and water?" — will be investigated very differently depending on where students live. The equity problem is universal. The local manifestation is what students investigate.</p>
+  <div class="localization-examples" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+    <div class="local-card">
+      <div class="local-place">Urban District · South Bronx</div>
+      <h4>Air Quality & Green Space</h4>
+      <p>Students investigate air quality data near their school, map distances to green space, and partner with a local environmental justice organization to understand relationships between highway proximity, industrial facilities, and respiratory health disparities.</p>
+    </div>
+    <div class="local-card">
+      <div class="local-place">Rural NC · Hoke County</div>
+      <h4>Agricultural Runoff & Water</h4>
+      <p>Students investigate water quality near local farms and hog lagoons, examine nitrate levels in well water, and explore how agricultural practices affect communities near Fort Liberty. Community partner: local environmental health department.</p>
+    </div>
+    <div class="local-card">
+      <div class="local-place">Coastal NC · Brunswick County</div>
+      <h4>Erosion, Flooding & Climate</h4>
+      <p>Students investigate how rising sea levels and increased storm intensity are reshaping their coastline, examine which communities face greatest displacement risk, and partner with local land conservation organizations to understand environmental stewardship in a changing climate.</p>
+    </div>
+    <div class="local-card" style="border-left:3px solid var(--gold);background:var(--gold-light);">
+      <div class="local-place" style="color:var(--gold);">Rural Appalachia · Predominantly White Community</div>
+      <h4>Land, Farming, and Community Identity</h4>
+      <p>Students in a rural mountain community investigate what it means to care for the land their families have farmed for generations. Family knowledge about crop rotation, weather reading, seed saving, and animal husbandry is treated as curriculum content. Grandparents are community partners. The driving question — "How do we take care of the land that takes care of us?" — connects science, social studies, and identity through the culture that is already in the room. This is culturally responsive teaching. Every community has a culture worth centering.</p>
+    </div>
+  </div>
+  <p class="body-text" style="margin-top:32px;">To support localization, schools are encouraged to host community listening sessions annually to identify the local issues that matter most to students and families; build a community partner database of city departments, nonprofits, small businesses, and cultural organizations; and actively recruit multilingual families and community members as partners and co-educators. The curriculum provides the architecture. The community provides the soul.</p>
+</div>
+ 
+<!-- 16: CLOSING -->
+<div class="section" id="s16">
+  <div class="section-header">
+    <div class="section-num">16</div>
+    <div class="section-titles">
+      <span class="section-label">A Note on What This Is</span>
+      <h2>Not a Curriculum to Follow.<br><em>An Architecture to Inhabit.</em></h2>
+    </div>
+  </div>
+  <p class="body-text">Many curricula claim to be culturally responsive. The Anchored Learner is designed so that cultural responsiveness is structurally unavoidable — not a feature that can be skipped, but the mechanism by which the curriculum works. It cannot be taught without the community. It cannot be adapted without the students. It cannot succeed without the teacher's own cultural humility and curiosity.</p>
+  <p class="body-text">Many curricula claim to serve multilingual learners. This one is designed with multilingual learners — and all students whose linguistic wealth has been devalued — at the center from the first design decision. Because language development and content learning are inseparable. Because the fastest-growing student population in the United States deserves a curriculum built for them. Because every student's linguistic capital is not a deficit. It is the curriculum's most important resource.</p>
+  <p class="body-text">Many curricula claim to be rigorous. This one pairs its equity commitments with an explicit Science of Reading framework, a neurologically grounded lesson design structure, and an evidence base that demonstrates measurably better outcomes — particularly for students from underrepresented backgrounds, multilingual learners, and students who have historically been failed by disconnected, culturally irrelevant instruction.</p>
+  <p class="body-text">The Kindergarten year is the first phase of the K–12 curriculum currently in active development — grounded in original scholarship (Anderson, 2025) and in the theoretical constellation of Milner, Gay, Ladson-Billings, Paris, Yosso, Muñiz, Moll, Vasuthavan &amp; Kunaratnam, Hammond, and Learning for Justice's Social Justice Standards. The integrated curriculum design emerges from the researcher's own study of innovative educational models, school redesign, and school transformation — and from years of conversations with educators, students, families, and community stakeholders about what learning could be. As the Kindergarten phase is piloted and refined, subsequent grade levels will be developed in collaboration with the educators, students, families, and communities who use it. This is living work.</p>
+  <div class="pull-quote">
+    <p>A child who moves through this entire arc doesn't just learn content — they develop an entire orientation toward the world. They grow from someone who wonders and cares, into someone who investigates and understands, into someone who analyzes systems, into someone who innovates and acts.</p>
+  </div>
+  <p class="body-text">That is the vision. A system that holds its soul because relationships, identity, language, and purpose remain at the center. A design that maintains its rigor because evidence, precision, and community partnership guide each step. A curriculum that prepares every learner — in every language, from every community — not just to navigate the world, but to change it.</p>
+</div>
+ 
+<!-- BACK COVER -->
+<div class="back-cover">
+  <span class="section-label">The Anchored Learner</span>
+  <h2>Rooting every learner — in every language, from every community — in <em>wonder, belonging,</em> and the capacity to change the world.</h2>
+  <p>This is a working framework document representing the first phase of an ongoing curriculum development project. The K–12 developmental arc, sixteen framework sections, multilingual learner and Science of Reading frameworks, theoretical foundations, lesson design framework, career-connected learning framework, competency progression, and planning process presented here form the foundation for a full equity-centered, problem-based integrated curriculum.</p>
+  <p>The Kindergarten curriculum is actively in development — including a complete Launch Guide (Weeks 1–6), unit arcs for Unit 1 (Identity &amp; Community) and Unit 2 (Health &amp; Wellbeing), and sample lessons that illustrate what Anchored Literacy, Anchored Math, and Anchored Inquiry look like using the Connect · Discover · Make Sense · Apply · Reflect lesson design framework.</p>
+  <div class="back-divider"></div>
+  <div class="back-author">Marline Anderson · Ed.D. · 2026</div>
+</div>
+ 
+</body>
+</html>
