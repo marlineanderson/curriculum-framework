@@ -245,7 +245,26 @@ body {
 .footer-content p:last-child {
   margin-bottom: 0;
 }
+.about-me-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 40px;
+  align-items: start;
+}
 
+.about-me-photo-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.about-me-photo {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 12px;
+  display: block;
+  border: 1px solid var(--border);
+}
+  
 @media (max-width: 768px) {
   .site-header,
   .page-hero,
@@ -262,6 +281,13 @@ body {
 
   .section-num {
     font-size: 3rem;
+  }
+    .about-me-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-me-photo-wrap {
+    justify-content: flex-start;
   }
 }
 </style>
@@ -365,13 +391,21 @@ body {
     </div>
   </div>
 
-  <p class="body-text">
-    I am an educator and researcher with a background in elementary education, multilingual learner instruction, and educator learning. My work focuses on designing learning experiences that are rigorous, meaningful, and responsive to the young people they are meant to serve, and on supporting educators as they implement learner-centered practices in real classrooms.
-  </p>
+  <div class="about-me-grid">
+    <div class="about-me-text">
+      <p class="body-text">
+        I am an educator and researcher with a background in elementary education, multilingual learner instruction, and educator learning. My work focuses on designing learning experiences that are rigorous, meaningful, and responsive to the young people they are meant to serve, and on supporting educators as they implement learner-centered practices in real classrooms.
+      </p>
 
-  <p class="body-text">
-    I hold a Doctor of Education in Innovative Teaching and Learning and created The Anchored Learner as part of a broader commitment to reimagining what school can be: more connected, more human, and more worthy of young people.
-  </p>
+      <p class="body-text">
+        I hold a Doctor of Education in Innovative Teaching and Learning and created The Anchored Learner as part of a broader commitment to reimagining what school can be: more connected, more human, and more worthy of young people.
+      </p>
+    </div>
+
+    <div class="about-me-photo-wrap">
+      <img src="marline-headshot.jpg" alt="Headshot of Marline Anderson" class="about-me-photo">
+    </div>
+  </div>
 </div>
 
 <div class="section">
