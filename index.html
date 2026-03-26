@@ -36,7 +36,36 @@ body {
   line-height: 1.75;
   font-size: 16px;
 }
- 
+
+/* ── SITE HEADER ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(26,20,16,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(253,250,246,0.08);
+  padding: 16px 10vw;
+}
+
+.site-nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.site-nav a {
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.site-nav a:hover {
+  color: var(--gold);
+}
+  
 /* ── COVER ── */
 .cover {
   min-height: 100vh;
@@ -353,7 +382,16 @@ body {
 <link rel="icon" type="image/png" sizes="128x128" href="favicon_tal_128.png">
 </head>
 <body>
- 
+  
+ <header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="kindergarten.html">Kindergarten</a>
+  </nav>
+</header>
+  
 <!-- COVER -->
 <div class="cover">
   <div class="cover-eyebrow">Curriculum Framework · Working Document · 2026</div>
