@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — The Anchored Learner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #1A1410;
+      --parchment: #F7F3ED;
+      --cream: #FDFAF6;
+      --terracotta: #B85C38;
+      --terracotta-light: #F2E0D8;
+      --gold: #C9953A;
+      --gold-light: #F5EDD8;
+      --sage: #5C7A5F;
+      --sage-light: #DFE9E0;
+      --slate: #4A6278;
+      --slate-light: #DCE5ED;
+      --plum: #6B4E71;
+      --plum-light: #EDE3EF;
+      --navy: #2C3E5A;
+      --navy-light: #DCE4EF;
+      --muted: #7A6E65;
+      --border: rgba(26,20,16,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--parchment);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    /* HEADER */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(26,20,16,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(253,250,246,0.08);
+      padding: 16px 10vw;
+    }
+
+    .site-nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    .site-nav a:hover {
+      color: var(--gold);
+    }
+
+    /* HERO */
+    .page-hero {
+      min-height: 55vh;
+      background: var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 90px 10vw;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,149,58,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .page-hero p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(253,250,246,0.68);
+      max-width: 650px;
+      line-height: 1.9;
+    }
+
+    .page-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 32px 0;
+    }
+
+    /* SECTION */
+    .section {
+      padding: 96px 10vw;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:nth-child(even) {
+      background: var(--cream);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 44px;
+    }
+
+    .section-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      color: rgba(26,20,16,0.08);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .section-titles {
+      flex: 1;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .body-text {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #3D3028;
+      max-width: 760px;
+      margin-bottom: 20px;
+    }
+
+    .contact-email {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-top: 24px;
+    }
+
+    .contact-email a {
+      color: var(--terracotta);
+      text-decoration: none;
+    }
+
+    .contact-email a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      padding: 64px 10vw 64px;
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 16px;
+    }
+
+    .footer-content {
+      max-width: 720px;
+    }
+
+    .footer-content p {
+      font-size: 0.82rem;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .footer-content p strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .footer-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .site-header,
+      .page-hero,
+      .section,
+      .site-footer {
+        padding-left: 6vw;
+        padding-right: 6vw;
+      }
+
+      .section-header {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .section-num {
+        font-size: 3rem;
+      }
+    }
+  </style>
+
+  <link rel="icon" type="image/x-icon" href="favicon_tal.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_tal_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_tal_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon_tal_64.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="favicon_tal_128.png">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="kindergarten.html">Kindergarten</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <div class="page-eyebrow">Contact</div>
+    <h1>Get in Touch</h1>
+    <div class="page-divider"></div>
+    <p>
+      I’d love to hear from educators, school leaders, parents and caretakers, organizations, and others who care about
+      creating learning experiences that are more meaningful, connected, and responsive to young people.
+    </p>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-titles">
+        <span class="section-label">Contact</span>
+        <h2>Let’s Connect</h2>
+      </div>
+    </div>
+
+    <p class="body-text">
+      Thanks for visiting The Anchored Learner.
+    </p>
+
+    <p class="body-text">
+      If you have a question, want to share feedback, or are interested in connecting about the work,
+      feel free to reach out by email:
+    </p>
+
+    <p class="contact-email">
+      <a href="mailto:contact@theanchoredlearner.com">contact@theanchoredlearner.com</a>
+    </p>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-label">Rights & Use</div>
+
+    <div class="footer-content">
+      <p><strong>© 2026 Marline Anderson. All rights reserved.</strong></p>
+
+      <p>
+        The Anchored Learner™ framework, including all associated content, models, and materials,
+        is the intellectual property of Marline Anderson.
+      </p>
+
+      <p>
+        This work may not be reproduced, distributed, adapted, or used without prior written permission.
+      </p>
+
+      <p>
+        For questions about use, collaboration, feedback, or general interest, please email contact@theanchoredlearner.com
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
