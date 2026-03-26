@@ -75,7 +75,14 @@ body {
 .toc { background: var(--cream); padding: 64px 10vw; border-bottom: 1px solid var(--border); }
 .toc-label { font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 32px; }
 .toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; }
-.toc-item { padding: 16px 0; border-top: 1px solid var(--border); }
+.toc-item {
+  display: block;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+}
+.toc-item:hover .toc-title { color: var(--terracotta); }
 .toc-num { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; color: var(--gold); display: block; margin-bottom: 4px; }
 .toc-title { font-size: 0.9rem; font-weight: 400; }
  
@@ -361,7 +368,7 @@ body {
 <div class="toc">
   <div class="toc-label">Contents</div>
   <div class="toc-grid">
-    <div class="toc-item"><span class="toc-num">00</span><span class="toc-title">Theoretical Foundations</span></div>
+    <a class="toc-item" href="#s00"><span class="toc-num">00</span><span class="toc-title">Theoretical Foundations</span></a>
     <div class="toc-item"><span class="toc-num">01</span><span class="toc-title">Why This Curriculum Exists</span></div>
     <div class="toc-item"><span class="toc-num">02</span><span class="toc-title">Four Design Principles</span></div>
     <div class="toc-item"><span class="toc-num">03</span><span class="toc-title">The Developmental Arc</span></div>
