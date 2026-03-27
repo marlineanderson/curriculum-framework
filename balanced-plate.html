@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 4 · Anchored Math · Balanced Plate · The Anchored Learner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1410;
+  --parchment: #F7F3ED;
+  --cream: #FDFAF6;
+  --terracotta: #B85C38;
+  --terracotta-light: #F2E0D8;
+  --gold: #C9953A;
+  --gold-light: #F5EDD8;
+  --sage: #5C7A5F;
+  --sage-light: #DFE9E0;
+  --slate: #4A6278;
+  --slate-light: #DCE5ED;
+  --plum: #6B4E71;
+  --plum-light: #EDE3EF;
+  --muted: #7A6E65;
+  --border: rgba(26,20,16,0.1);
+  --block-color: #4A6278;
+  --block-light: #DCE5ED;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+/* ── NAV ── */
+.top-nav {
+  background: var(--ink);
+  padding: 12px 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--cream);
+  font-style: italic;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-block-tag {
+  background: var(--slate);
+  color: var(--cream);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  padding: 64px 8vw 56px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -150px; right: -150px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74,98,120,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,149,58,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.hero-eyebrow-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.hero-eyebrow-divider {
+  width: 32px;
+  height: 1px;
+  background: rgba(201,149,58,0.4);
+}
+.lesson-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 300;
+  color: rgba(253,250,246,0.06);
+  line-height: 1;
+  position: absolute;
+  right: 8vw;
+  top: 40px;
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--cream);
+  max-width: 640px;
+  margin-bottom: 16px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--slate);
+  color: #7BACC4;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.meta-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(253,250,246,0.15);
+  color: rgba(253,250,246,0.65);
+}
+.meta-tag.highlight {
+  background: var(--slate);
+  border-color: var(--slate);
+  color: var(--cream);
+}
+
+/* ── LAYOUT ── */
+.content-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+/* ── CONTEXT STRIP ── */
+.context-strip {
+  background: var(--slate);
+  padding: 24px 8vw;
+}
+.context-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+.context-item {}
+.context-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.5);
+  margin-bottom: 4px;
+}
+.context-value {
+  font-size: 0.88rem;
+  color: var(--cream);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ── MAIN GRID ── */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  padding: 48px 0 80px;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.sidebar-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sidebar-card-header {
+  padding: 14px 20px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.sidebar-card-header.slate { background: var(--slate); color: var(--cream); }
+.sidebar-card-header.gold { background: var(--gold); color: var(--ink); }
+.sidebar-card-header.terracotta { background: var(--terracotta); color: var(--cream); }
+.sidebar-card-header.plum { background: var(--plum); color: var(--cream); }
+.sidebar-card-body {
+  padding: 16px 20px;
+}
+.sidebar-card-body p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #3D3028;
+  margin-bottom: 8px;
+}
+.sidebar-card-body p:last-child { margin-bottom: 0; }
+.sidebar-card-body strong {
+  font-weight: 500;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.standards-list {
+  list-style: none;
+  padding: 0;
+}
+.standards-list li {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #3D3028;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.standards-list li:last-child { border-bottom: none; }
+.std-code {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--slate);
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.materials-list {
+  list-style: none;
+  padding: 0;
+}
+.materials-list li {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #3D3028;
+  padding: 5px 0 5px 16px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.materials-list li:last-child { border-bottom: none; }
+.materials-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--slate);
+  font-size: 0.7rem;
+  top: 7px;
+}
+
+.sentence-frame {
+  background: var(--slate-light);
+  border-left: 3px solid var(--slate);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+/* ── OBJECTIVES ── */
+.objectives-section {
+  margin-bottom: 40px;
+}
+.section-eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.objective-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.objective-card-label {
+  padding: 10px 18px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+.objective-card-label.content { background: var(--slate-light); color: var(--slate); }
+.objective-card-label.language { background: var(--plum-light); color: var(--plum); }
+.objective-card-label.kid { background: var(--gold-light); color: #7A5C1A; }
+.objective-card-body {
+  padding: 16px 18px;
+  background: var(--cream);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #3D3028;
+}
+.objective-card-body em { font-style: italic; color: var(--ink); }
+.objective-card-body .teacher-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ── PHASE BLOCKS ── */
+.phases-section { margin-bottom: 0; }
+
+.phase-block {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.phase-header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  min-height: 64px;
+}
+.phase-color-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 20px;
+}
+.phase-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.2;
+}
+.phase-meta {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(253,250,246,0.6);
+  margin-top: 2px;
+}
+
+.phase-header-right {
+  background: var(--parchment);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid var(--border);
+}
+.phase-summary {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.phase-body {
+  background: var(--cream);
+  padding: 24px 28px;
+  border-top: 1px solid var(--border);
+}
+
+.phase-step {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.phase-step:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.phase-step-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.phase-step p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #3D3028;
+  margin-bottom: 8px;
+}
+.phase-step p:last-child { margin-bottom: 0; }
+
+.teacher-prompt {
+  background: var(--gold-light);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: #5A4010;
+  line-height: 1.65;
+  margin: 8px 0;
+}
+
+.mll-note {
+  background: var(--plum-light);
+  border-left: 3px solid var(--plum);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.mll-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 6px;
+}
+.mll-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #3D2840;
+  margin-bottom: 6px;
+}
+.mll-note p:last-child { margin-bottom: 0; }
+
+.assessment-note {
+  background: var(--slate-light);
+  border-left: 3px solid var(--slate);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.assessment-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 6px;
+}
+.assessment-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #2A3A48;
+}
+
+.cultural-note {
+  background: var(--terracotta-light);
+  border-left: 3px solid var(--terracotta);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 12px;
+}
+.cultural-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 6px;
+}
+.cultural-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #4A2010;
+}
+
+/* Phase colors */
+.phase-connect .phase-color-block { background: var(--plum); }
+.phase-discover .phase-color-block { background: var(--sage); }
+.phase-makesense .phase-color-block { background: var(--slate); }
+.phase-apply .phase-color-block { background: var(--terracotta); }
+.phase-reflect .phase-color-block { background: var(--gold); }
+.phase-reflect .phase-name { color: var(--ink); }
+.phase-reflect .phase-meta { color: rgba(26,20,16,0.5); }
+
+.phase-connect .phase-step-label { color: var(--plum); }
+.phase-discover .phase-step-label { color: var(--sage); }
+.phase-makesense .phase-step-label { color: var(--slate); }
+.phase-apply .phase-step-label { color: var(--terracotta); }
+.phase-reflect .phase-step-label { color: #8B6820; }
+
+/* ── PROGRESSION BAR ── */
+.progression-bar {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+.progression-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.progression-days {
+  display: flex;
+  gap: 4px;
+}
+.prog-day {
+  flex: 1;
+  padding: 8px 6px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--muted);
+  background: var(--parchment);
+  border: 1px solid var(--border);
+}
+.prog-day.active {
+  background: var(--slate);
+  color: var(--cream);
+  border-color: var(--slate);
+}
+.prog-day-label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+.prog-day-desc {
+  font-size: 0.65rem;
+  opacity: 0.8;
+}
+
+/* ── TIMING OVERVIEW ── */
+.timing-overview {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.timing-block {
+  flex: 1;
+  padding: 14px 10px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  background: var(--cream);
+}
+.timing-block:last-child { border-right: none; }
+.timing-duration {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.timing-phase {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.timing-location {
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.timing-block.connect .timing-duration { color: var(--plum); }
+.timing-block.discover .timing-duration { color: var(--sage); }
+.timing-block.makesense .timing-duration { color: var(--slate); }
+.timing-block.apply .timing-duration { color: var(--terracotta); }
+.timing-block.reflect .timing-duration { color: #8B6820; }
+
+/* ── FOOTER ── */
+.lesson-footer {
+  background: var(--ink);
+  padding: 40px 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(253,250,246,0.5);
+}
+.footer-nav {
+  display: flex;
+  gap: 20px;
+}
+.footer-nav a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.35);
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .sidebar { order: -1; }
+  .hero { padding: 48px 6vw; }
+  .lesson-number { display: none; }
+  .phase-header { grid-template-columns: 140px 1fr; }
+  .progression-days { flex-wrap: wrap; }
+  .prog-day { min-width: calc(50% - 4px); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <a href="#" class="nav-brand">The Anchored Learner</a>
+  <div class="nav-links">
+    <a href="#">Framework</a>
+    <a href="#">Launch Guide</a>
+    <a href="#">Unit 1</a>
+    <a href="#">Unit 2</a>
+    <span class="nav-block-tag">Anchored Math</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="lesson-number">4</div>
+  <div class="hero-eyebrow">
+    <span class="hero-eyebrow-text">Lesson 4 of 4 · Sample Lessons</span>
+    <div class="hero-eyebrow-divider"></div>
+    <span class="hero-eyebrow-text">Anchored Math</span>
+  </div>
+  <h1>Balanced Plate —<br><em>Sorting, Counting &</em><br><em>Comparing Numerals</em></h1>
+  <div class="hero-meta">
+    <span class="meta-tag highlight">Anchored Math</span>
+    <span class="meta-tag">Unit 2 · Health & Wellbeing</span>
+    <span class="meta-tag">Week 2 · Wednesday</span>
+    <span class="meta-tag">45 minutes</span>
+    <span class="meta-tag">~Week 14 of the Year</span>
+    <span class="meta-tag">Wonder & Stewardship Phase</span>
+  </div>
+</div>
+
+<!-- CONTEXT STRIP -->
+<div class="context-strip">
+  <div class="context-inner">
+    <div class="context-item">
+      <div class="context-label">Weekly Theme</div>
+      <div class="context-value">"What do our bodies need to grow — and what do plants need to grow too?"</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Building On</div>
+      <div class="context-value">Tuesday's class graph of everyday vs. sometimes foods</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Building Toward</div>
+      <div class="context-value">Thursday's snack ingredient measurement · Friday synthesis</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Action Project</div>
+      <div class="context-value">Wellness Poster Campaign — Week 6 exhibition</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content-wrap">
+  <div class="main-grid">
+
+    <!-- LEFT: LESSON CONTENT -->
+    <div class="lesson-content">
+
+      <!-- Where We Are -->
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin:40px 0 32px;">
+        <div class="section-eyebrow" style="margin-bottom:12px;">Where We Are</div>
+        <p style="font-size:0.92rem;line-height:1.85;color:#3D3028;margin-bottom:12px;">Students are in Week 2 of Unit 2 — approximately Week 14 of the school year. On Tuesday students built a class graph sorting everyday and sometimes foods — counting each group and comparing using matching and counting strategies. Today students apply that understanding individually — building their own balanced plate, writing the numeral for each food group, and comparing two written numerals.</p>
+        <p style="font-size:0.88rem;line-height:1.8;color:var(--muted);font-style:italic;">The math deepens from concrete comparison on Tuesday (matching and counting strategies · NC.K.CC.6) to symbolic representation today (written numerals compared abstractly · NC.K.CC.3 + NC.K.CC.7). Same concept, more abstract. This is the progression.</p>
+      </div>
+
+      <!-- Weekly Progression -->
+      <div class="progression-bar">
+        <div class="progression-label">Weekly Math Progression · Unit 2 Week 2</div>
+        <div class="progression-days">
+          <div class="prog-day">
+            <span class="prog-day-label">Monday</span>
+            <span class="prog-day-desc">Family food data · counting & sorting · introduction</span>
+          </div>
+          <div class="prog-day">
+            <span class="prog-day-label">Tuesday</span>
+            <span class="prog-day-desc">Class graph · everyday vs. sometimes · NC.K.CC.6</span>
+          </div>
+          <div class="prog-day active">
+            <span class="prog-day-label">Wednesday ←</span>
+            <span class="prog-day-desc">Personal plate · writing numerals · NC.K.CC.3 + .7</span>
+          </div>
+          <div class="prog-day">
+            <span class="prog-day-label">Thursday</span>
+            <span class="prog-day-desc">Counting & measuring snack ingredients</span>
+          </div>
+          <div class="prog-day">
+            <span class="prog-day-label">Friday</span>
+            <span class="prog-day-desc">Synthesis · what does our data tell us?</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timing Overview -->
+      <div class="timing-overview">
+        <div class="timing-block connect">
+          <div class="timing-duration">5</div>
+          <div class="timing-phase">Connect</div>
+          <div class="timing-location">Rug</div>
+        </div>
+        <div class="timing-block discover">
+          <div class="timing-duration">12</div>
+          <div class="timing-phase">Discover</div>
+          <div class="timing-location">Rug</div>
+        </div>
+        <div class="timing-block makesense">
+          <div class="timing-duration">8</div>
+          <div class="timing-phase">Make Sense</div>
+          <div class="timing-location">Rug</div>
+        </div>
+        <div class="timing-block apply">
+          <div class="timing-duration">15</div>
+          <div class="timing-phase">Apply</div>
+          <div class="timing-location">Tables</div>
+        </div>
+        <div class="timing-block reflect">
+          <div class="timing-duration">5</div>
+          <div class="timing-phase">Reflect</div>
+          <div class="timing-location">Rug</div>
+        </div>
+      </div>
+
+      <!-- Objectives -->
+      <div class="objectives-section">
+        <div class="section-eyebrow">Objectives</div>
+
+        <div class="objective-card">
+          <div class="objective-card-label content">Content Objective</div>
+          <div class="objective-card-body">
+            Students will <strong>compare and analyze</strong> two groups of foods to determine which group is greater than, less than, or equal to the other — representing their findings with written numerals.
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="objective-card-label language">Language Objective</div>
+          <div class="objective-card-body">
+            Students will <strong>justify</strong> their comparison of two food groups using number and comparison vocabulary — from pointing and counting with teacher support <em>(WIDA Levels 1–2)</em>, to using sentence frames orally with a partner <em>(Levels 3–4)</em>, to independently explaining their comparison using mathematical vocabulary <em>(Level 5)</em>.
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="objective-card-label kid">Kid-Friendly Objective</div>
+          <div class="objective-card-body">
+            <em>"Today I will <strong>compare</strong> two groups of foods and decide which group is greater, so that I can <strong>justify</strong> my thinking using numbers. I'll know I've got it if I can write the number of everyday foods and sometimes foods on my plate — and explain to my partner which number is greater and how I know."</em>
+            <p class="teacher-note">Teacher explanation: "Compare means to look at two groups and decide which has more, which has less, or if they are the same. Justify means to explain how you know."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase Blocks -->
+      <div class="phases-section">
+        <div class="section-eyebrow">Lesson Plan · Connect · Discover · Make Sense · Apply · Reflect</div>
+
+        <!-- CONNECT -->
+        <div class="phase-block phase-connect">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Connect</div>
+              <div class="phase-meta">5 min · Rug · Cultural Ignition</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Activate prior knowledge from Tuesday's class graph. Establish the week's mathematical purpose. Read kid-friendly objective.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Opening</div>
+              <p>Teacher points to Tuesday's class graph — still posted and visible. "Yesterday we built our class graph together. We sorted everyday and sometimes foods. What do you remember? Which group had more? Turn and tell your partner."</p>
+              <p>45 seconds partner talk. 2–3 students share. Teacher celebrates responses that use comparison language — <em>greater than, less than, equal to</em> — from Tuesday's lesson.</p>
+            </div>
+            <div class="phase-step">
+              <div class="phase-step-label">Bridge to Today</div>
+              <p>"Today each of you is going to build your OWN plate — and figure out if your plate is balanced. Let's think first — what does a balanced plate mean?"</p>
+              <p>2–3 student responses. Teacher connects: "A balanced plate has more everyday foods than sometimes foods. And here's the important thing — a balanced plate looks different in every family. The foods on your plate might be different from your neighbor's plate. That's not just okay — that's beautiful."</p>
+              <p>Teacher reads kid-friendly objective aloud. Brief explanation of <em>compare</em> and <em>justify</em>.</p>
+            </div>
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>Pointing to Tuesday's class graph activates prior knowledge visually — multilingual learners can access the mathematical context through the visual even before English language processing begins. The graph is a shared reference point for every proficiency level.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DISCOVER -->
+        <div class="phase-block phase-discover">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Discover</div>
+              <div class="phase-meta">12 min · Rug · Explicit Modeling</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Teacher models the full three-step process — sort, count, write numeral, compare — using two strategies. Students watch, respond, and begin internalizing the process.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Setup</div>
+              <p>Teacher holds up a blank plate template and a set of food picture cards. "Watch me build my balanced plate. I'm going to choose foods, sort them, count each group, and write the number."</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Step 1 · Choose and Sort</div>
+              <p>Teacher picks up food cards one at a time — thinks aloud for each:</p>
+              <div class="teacher-prompt">"Apple. Is an apple an everyday food or a sometimes food? Everyday — I can eat an apple every day. It goes on the everyday side."</div>
+              <div class="teacher-prompt">"Cupcake. Is a cupcake everyday or sometimes? Sometimes — cupcakes are delicious but I don't need one every day. Sometimes side."</div>
+              <p>Teacher places 5 everyday food cards and 3 sometimes food cards on the plate.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Step 2 · Count</div>
+              <div class="teacher-prompt">"Now I need to count each group. Everyday foods — let me count." Points to each card: "1, 2, 3, 4, 5. Five everyday foods. Sometimes foods — 1, 2, 3. Three sometimes foods."</div>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Step 3 · Write the Numeral</div>
+              <div class="teacher-prompt">"Now I write the number in the recording box. Five everyday foods." Writes 5. "Three sometimes foods." Writes 3. "Now I have two numbers — 5 and 3. I need to compare them. Which is greater?"</div>
+              <p>Teacher models two strategies — both explicitly:</p>
+              <p><strong>Strategy 1 — Counting:</strong> "5 comes after 3 when we count. So 5 is greater than 3."</p>
+              <p><strong>Strategy 2 — Matching:</strong> Teacher draws lines matching one everyday card to one sometimes card — 3 pairs match, 2 everyday cards are left over. "I have 2 leftover everyday foods. So 5 is greater than 3."</p>
+              <div class="teacher-prompt">"5 is greater than 3. My plate has more everyday foods than sometimes foods. Is my plate balanced?" 2–3 student responses. "Yes — because I have more everyday foods."</div>
+              <p>Teacher writes comparison sentence on chart paper: <em>"5 is greater than 3. My plate is balanced."</em></p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Quick Turns</div>
+              <p>"What if my plate had 3 everyday foods and 5 sometimes foods? Would it be balanced? Turn and tell your partner." 30 seconds. 1–2 responses.</p>
+              <p>"What if it had 4 and 4? Turn and tell." 30 seconds. 1–2 responses. Teacher introduces <em>equal</em>: "4 and 4 are equal — the same amount. Is that plate balanced? What do you think?" Brief discussion — no right answer required.</p>
+            </div>
+
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>Two comparison strategies — counting and matching — provide multiple access points. Visual matching with drawn lines is especially accessible for students at earlier proficiency levels.</p>
+              <p>Teacher uses gestures throughout — pointing, holding up fingers, drawing lines — reducing language load without reducing mathematical demand.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAKE SENSE -->
+        <div class="phase-block phase-makesense">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Make Sense</div>
+              <div class="phase-meta">8 min · Rug · Partner Processing</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Students process the concept through two teacher-presented example plates. Both greater than and less than language introduced explicitly as equivalent ways of saying the same thing.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Example Plate 1</div>
+              <p>Teacher holds up a pre-made plate — 4 everyday foods / 4 sometimes foods.</p>
+              <div class="teacher-prompt">"Look at this plate. Talk to your partner — how many everyday foods? How many sometimes foods? Which is greater? Is this plate balanced?"</div>
+              <p>60 seconds partner talk. 3–4 pairs share. Teacher listens for comparison language.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Example Plate 2</div>
+              <p>Teacher holds up a second pre-made plate — 2 everyday foods / 6 sometimes foods.</p>
+              <div class="teacher-prompt">"What about this one? Is this plate balanced? How do you know? Use your numbers."</div>
+              <p>60 seconds partner talk. 3–4 pairs share.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Mathematical Language Moment</div>
+              <p>Teacher draws out the language explicitly:</p>
+              <div class="teacher-prompt">"I heard [student] say 6 is greater than 2. I heard [student] say 2 is less than 6. Both are right — they're saying the same thing two different ways."</div>
+              <p>Teacher writes both on chart paper:</p>
+              <p style="font-style:italic;color:var(--slate);margin-left:12px;">"6 is greater than 2" &nbsp;·&nbsp; "2 is less than 6"</p>
+              <div class="teacher-prompt">"Mathematicians can say it both ways. Today when you compare your plate you can use either one."</div>
+              <p>Teacher points to sentence frames card. Students read chorally.</p>
+            </div>
+
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>Hearing multiple students use comparison language in different ways — greater than, less than, equal — builds the academic vocabulary bank for multilingual learners before they're asked to produce it independently in Apply.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- APPLY -->
+        <div class="phase-block phase-apply">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Apply</div>
+              <div class="phase-meta">15 min · Tables · Independent Work</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Each student builds their personal balanced plate, writes the numeral for each group, and compares. Teacher circulates with mathematical conference questions. Every plate reflects the student's cultural food knowledge.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Transition</div>
+              <div class="teacher-prompt">"Now it's your turn. You're going to build YOUR balanced plate. When you get to your table — choose your food cards, sort them onto your plate, count each group, write the numeral, and compare. I'll be coming around to talk about your thinking."</div>
+              <p>Clear transition signal. Students move to tables — plate templates, food cards, numeral reference cards, and sentence frame cards already set up at each spot.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Independent Work</div>
+              <p>Students work independently — sorting food cards onto their plate, counting each group, writing the numeral in the recording box, then comparing.</p>
+              <p>Teacher circulates continuously — brief mathematical conferences with individuals and pairs:</p>
+              <div class="teacher-prompt">"Tell me about your plate. How many everyday foods do you have?"</div>
+              <div class="teacher-prompt">"Now write that number in the box. Which number is greater — your everyday foods or your sometimes foods?"</div>
+              <div class="teacher-prompt">"How do you know? Can you show me?"</div>
+              <div class="teacher-prompt">"Is your plate balanced? How do you know?"</div>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Early Finishers</div>
+              <p>Students who finish early: draw one more food they would add to their plate and decide which category it belongs in · write a comparison sentence on the back of their plate: <em>"___ is greater than ___."</em> · compare their plate with a partner — whose plate has more everyday foods?</p>
+            </div>
+
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Differentiation</div>
+              <p><strong>Levels 1–2:</strong> Sorting and placing cards is a complete response. Trace or copy numerals from reference card rather than writing independently. Teacher scribes comparison sentence in English. Oral justification accepted in home language.</p>
+              <p><strong>Levels 3–4:</strong> Sentence frames provide oral and written structure. Teacher supports with conferring during independent work.</p>
+              <p><strong>Level 5:</strong> Write comparison sentence independently without sentence frame. May attempt both forms — <em>"___ is greater than ___"</em> AND <em>"___ is less than ___."</em></p>
+            </div>
+
+            <div class="cultural-note">
+              <div class="cultural-note-label">Cultural Food Note</div>
+              <p>Students may place foods from their family's cultural tradition in the everyday category — rice, beans, plantains, collard greens, tortillas, injera. These are everyday foods in many families and should be honored as such. If a student places a food in a category that surprises the teacher — ask with genuine curiosity: "Tell me about that food. Is that something your family eats often?" Honor the response. Cultural food knowledge is curriculum.</p>
+            </div>
+
+            <div class="assessment-note">
+              <div class="assessment-note-label">Numeral Writing Support</div>
+              <p>Numeral reference card shows each numeral 0–10 with dot representations and directional arrows for formation. Students who are still developing numeral formation can trace, copy, or point to the numeral rather than writing independently. Numeral formation is developing — it is not a barrier to the comparison thinking, which is the mathematical goal of this lesson.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- REFLECT -->
+        <div class="phase-block phase-reflect">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Reflect</div>
+              <div class="phase-meta">5 min · Rug · Metacognitive Close</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Students share plates and comparison sentences. Mathematical vocabulary added to word wall. Lesson closes by honoring the diversity of plates and the mathematics inside every one.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Gallery Moment</div>
+              <div class="teacher-prompt">"Let's look at our plates. Hold up your plate."</div>
+              <p>Students hold plates up — teacher and class notice the variety: "Look at all our different plates. Are they all the same?" 2–3 students share their plate — hold it up, read their numerals, say their comparison sentence:</p>
+              <p style="font-style:italic;color:var(--ink);margin-left:12px;">"I have ___ everyday foods and ___ sometimes foods. ___ is greater than ___. My plate is balanced because ___."</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Mathematical Thread</div>
+              <div class="teacher-prompt">"On Tuesday we looked at our whole class graph. Today we each built our own plate and compared our own numbers. What's something you noticed about comparing numbers today?"</div>
+              <p>2–3 responses. Teacher adds mathematical vocabulary to the word wall: <em>greater than · less than · equal to · compare · balanced.</em></p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Objective Return</div>
+              <div class="teacher-prompt">"We said today we would compare two groups of foods and justify our thinking using numbers. Turn and tell your partner — which group was greater on your plate? How do you know?"</div>
+              <p>30 seconds partner talk.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Closing</div>
+              <div class="teacher-prompt">"Every plate in this room is different. Every plate tells a story about what you know about food and your family. And every plate has math in it — numbers, comparisons, greater than and less than. You are mathematicians — and your plates prove it."</div>
+            </div>
+
+            <div class="assessment-note">
+              <div class="assessment-note-label">Formative Assessment</div>
+              <p>Plate templates collected after the lesson. Teacher notes: who is writing numerals accurately, who is using comparison language correctly, who is justifying their thinking orally and in writing, who needed support with the greater than/less than concept. This data informs Thursday's measurement lesson and any small group math support needed before Friday's synthesis.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- end phases -->
+
+    </div>
+    <!-- end lesson content -->
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- Standards -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header slate">Standards</div>
+        <div class="sidebar-card-body">
+          <ul class="standards-list">
+            <li>
+              <span class="std-code">NC.K.MD.2/3</span>
+              <span>Classify objects and count the number in each category</span>
+            </li>
+            <li>
+              <span class="std-code">NC.K.CC.3</span>
+              <span>Write numbers from 0 to 20; represent a number of objects with a written numeral</span>
+            </li>
+            <li>
+              <span class="std-code">NC.K.CC.7</span>
+              <span>Compare two numbers within 10 presented as written numerals</span>
+            </li>
+            <li>
+              <span class="std-code">NC.K.CC.6</span>
+              <span>Identify whether a group is greater than, less than, or equal to another — using matching and counting strategies</span>
+            </li>
+            <li>
+              <span class="std-code">ELD-SI.K</span>
+              <span>Language for Social & Instructional Purposes — Inform + Argue</span>
+            </li>
+            <li>
+              <span class="std-code">ELD-LA.K</span>
+              <span>Language of Language Arts — Inform</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Materials -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header terracotta">Materials</div>
+        <div class="sidebar-card-body">
+          <ul class="materials-list">
+            <li>Tuesday's class graph — posted visibly for reference</li>
+            <li>Paper plate templates — one per student, divided down the middle with labeled sections and numeral recording boxes</li>
+            <li>Food picture cards — one set per student, 10 cards total</li>
+            <li>Numeral writing reference card per table — numerals 0–10 with dot representations and directional arrows</li>
+            <li>Sentence frame card per table</li>
+            <li>Pencils and crayons</li>
+            <li>Chart paper and marker</li>
+            <li>2 pre-made example plates for Make Sense (teacher-prepared)</li>
+          </ul>
+          <p style="margin-top:12px;"><strong>Food cards — Everyday:</strong></p>
+          <p>apple · bread · rice · carrot · water · beans · eggs</p>
+          <p style="margin-top:8px;"><strong>Food cards — Sometimes:</strong></p>
+          <p>candy · cupcake · soda · chips · cookies</p>
+        </div>
+      </div>
+
+      <!-- Sentence Frames -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header plum">Sentence Frames</div>
+        <div class="sidebar-card-body">
+          <div class="sentence-frame">"I have ___ everyday foods and ___ sometimes foods."</div>
+          <div class="sentence-frame">"___ is greater than ___."</div>
+          <div class="sentence-frame">"___ is less than ___."</div>
+          <div class="sentence-frame">"They are equal because ___."</div>
+          <div class="sentence-frame">"My plate is balanced because ___."</div>
+        </div>
+      </div>
+
+      <!-- Language Functions -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header gold">Language Functions</div>
+        <div class="sidebar-card-body">
+          <p><strong>Compare</strong><br>Look at two groups and decide which has more, less, or if they are the same.</p>
+          <p><strong>Justify</strong><br>Explain how you know — give a reason for your answer using mathematical vocabulary.</p>
+          <p style="margin-top:12px;font-size:0.82rem;color:var(--muted);font-style:italic;">Both functions are introduced explicitly in the kid-friendly objective and reinforced throughout each phase.</p>
+        </div>
+      </div>
+
+      <!-- Unit Connection -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header slate">Unit 2 Connection</div>
+        <div class="sidebar-card-body">
+          <p><strong>Driving Question</strong><br>"What does it mean to be healthy — body, mind, and heart — and how do we take care of ourselves and each other?"</p>
+          <p style="margin-top:8px;"><strong>Action Project</strong><br>Wellness Poster Campaign + Wellness Celebration Exhibition — Week 6</p>
+          <p style="margin-top:8px;"><strong>Cultural Thread</strong><br>Every plate reflects the student's family food traditions. A balanced plate looks different in every household — and every version is valid.</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- end sidebar -->
+
+  </div>
+  <!-- end main grid -->
+</div>
+<!-- end content-wrap -->
+
+<!-- FOOTER -->
+<footer class="lesson-footer">
+  <span class="footer-brand">The Anchored Learner · Marline Anderson, Ed.D. · 2026</span>
+  <div class="footer-nav">
+    <a href="#">← Lesson 3</a>
+    <a href="#">All Lessons</a>
+    <a href="#">Unit 2 →</a>
+  </div>
+</footer>
+
+</body>
+</html>
