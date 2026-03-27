@@ -172,6 +172,27 @@ body {
   color: var(--cream);
 }
 
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(253,250,246,0.75);
+}
+.back-link:hover {
+  color: var(--cream);
+}
+  
+  .hero-intro {
+  max-width: 760px;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: rgba(253,250,246,0.88);
+  line-height: 1.7;
+}
+
 /* ── LAYOUT ── */
 .content-wrap {
   max-width: 1100px;
@@ -624,32 +645,6 @@ body {
 .timing-block.apply .timing-duration { color: var(--terracotta); }
 .timing-block.reflect .timing-duration { color: #8B6820; }
 
-/* ── FOOTER ── */
-.lesson-footer {
-  background: var(--ink);
-  padding: 40px 8vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.footer-brand {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 1rem;
-  color: rgba(253,250,246,0.5);
-}
-.footer-nav {
-  display: flex;
-  gap: 20px;
-}
-.footer-nav a {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(253,250,246,0.35);
-  text-decoration: none;
-}
 
 @media (max-width: 900px) {
   .main-grid { grid-template-columns: 1fr; }
@@ -666,25 +661,29 @@ body {
 
 <!-- NAV -->
 <nav class="top-nav">
-  <a href="#" class="nav-brand">The Anchored Learner</a>
+  <a href="index.html" class="nav-brand">The Anchored Learner</a>
   <div class="nav-links">
-    <a href="#">Framework</a>
-    <a href="#">Launch Guide</a>
-    <a href="#">Unit 1</a>
-    <a href="#">Unit 2</a>
-    <span class="nav-block-tag">Anchored Math</span>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="kindergarten.html">Kindergarten</a>
+    <a href="contact.html">Contact</a>
+    <span class="nav-block-tag">Featured Lesson</span>
   </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="lesson-number">4</div>
+  <a href="kindergarten.html" class="back-link">← Back to Kindergarten</a>
+
+  <div class="lesson-number">K</div>
   <div class="hero-eyebrow">
-    <span class="hero-eyebrow-text">Lesson 4 of 4 · Sample Lessons</span>
+    <span class="hero-eyebrow-text">Featured Lesson Preview</span>
     <div class="hero-eyebrow-divider"></div>
     <span class="hero-eyebrow-text">Anchored Math</span>
   </div>
+
   <h1>Balanced Plate —<br><em>Sorting, Counting &</em><br><em>Comparing Numerals</em></h1>
+
   <div class="hero-meta">
     <span class="meta-tag highlight">Anchored Math</span>
     <span class="meta-tag">Unit 2 · Health & Wellbeing</span>
@@ -693,8 +692,12 @@ body {
     <span class="meta-tag">~Week 14 of the Year</span>
     <span class="meta-tag">Wonder & Stewardship Phase</span>
   </div>
-</div>
 
+  <p class="hero-intro">
+    This featured lesson offers a public-facing look at how The Anchored Learner works in practice. It shows how explicit math instruction, language development, cultural responsiveness, and real-world meaning can live in the same lesson without being reduced to a script.
+  </p>
+</div>
+  
 <!-- CONTEXT STRIP -->
 <div class="context-strip">
   <div class="context-inner">
@@ -1071,11 +1074,11 @@ body {
               <span>Identify whether a group is greater than, less than, or equal to another — using matching and counting strategies</span>
             </li>
             <li>
-              <span class="std-code">ELD-SI.K</span>
+              <span class="std-code">WIDA ELD-SI.K</span>
               <span>Language for Social & Instructional Purposes — Inform + Argue</span>
             </li>
             <li>
-              <span class="std-code">ELD-LA.K</span>
+              <span class="std-code">WIDA ELD-LA.K</span>
               <span>Language of Language Arts — Inform</span>
             </li>
           </ul>
@@ -1143,15 +1146,6 @@ body {
 </div>
 <!-- end content-wrap -->
 
-<!-- FOOTER -->
-<footer class="lesson-footer">
-  <span class="footer-brand">The Anchored Learner · Marline Anderson, Ed.D. · 2026</span>
-  <div class="footer-nav">
-    <a href="#">← Lesson 3</a>
-    <a href="#">All Lessons</a>
-    <a href="#">Unit 2 →</a>
-  </div>
-</footer>
 
 </body>
 </html>
