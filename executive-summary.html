@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Executive Summary | The Anchored Learner</title>
+  <meta name="description" content="A learner-centered curriculum framework for meaningful, coherent, real-world connected learning. K–12 equity-centered, problem-based integrated curriculum." />
+  <style>
+    /* ─── Tokens ─────────────────────────────── */
+    :root {
+      --ink:        #1A1410;
+      --parchment:  #F7F3ED;
+      --cream:      #FDFAF6;
+      --terracotta: #B85C38;
+      --terra-light:#F2E0D8;
+      --gold:       #C9953A;
+      --gold-light: #F5EDD8;
+      --sage:       #5C7A5F;
+      --sage-light: #DFE9E0;
+      --slate:      #4A6278;
+      --slate-light:#DCE5ED;
+      --plum:       #6B4E71;
+      --plum-light: #EDE3EF;
+      --muted:      #7A6E65;
+      --border:     #D9D4CC;
+      --font-serif: 'Palatino Linotype', Palatino, Georgia, serif;
+      --font-sans:  Calibri, 'Gill Sans', Arial, sans-serif;
+    }
+
+    /* ─── Reset & Base ───────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    /* ─── Navigation ─────────────────────────── */
+    nav {
+      background: var(--ink);
+      padding: 1.1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: var(--parchment);
+      text-decoration: none;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      letter-spacing: 0.03em;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover { opacity: 1; }
+
+    nav a.active {
+      color: var(--terracotta);
+      opacity: 1;
+      font-weight: 600;
+    }
+
+    /* ─── Hero / Page Header ─────────────────── */
+    .page-header {
+      background: var(--ink);
+      padding: 3.5rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .page-header .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--cream);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .page-header .subhead {
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      color: rgba(253,250,246,0.72);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ─── Page Meta Tag ──────────────────────── */
+    .page-meta {
+      text-align: center;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      padding: 0.9rem 1rem;
+      background: var(--parchment);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ─── Layout ─────────────────────────────── */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ─── Sections ───────────────────────────── */
+    .section {
+      padding: 3.5rem 0 2rem;
+      border-top: 1.5px solid var(--terracotta);
+      margin-top: 2.5rem;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+      border-top: none;
+      padding-top: 3rem;
+    }
+
+    .section-number {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .section h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 1.4rem;
+    }
+
+    .section h2 em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1.2rem 0 1.8rem;
+    }
+
+    /* ─── Body Copy ──────────────────────────── */
+    .body-copy {
+      font-family: var(--font-sans);
+      font-size: 0.975rem;
+      color: var(--ink);
+      line-height: 1.75;
+      margin-bottom: 1.1rem;
+    }
+
+    .body-copy + .body-copy { margin-top: 0; }
+
+    /* ─── Highlight Box ──────────────────────── */
+    .highlight-box {
+      border-left: 3px solid var(--terracotta);
+      background: var(--terra-light);
+      padding: 1.2rem 1.4rem;
+      border-radius: 0 4px 4px 0;
+      margin: 1.5rem 0;
+    }
+
+    .highlight-box p {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ─── Info Cards (2-col grid) ─────────────── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .card-grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--parchment);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.2rem 1.3rem;
+    }
+
+    .card .card-label {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      color: var(--ink);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ─── Anchor Domain Pills ────────────────── */
+    .domain-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1.2rem 0;
+    }
+
+    .domain-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 100px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .domain-pill.identity  { background: var(--terra-light); color: var(--terracotta); border: 1px solid var(--terracotta); }
+    .domain-pill.health    { background: var(--sage-light);  color: var(--sage);        border: 1px solid var(--sage); }
+    .domain-pill.env       { background: var(--sage-light);  color: var(--sage);        border: 1px solid var(--sage); }
+    .domain-pill.econ      { background: var(--gold-light);  color: var(--gold);        border: 1px solid var(--gold); }
+    .domain-pill.justice   { background: var(--slate-light); color: var(--slate);       border: 1px solid var(--slate); }
+
+    /* ─── Developmental Arc Table ─────────────── */
+    .arc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+    }
+
+    .arc-table th {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 0.65rem 0.9rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+
+    .arc-table td {
+      padding: 0.7rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    .arc-table tr:nth-child(even) td { background: var(--parchment); }
+    .arc-table tr:nth-child(odd) td  { background: var(--cream); }
+
+    .arc-table .phase {
+      font-weight: 700;
+      color: var(--terracotta);
+      white-space: nowrap;
+    }
+
+    .arc-table .descriptor {
+      color: var(--muted);
+      font-size: 0.8rem;
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+    /* ─── Status Badges ──────────────────────── */
+    .status-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.4rem 0;
+    }
+
+    @media (max-width: 580px) {
+      .status-grid { grid-template-columns: 1fr; }
+    }
+
+    .status-card {
+      border-radius: 4px;
+      padding: 1.1rem 1.2rem;
+    }
+
+    .status-card.developed {
+      background: var(--sage-light);
+      border: 1px solid var(--sage);
+    }
+
+    .status-card.in-progress {
+      background: var(--gold-light);
+      border: 1px solid var(--gold);
+    }
+
+    .status-card .status-label {
+      font-family: var(--font-sans);
+      font-size: 0.67rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+
+    .status-card.developed .status-label  { color: var(--sage); }
+    .status-card.in-progress .status-label { color: var(--gold); }
+
+    .status-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .status-card ul li {
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      color: var(--ink);
+      line-height: 1.6;
+      padding-left: 1.1rem;
+      position: relative;
+      margin-bottom: 0.2rem;
+    }
+
+    .status-card ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    /* ─── Research Callout ───────────────────── */
+    .research-block {
+      background: var(--parchment);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.4rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .research-block .research-label {
+      font-family: var(--font-sans);
+      font-size: 0.67rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--plum);
+      margin-bottom: 0.7rem;
+    }
+
+    .research-block p {
+      font-family: var(--font-sans);
+      font-size: 0.925rem;
+      color: var(--ink);
+      line-height: 1.72;
+      margin-bottom: 0.75rem;
+    }
+
+    .research-block p:last-child { margin-bottom: 0; }
+
+    /* ─── CTA Section ────────────────────────── */
+    .cta-section {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 3.5rem;
+    }
+
+    .cta-section .cta-label {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .cta-section p {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: rgba(253,250,246,0.75);
+      max-width: 500px;
+      margin: 0 auto 1.8rem;
+      line-height: 1.65;
+    }
+
+    .cta-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      justify-content: center;
+    }
+
+    .cta-link {
+      display: inline-block;
+      padding: 0.6rem 1.4rem;
+      border-radius: 3px;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .cta-link:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .cta-link.primary {
+      background: var(--terracotta);
+      color: var(--cream);
+    }
+
+    .cta-link.secondary {
+      background: transparent;
+      color: var(--parchment);
+      border: 1px solid rgba(253,250,246,0.35);
+    }
+
+    /* ─── Footer / Rights ────────────────────── */
+    .rights {
+      background: var(--parchment);
+      border-top: 1px solid var(--border);
+      padding: 1.4rem 2rem;
+      text-align: center;
+    }
+
+    .rights p {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 680px;
+      margin: 0 auto 0.35rem;
+    }
+
+    .rights p strong { color: var(--ink); }
+
+    /* ─── Utility ────────────────────────────── */
+    .mt-sm { margin-top: 0.75rem; }
+    .mt-md { margin-top: 1.25rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="kindergarten.html">Kindergarten</a>
+    <a href="executive-summary.html" class="active">Overview</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <p class="eyebrow">The Anchored Learner · Framework Overview</p>
+    <h1>Executive Summary</h1>
+    <p class="subhead">A learner-centered curriculum framework for meaningful, coherent, real-world connected learning</p>
+  </header>
+
+  <p class="page-meta">Curriculum Framework · Framework Overview· 2026 · Marline Anderson</p>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- 01 What It Is -->
+    <section class="section" id="what-it-is">
+      <p class="section-number">01 · What the Anchored Learner Is</p>
+      <h2>A Framework for Learning That <em>Connects</em></h2>
+      <div class="section-divider"></div>
+
+      <p class="body-copy">
+        The Anchored Learner is a K–12 learner-centered curriculum framework that integrates
+        literacy, math, science, and social studies around meaningful driving questions.
+        Rooted in learners' communities, identities, and lived experiences, it is designed to
+        make learning more coherent, rigorous, and purposeful for students and teachers alike.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          The Anchored Learner is an <strong>exemplar-based curriculum with localization guidance</strong> —
+          not a scripted curriculum. Lessons demonstrate design logic in one community context,
+          with explicit notes on what is structurally non-negotiable and what is community-specific
+          and adaptable. The framework provides the architecture. Teachers and communities bring it to life.
+        </p>
+      </div>
+    </section>
+
+    <!-- 02 Why It Matters -->
+    <section class="section" id="why-it-matters">
+      <p class="section-number">02 · Why This Work Matters</p>
+      <h2>The Problem This Curriculum <em>Was Built to Solve</em></h2>
+      <div class="section-divider"></div>
+
+      <p class="body-copy">
+        Too often, school feels fragmented. Students move from one subject to the next
+        without a clear sense of connection, relevance, or purpose. Learning can feel
+        disconnected from real life, while teachers are asked to create engaging, responsive
+        instruction without the coherent structures needed to support it.
+      </p>
+
+      <p class="body-copy">
+        The Anchored Learner was created in response to that gap — and in response to something
+        more specific: the persistent marginalization of students whose identities, languages, and
+        communities have too often been absent from what they were asked to learn. When a curriculum
+        ignores who students are and where they come from, it sends a message no teacher intends.
+        This framework is a direct response to that cost.
+      </p>
+    </section>
+
+    <!-- 03 What Makes It Different -->
+    <section class="section" id="what-makes-it-different">
+      <p class="section-number">03 · What Makes It Different</p>
+      <h2>Design Principles That <em>Change How Learning Feels</em></h2>
+      <div class="section-divider"></div>
+
+      <p class="body-copy">
+        The Anchored Learner is learner-centered by design — not by aspiration.
+        Its driving questions are rooted in real issues, local contexts, and the lived
+        experiences of students and families.
+      </p>
+
+      <div class="card-grid">
+        <div class="card">
+          <p class="card-label">Equity by design</p>
+          <p>Culturally responsive instruction is not an add-on. It is built into the driving questions, the community partnerships, the language objectives, and the action projects. It cannot be skipped.</p>
+        </div>
+        <div class="card">
+          <p class="card-label">Community as curriculum</p>
+          <p>The framework provides the architecture. The community — families, neighbors, local experts — provides the content. Every child's community holds knowledge worth learning.</p>
+        </div>
+        <div class="card">
+          <p class="card-label">Multilingual learners as assets</p>
+          <p>Home languages are not treated merely as bridges to English; they are recognized as assets and curriculum resources. WIDA ELD standards are aligned alongside content standards at every level of the framework.</p>
+        </div>
+        <div class="card">
+          <p class="card-label">Learning that culminates in action</p>
+          <p>Every unit ends with a community-facing project that reaches a real audience. Students don't just learn about equity issues — they respond to them.</p>
+        </div>
+        <div class="card">
+          <p class="card-label">Science of Reading aligned</p>
+          <p>Anchored Literacy delivers explicit, systematic phonics instruction daily. The curriculum transforms the context — vocabulary and texts are connected to something real and meaningful.</p>
+        </div>
+        <div class="card">
+          <p class="card-label">Rigorous and coherent</p>
+          <p>When students investigate a shared driving question across disciplines, they encounter greater consistency in vocabulary, purpose, and context. That is instructional coherence by design.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 How It Works -->
+    <section class="section" id="how-it-works">
+      <p class="section-number">04 · How the Framework Works</p>
+      <h2>Five Anchors. One Coherent <em>K–12 Arc.</em></h2>
+      <div class="section-divider"></div>
+
+      <p class="body-copy">
+        The curriculum is organized around five Anchor Domains — broad lenses for examining
+        the world that provide the equity framework and driving-question structure for each unit.
+        Anchor domains do not determine which standards are taught. Grade-level standards
+        determine the content. The anchor provides the lens through which students investigate it.
+      </p>
+
+      <div class="domain-list">
+        <span class="domain-pill identity">🤝 Identity &amp; Community</span>
+        <span class="domain-pill health">💚 Health &amp; Wellbeing</span>
+        <span class="domain-pill env">🌿 Environment &amp; Sustainability</span>
+        <span class="domain-pill econ">💡 Economics &amp; Opportunity</span>
+        <span class="domain-pill justice">⚖️ Justice &amp; Systems</span>
+      </div>
+
+      <p class="body-copy mt-md">
+        The framework also supports learners' academic and developmental growth over time
+        through a four-phase developmental arc that deepens as students grow.
+      </p>
+
+      <table class="arc-table">
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Grades</th>
+            <th>Orientation</th>
+            <th>Central Question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="phase">Wonder &amp; Stewardship</span></td>
+            <td>K–2</td>
+            <td>Personal, sensory, rooted in family and community identity</td>
+            <td><em>"What do I notice? What do I wonder? How do I care for what I love?"</em></td>
+          </tr>
+          <tr>
+            <td><span class="phase">Systems &amp; Impact</span></td>
+            <td>3–5</td>
+            <td>Students zoom out to examine systems shaping their communities</td>
+            <td><em>"Why does this happen? Who is impacted? What systems are at work?"</em></td>
+          </tr>
+          <tr>
+            <td><span class="phase">Inquiry &amp; Analysis</span></td>
+            <td>6–8</td>
+            <td>Analytical tools, historical context, data, and multiple perspectives</td>
+            <td><em>"How did this come to be? What does the evidence show? Where do I stand?"</em></td>
+          </tr>
+          <tr>
+            <td><span class="phase">Innovation &amp; Action</span></td>
+            <td>9–12</td>
+            <td>Students design and implement real solutions with community partners</td>
+            <td><em>"What solution can I design? What action can I take? What change can I lead?"</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 05 Where the Work Stands -->
+    <section class="section" id="where-it-stands">
+      <p class="section-number">05 · Where the Work Stands Now</p>
+      <h2>Kindergarten Is the <em>First Phase in Active Development</em></h2>
+      <div class="section-divider"></div>
+
+      <p class="body-copy">
+  The Anchored Learner is a living curriculum development project. The broader K–12
+  framework has been designed and is publicly presented. Kindergarten is the first
+  grade-level phase in active development, with the year-level arc, launch, units,
+  standards coverage, and selected sample lessons developed for public preview.
+</p>
+
+      <div class="status-grid">
+        <div class="status-card developed">
+          <p class="status-label">Developed</p>
+          <ul>
+            <li>Full K–12 framework, theoretical foundations, scope &amp; sequence, and lesson design architecture</li>
+            <li>Kindergarten year-level arc, including a six-week Launch and Units 1–5</li>
+            <li>Portfolio and competency mastery framework</li>
+            <li>K year-level standards coverage map</li>
+            <li>Sample lessons — Anchored Math (Balanced Plate) available for viewing</li>
+            <li>Professional and family-facing overview documents</li>
+          </ul>
+        </div>
+        <div class="status-card in-progress">
+          <p class="status-label">In Progress</p>
+          <ul>
+            <li>Targeted stakeholder feedback collection</li>
+            <li>Additional sample lessons across Anchored Literacy and Anchored Inquiry</li>
+            <li>Continued curriculum development across grade levels</li>
+            <li>Exploring early pilot opportunities to understand implementation in practice</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 Why It Matters for Schools -->
+    <section class="section" id="why-it-matters-schools">
+      <p class="section-number">06 · Why This Matters for Schools and Learners</p>
+      <h2>Rigor and Relevance. <em>Together, by Design.</em></h2>
+      <div class="section-divider"></div>
+
+      <p class="body-copy">
+        The Anchored Learner supports learner-centered practice without sacrificing academic rigor.
+        It offers a structure for deeper student engagement and authentic application —
+        helping teachers cultivate learning environments that are relevant, meaningful, and coherent.
+      </p>
+
+      <p class="body-copy">
+        By integrating content instruction, language development, community connection, and
+        real-world relevance, culturally responsive instruction is not something teachers must
+        add on. It is built into the curriculum by design. This matters especially for learners
+        who have too often been underserved by traditional schooling — and research consistently
+        shows it strengthens outcomes for all students when it is done well.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          When curriculum is built with the students most often failed by traditional schooling
+          in mind — students of color, multilingual learners, students whose identities and
+          communities have too often been erased — it becomes stronger for everyone.
+        </p>
+      </div>
+    </section>
+
+    <!-- 07 Research -->
+    <section class="section" id="research">
+      <p class="section-number">07 · Grounded in Research and Practice</p>
+      <h2>Evidence-Based. <em>Community-Informed.</em></h2>
+      <div class="section-divider"></div>
+
+      <div class="research-block">
+        <p class="research-label">The Research Foundation</p>
+        <p>
+          The Anchored Learner is grounded in research on culturally responsive teaching
+          (Gay, Ladson-Billings, Paris, Hammond, Yosso, Moll, Muñiz), project-based and
+          inquiry-based learning, multilingual learner responsiveness, and instructional coherence.
+          Research consistently shows that when learning is connected to students' lived
+          experiences, it becomes more meaningful, engaging, and impactful.
+        </p>
+        <p>
+          Studies of project-based learning suggest that integrated learning experiences
+          can improve academic outcomes for all students — with particularly strong benefits
+          for multilingual learners. Lucas Education Research (2021) found that students in
+          PBL classrooms gained significantly more learning, with multilingual learners
+          scoring up to 28 percentage points higher on language proficiency assessments.
+        </p>
+        <p>
+          This framework is also informed by original action research (Anderson, 2025),
+          which found that teachers do not lack commitment to learner-centered instruction.
+          More often, they lack the structural supports that make it possible —
+          including curriculum designed for responsiveness, coherence, and real classroom implementation.
+          The Anchored Learner is a direct response to that finding.
+        </p>
+      </div>
+    </section>
+
+    <!-- 08 What Comes Next -->
+    <section class="section" id="what-comes-next">
+      <p class="section-number">08 · What Comes Next</p>
+      <h2>A Living Framework. <em>Open to the Right Conversations.</em></h2>
+      <div class="section-divider"></div>
+
+      <p class="body-copy">
+        The Anchored Learner is a living framework that will continue to evolve through
+        ongoing refinement, stakeholder feedback, and continued development across grade levels.
+        As the work grows, pilot partnerships are being explored to better understand what
+        implementation looks like in practice and to further strengthen the model.
+      </p>
+
+      <p class="body-copy">
+        If you are an educator, school or district leader, curriculum organization, or
+        researcher whose work connects to what you have read here — I would welcome the
+        conversation.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <p class="cta-label">Explore the Work</p>
+    <h2>Interested in Learning More?</h2>
+    <p>Explore the full framework, view the Kindergarten preview, or get in touch.</p>
+    <div class="cta-links">
+      <a class="cta-link primary" href="index.html">View the Framework</a>
+      <a class="cta-link secondary" href="kindergarten.html">Kindergarten Preview</a>
+      <a class="cta-link secondary" href="contact.html">Get in Touch</a>
+    </div>
+  </div>
+
+  <!-- Rights -->
+  <footer class="rights">
+    <p><strong>© 2026 Marline Anderson. All rights reserved.</strong></p>
+    <p>
+      The Anchored Learner™ framework, including all associated content, models, and materials,
+      is the intellectual property of Marline Anderson. This work may not be reproduced,
+      distributed, adapted, or used without prior written permission.
+    </p>
+    <p>For questions about use, collaboration, feedback, or general interest, please email contact@theanchoredlearner.com</p>
+  </footer>
+
+</body>
+</html>
