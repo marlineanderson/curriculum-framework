@@ -52,23 +52,26 @@
       z-index: 100;
     }
 
-    nav a {
-      color: var(--parchment);
-      text-decoration: none;
-      font-family: var(--font-sans);
-      font-size: 0.875rem;
-      letter-spacing: 0.03em;
-      opacity: 0.85;
-      transition: opacity 0.2s;
-    }
+  nav a {
+  color: var(--parchment);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  letter-spacing: 0.03em;
+  opacity: 0.85;
+  transition: opacity 0.2s, color 0.2s;
+}
 
-    nav a:hover { opacity: 1; }
+nav a:hover {
+  color: var(--gold);
+  opacity: 1;
+}
 
-    nav a.active {
-      color: var(--terracotta);
-      opacity: 1;
-      font-weight: 600;
-    }
+nav a.active {
+  color: var(--terracotta);
+  opacity: 1;
+  font-weight: 600;
+}
 
     /* ─── Hero / Page Header ─────────────────── */
     .page-header {
