@@ -326,7 +326,47 @@ body {
 .back-cover p { font-size: 1rem; line-height: 1.85; color: rgba(253,250,246,0.8); max-width: 580px; margin-bottom: 16px; }
 .back-divider { width: 48px; height: 2px; background: rgba(253,250,246,0.4); margin: 40px 0; }
 .back-author { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: rgba(253,250,246,0.7); }
- 
+
+.design-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 36px;
+  max-width: 900px;
+}
+
+.design-flow-step {
+  padding: 12px 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--cream);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.design-flow-arrow {
+  font-size: 1.1rem;
+  color: var(--terracotta);
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .design-flow {
+    gap: 10px;
+  }
+
+  .design-flow-arrow {
+    display: none;
+  }
+
+  .design-flow-step {
+    width: 100%;
+  }
+}
+  
 @media (max-width: 900px) {
   .section, .toc, .back-cover { padding-left: 6vw; padding-right: 6vw; }
   .cover { padding: 60px 6vw; }
@@ -425,7 +465,7 @@ body {
     <a class="toc-item" href="#s11"><span class="toc-num">11</span><span class="toc-title">Multilingual Learner Framework</span></a>
     <a class="toc-item" href="#s12"><span class="toc-num">12</span><span class="toc-title">Universal Design for Learning</span></a>
     <a class="toc-item" href="#s13"><span class="toc-num">13</span><span class="toc-title">Portrait of the Anchored Learner</span></a>
-    <a class="toc-item" href="#s14"><span class="toc-num">14</span><span class="toc-title">The Planning Process</span></a>
+    <a class="toc-item" href="#s14"><span class="toc-num">14</span><span class="toc-title">From Vision to Unit Design</span></a>
     <a class="toc-item" href="#s15"><span class="toc-num">15</span><span class="toc-title">Localization Guidance</span></a>
     <a class="toc-item" href="#s16"><span class="toc-num">16</span><span class="toc-title">A Note on What This Is</span></a>
   </div>
@@ -1451,82 +1491,42 @@ body {
   </table>
 </div>
  
-<!-- 14: PLANNING PROCESS -->
+<!-- 14: FROM VISION TO UNIT DESIGN -->
 <div class="section" id="s14">
   <div class="section-header">
     <div class="section-num">14</div>
     <div class="section-titles">
-      <span class="section-label">The Planning Process</span>
-      <h2>Designing Units:<br><em>A Community-First Process</em></h2>
+      <span class="section-label">From Vision to Unit Design</span>
+      <h2>Turning the framework into <br><em>coherent curriculum</em></h2>
     </div>
   </div>
-  <p class="body-text">The Anchored Learner provides fully developed units that teachers can use directly and adapt to their local context. Research shows that structural barriers — not motivational ones — are what prevent teachers from teaching responsively. Teachers should not have to build from scratch. They need a well-designed architecture to inhabit and make their own.</p>
-  <p class="body-text">For teachers and curriculum coordinators adapting units or designing new ones, the following process guides unit design from authentic community context through to standards alignment — in that order. Meaning first. Rigor confirmed. This is a <em>unit design</em> process: the output is a complete unit arc with a driving question, project experience, and unit-level objectives. Lesson-level planning — including individual lesson objectives — happens downstream, once the unit is designed. Steps 4 and 6 are MLL-specific required steps, not optional add-ons.</p>
-  <div class="template-steps">
-    <div class="template-step">
-      <div class="step-num-block"><span>1</span></div>
-      <div class="step-content">
-        <div class="step-title">Identify the Authentic Context</div>
-        <div class="step-desc">Begin with the anchor domain and the real local or global equity issue that will make learning meaningful. What is happening in this community that students should understand and engage with? This question — not a standard — is the starting point. <em>For student-generated units:</em> this step begins differently — with listening. Rather than selecting an anchor first, the teacher observes and listens to what students are genuinely curious about or troubled by. The anchor domain may emerge from that conversation, or it may not. Either way, the inquiry belongs to the students and the process follows from there.</div>
-        <div class="step-fields"><span class="field-tag">Anchor Domain</span><span class="field-tag">Local Equity Issue</span><span class="field-tag">Why This Matters Here</span><span class="field-tag">Working Project Title</span></div>
-      </div>
-    </div>
-    <div class="template-step">
-      <div class="step-num-block"><span>2</span></div>
-      <div class="step-content">
-        <div class="step-title">Craft the Driving Question</div>
-        <div class="step-desc">Write an open-ended question rooted in the authentic context — community-connected and genuinely investigable by students at this phase. A teacher-facing version and a student-facing version are both useful tools; however, if one question does both jobs well, that is the stronger design. The driving question shapes everything that follows.</div>
-        <div class="step-fields"><span class="field-tag">Teacher-Facing Question</span><span class="field-tag">Student-Facing Question</span><span class="field-tag">Sub-Questions by Subject</span></div>
-      </div>
-    </div>
-    <div class="template-step">
-      <div class="step-num-block"><span>3</span></div>
-      <div class="step-content">
-        <div class="step-title">Design the Project Experience &amp; Community Engagement</div>
-        <div class="step-desc">Sketch the weekly arc — themes, big ideas, and key experiences for each of the six weeks — before finalizing the project. The right project grows out of the learning arc, not the other way around. Once the arc is clear, identify the real-world product students will create, the community partners who will co-teach and receive the work, and the core competencies being developed. Community is not an add-on — it is designed here, alongside the project, because who the audience is shapes what the project becomes. The action project should be singular and feasible: generate multiple options during planning, then choose one. For K–2, one whole-class project is the developmentally appropriate norm — student choice operates within that project's form and format, not across multiple competing projects. The exhibition is a celebration of the whole community's contribution across the full unit, not just the students' final product. For K–2, identify 2–3 possible product options to bring to students as guided choices. For grades 3 and up, students take increasing ownership of product selection.</div>
-        <div class="step-fields"><span class="field-tag">Weekly Arc &amp; Themes</span><span class="field-tag">Project Summary</span><span class="field-tag">Core Competencies</span><span class="field-tag">Final Product / Exhibition</span><span class="field-tag">Community Partners</span><span class="field-tag">Partner Roles</span><span class="field-tag mll">Multilingual Community Connections</span></div>
-      </div>
-    </div>
-    <div class="template-step">
-      <div class="step-num-block"><span>3a</span></div>
-      <div class="step-content" style="background:var(--gold-light);border-left:3px solid var(--gold);">
-        <div class="step-title">Build the Weekly Arc Planning Chart</div>
-        <div class="step-desc">Before writing lesson plans, complete a weekly arc chart — one row per week. This is the required middle layer between the unit arc and individual lessons. Suggested columns: Week Theme · Big Idea / Wonder Question · Key Activities · Interdisciplinary Connections · Community Partner · Possible Texts · Rough Standards Connections. Text selection should be evaluated against both the weekly theme and the unit anchor domain — a text can be culturally rich but still be the wrong fit for a specific unit's inquiry. This chart is the foundation from which all lesson planning flows.</div>
-        <div class="step-fields"><span class="field-tag">Week Theme</span><span class="field-tag">Big Idea / Wonder Question</span><span class="field-tag">Key Activities</span><span class="field-tag">Interdisciplinary Connections</span><span class="field-tag">Community Partner</span><span class="field-tag">Possible Texts</span><span class="field-tag">Rough Standards</span></div>
-      </div>
-    </div>
-    <div class="template-step">
-      <div class="step-num-block mll-step"><span>4</span></div>
-      <div class="step-content mll-step">
-        <div class="step-title">Write Unit-Level Content Objectives AND Language Objectives</div>
-        <div class="step-desc">Now that the driving question and project are defined, write the unit-level objectives — what students will know, be able to do, and be able to say by the end of the unit. Unit-level objectives are written for the teacher — precise and standards-informed. Student-facing "I can" statements are written at the lesson level, not here. Content and language objectives carry equal weight. Language objectives are aligned to WIDA ELD Standards and specify the language function, academic language forms, and proficiency-level differentiation across levels 1–5.</div>
-        <div class="step-fields"><span class="field-tag mll">Unit Content Objective</span><span class="field-tag mll">Language Function</span><span class="field-tag mll">Language Form / Vocabulary</span><span class="field-tag mll">WIDA ELD Standard(s)</span><span class="field-tag mll">Proficiency Differentiation (Levels 1–5)</span></div>
-      </div>
-    </div>
-    <div class="template-step">
-      <div class="step-num-block"><span>5</span></div>
-      <div class="step-content">
-        <div class="step-title">Map Standards Across Disciplines</div>
-        <div class="step-desc">Identify which content standards and WIDA ELD standards the unit naturally addresses. Standards are mapped after the learning is designed — they emerge from authentic inquiry, not the other way around. Focus on genuine alignment; do not force coverage. Not every standard in a content area needs to map to every unit — standards are covered across the full year across multiple units. The goal is genuine alignment within each unit, not exhaustive coverage in each one. <strong>A note on state standards:</strong> Unit plans cite NC Standard Course of Study (NC SCoS) as the primary state standards reference alongside national frameworks (CCSS, NGSS). Teachers in other states should substitute their own state standards. All NC SCoS citations should be verified at <em>ncpublicschools.gov</em> as state standards are subject to revision.</div>
-        <div class="step-fields"><span class="field-tag">Science / NC SCoS</span><span class="field-tag">ELA / Literacy</span><span class="field-tag">Math</span><span class="field-tag">Social Studies</span><span class="field-tag">Arts / Technology</span><span class="field-tag mll">WIDA ELD Standards</span></div>
-      </div>
-    </div>
-    <div class="template-step">
-      <div class="step-num-block mll-step"><span>6</span></div>
-      <div class="step-content mll-step">
-        <div class="step-title">Select and Embed MLL Scaffolds</div>
-        <div class="step-desc">From the scaffold menu, select supports to build into unit design — not offered only as interventions after the fact. Consider all four language domains. Identify explicitly where home language and non-dominant language varieties will be welcomed and activated as assets throughout the unit. Multiple modes of expression should be specified by design in the action project — not added afterward as UDL accommodations. Each expression option should be equally valued and equally visible in the exhibition.</div>
-        <div class="step-fields"><span class="field-tag mll">Speaking &amp; Listening Scaffolds</span><span class="field-tag mll">Reading Scaffolds</span><span class="field-tag mll">Writing Scaffolds</span><span class="field-tag mll">Content Access Scaffolds</span><span class="field-tag mll">Linguistic Capital Opportunities</span><span class="field-tag mll">Expression Modes (by design)</span></div>
-      </div>
-    </div>
-    <div class="template-step">
-      <div class="step-num-block"><span>7</span></div>
-      <div class="step-content">
-        <div class="step-title">Alignment &amp; Feasibility Check</div>
-        <div class="step-desc">Verify that key content standards and WIDA ELD standards are genuinely represented, the project is singular and feasible within the available time and resources, and both unit-level objectives are measurable. Final check: can every learner in this classroom — including every multilingual learner — access and demonstrate their learning in this unit? Is the action project connected back to all community partners from across the unit, not just the final week?</div>
-        <div class="step-fields"><span class="field-tag">Content Standards</span><span class="field-tag mll">WIDA ELD Standards</span><span class="field-tag">Community Authenticity</span><span class="field-tag mll">MLL Access &amp; Representation</span><span class="field-tag">Time &amp; Resources</span><span class="field-tag">Project Feasibility</span></div>
-      </div>
-    </div>
+
+  <p class="body-text">
+    The Anchored Learner is designed to move from vision into curriculum with coherence and intention. It is not a collection of disconnected ideas, but a framework in which each part is meant to remain in relationship to the whole.
+  </p>
+
+  <p class="body-text">
+    Each unit is shaped by the framework’s core commitments: learner-centeredness, cultural responsiveness, authentic integration, developmental appropriateness, multilingual learner access, and meaningful action. Rather than treating these as separate considerations, the design process holds them together from the beginning so that learning feels rigorous, connected, and worthy of the young people it is meant to serve.
+  </p>
+
+  <p class="body-text">
+    In practice, that means unit design begins with several elements in view at once: the driving question, the anchor domain, the developmental phase, standards across disciplines, language development, opportunities for localization, and the kind of real-world action the learning might make possible. These elements are developed in relationship rather than layered on afterward.
+  </p>
+
+  <p class="body-text">
+    This is also how the framework seeks to balance coherence with adaptability. The underlying architecture remains consistent, while the specific texts, materials, examples, and community connections are meant to reflect the learners and places each classroom serves.
+  </p>
+
+  <div class="design-flow">
+    <div class="design-flow-step">Driving Question</div>
+    <div class="design-flow-arrow">→</div>
+    <div class="design-flow-step">Integrated Learning &amp; Standards</div>
+    <div class="design-flow-arrow">→</div>
+    <div class="design-flow-step">Community Context</div>
+    <div class="design-flow-arrow">→</div>
+    <div class="design-flow-step">Learning Arc</div>
+    <div class="design-flow-arrow">→</div>
+    <div class="design-flow-step">Action</div>
   </div>
 </div>
  
