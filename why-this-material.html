@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anchored Inquiry · Why This Material? · The Anchored Learner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1410;
+  --parchment: #F7F3ED;
+  --cream: #FDFAF6;
+  --terracotta: #B85C38;
+  --terracotta-light: #F2E0D8;
+  --gold: #C9953A;
+  --gold-light: #F5EDD8;
+  --sage: #5C7A5F;
+  --sage-light: #DFE9E0;
+  --slate: #4A6278;
+  --slate-light: #DCE5ED;
+  --plum: #6B4E71;
+  --plum-light: #EDE3EF;
+  --muted: #7A6E65;
+  --border: rgba(26,20,16,0.1);
+  --block-color: #5C7A5F;
+  --block-light: #DFE9E0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+/* ── NAV ── */
+.top-nav {
+  background: var(--ink);
+  padding: 12px 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--cream);
+  font-style: italic;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-block-tag {
+  background: var(--sage);
+  color: var(--cream);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  padding: 64px 8vw 56px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -150px; right: -150px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(92,122,95,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(92,122,95,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.hero-eyebrow-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.hero-eyebrow-divider {
+  width: 32px;
+  height: 1px;
+  background: rgba(92,122,95,0.4);
+}
+.lesson-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 300;
+  color: rgba(253,250,246,0.06);
+  line-height: 1;
+  position: absolute;
+  right: 8vw;
+  top: 40px;
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--cream);
+  max-width: 680px;
+  margin-bottom: 16px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: #8FBF93;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.meta-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(253,250,246,0.15);
+  color: rgba(253,250,246,0.65);
+}
+.meta-tag.highlight {
+  background: var(--sage);
+  border-color: var(--sage);
+  color: var(--cream);
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(253,250,246,0.75);
+}
+.back-link:hover { color: var(--cream); }
+.hero-intro {
+  max-width: 760px;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: rgba(253,250,246,0.88);
+  line-height: 1.7;
+}
+
+/* ── LAYOUT ── */
+.content-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+/* ── CONTEXT STRIP ── */
+.context-strip {
+  background: var(--sage);
+  padding: 24px 8vw;
+}
+.context-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+.context-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.5);
+  margin-bottom: 4px;
+}
+.context-value {
+  font-size: 0.88rem;
+  color: var(--cream);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ── MAIN GRID ── */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  padding: 48px 0 80px;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.sidebar-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sidebar-card-header {
+  padding: 14px 20px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.sidebar-card-header.sage       { background: var(--sage);       color: var(--cream); }
+.sidebar-card-header.gold       { background: var(--gold);       color: var(--ink); }
+.sidebar-card-header.terracotta { background: var(--terracotta); color: var(--cream); }
+.sidebar-card-header.plum       { background: var(--plum);       color: var(--cream); }
+.sidebar-card-header.slate      { background: var(--slate);      color: var(--cream); }
+.sidebar-card-body {
+  padding: 16px 20px;
+}
+.sidebar-card-body p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #3D3028;
+  margin-bottom: 8px;
+}
+.sidebar-card-body p:last-child { margin-bottom: 0; }
+.sidebar-card-body strong {
+  font-weight: 500;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.standards-list {
+  list-style: none;
+  padding: 0;
+}
+.standards-list li {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #3D3028;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.standards-list li:last-child { border-bottom: none; }
+.std-code {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--sage);
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.materials-list {
+  list-style: none;
+  padding: 0;
+}
+.materials-list li {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #3D3028;
+  padding: 5px 0 5px 16px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.materials-list li:last-child { border-bottom: none; }
+.materials-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--sage);
+  font-size: 0.7rem;
+  top: 7px;
+}
+
+.sentence-frame {
+  background: var(--sage-light);
+  border-left: 3px solid var(--sage);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--sage);
+  line-height: 1.6;
+}
+
+/* ── OBJECTIVES ── */
+.objectives-section { margin-bottom: 40px; }
+.section-eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.objective-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.objective-card-label {
+  padding: 10px 18px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+.objective-card-label.content  { background: var(--sage-light);  color: var(--sage); }
+.objective-card-label.language { background: var(--plum-light);  color: var(--plum); }
+.objective-card-label.kid      { background: var(--gold-light);  color: #7A5C1A; }
+.objective-card-body {
+  padding: 16px 18px;
+  background: var(--cream);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #3D3028;
+}
+.objective-card-body em { font-style: italic; color: var(--ink); }
+.objective-card-body .teacher-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ── PHASE BLOCKS ── */
+.phases-section { margin-bottom: 0; }
+
+.phase-block {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.phase-header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  min-height: 64px;
+}
+.phase-color-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 20px;
+}
+.phase-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.2;
+}
+.phase-meta {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(253,250,246,0.6);
+  margin-top: 2px;
+}
+.phase-header-right {
+  background: var(--parchment);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid var(--border);
+}
+.phase-summary {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+.phase-body {
+  background: var(--cream);
+  padding: 24px 28px;
+  border-top: 1px solid var(--border);
+}
+.phase-step {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.phase-step:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.phase-step-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.phase-step p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #3D3028;
+  margin-bottom: 8px;
+}
+.phase-step p:last-child { margin-bottom: 0; }
+
+.teacher-prompt {
+  background: var(--gold-light);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: #5A4010;
+  line-height: 1.65;
+  margin: 8px 0;
+}
+
+.student-says {
+  background: var(--sage-light);
+  border-left: 3px solid var(--sage);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  color: #2A3A28;
+  line-height: 1.65;
+  margin: 8px 0;
+}
+.student-says-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 4px;
+}
+
+.mll-note {
+  background: var(--plum-light);
+  border-left: 3px solid var(--plum);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.mll-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 6px;
+}
+.mll-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #3D2840;
+  margin-bottom: 6px;
+}
+.mll-note p:last-child { margin-bottom: 0; }
+
+.assessment-note {
+  background: var(--sage-light);
+  border-left: 3px solid var(--sage);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.assessment-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 6px;
+}
+.assessment-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #2A3A28;
+  margin-bottom: 6px;
+}
+.assessment-note p:last-child { margin-bottom: 0; }
+
+.localization-note {
+  background: var(--terracotta-light);
+  border-left: 3px solid var(--terracotta);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.localization-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 6px;
+}
+.localization-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #4A2010;
+  margin-bottom: 6px;
+}
+.localization-note p:last-child { margin-bottom: 0; }
+
+/* Phase colors — sage-primary for science */
+.phase-connect   .phase-color-block { background: var(--plum); }
+.phase-discover  .phase-color-block { background: var(--sage); }
+.phase-makesense .phase-color-block { background: var(--slate); }
+.phase-apply     .phase-color-block { background: var(--terracotta); }
+.phase-reflect   .phase-color-block { background: var(--gold); }
+.phase-reflect .phase-name { color: var(--ink); }
+.phase-reflect .phase-meta { color: rgba(26,20,16,0.5); }
+
+.phase-connect   .phase-step-label { color: var(--plum); }
+.phase-discover  .phase-step-label { color: var(--sage); }
+.phase-makesense .phase-step-label { color: var(--slate); }
+.phase-apply     .phase-step-label { color: var(--terracotta); }
+.phase-reflect   .phase-step-label { color: #8B6820; }
+
+/* ── PROGRESSION BAR ── */
+.progression-bar {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+.progression-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.progression-days {
+  display: flex;
+  gap: 4px;
+}
+.prog-day {
+  flex: 1;
+  padding: 8px 6px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--muted);
+  background: var(--parchment);
+  border: 1px solid var(--border);
+}
+.prog-day.active {
+  background: var(--sage);
+  color: var(--cream);
+  border-color: var(--sage);
+}
+.prog-day-label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+.prog-day-desc {
+  font-size: 0.65rem;
+  opacity: 0.8;
+}
+
+/* ── TIMING OVERVIEW ── */
+.timing-overview {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.timing-block {
+  flex: 1;
+  padding: 14px 10px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  background: var(--cream);
+}
+.timing-block:last-child { border-right: none; }
+.timing-duration {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.timing-phase {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.timing-location {
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.timing-block.connect   .timing-duration { color: var(--plum); }
+.timing-block.discover  .timing-duration { color: var(--sage); }
+.timing-block.makesense .timing-duration { color: var(--slate); }
+.timing-block.apply     .timing-duration { color: var(--terracotta); }
+.timing-block.reflect   .timing-duration { color: #8B6820; }
+
+/* ── OBJECT INVESTIGATION LIST ── */
+.object-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+.object-item {
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: grid;
+  grid-template-columns: 110px 1fr 1fr;
+  gap: 10px;
+  align-items: start;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+.object-name {
+  font-weight: 600;
+  color: var(--ink);
+}
+.object-material {
+  color: var(--sage);
+  font-weight: 500;
+}
+.object-why {
+  color: var(--muted);
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .object-item { grid-template-columns: 1fr; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .sidebar { order: -1; }
+  .hero { padding: 48px 6vw; }
+  .lesson-number { display: none; }
+  .phase-header { grid-template-columns: 140px 1fr; }
+  .progression-days { flex-wrap: wrap; }
+  .prog-day { min-width: calc(50% - 4px); }
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  padding: 64px 8vw;
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+}
+.footer-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+.footer-content { max-width: 720px; }
+.footer-content p {
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.footer-content p strong { font-weight: 500; color: var(--ink); }
+.footer-content p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <a href="index.html" class="nav-brand">The Anchored Learner</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="kindergarten.html">Kindergarten</a>
+    <a href="contact.html">Contact</a>
+    <span class="nav-block-tag">Featured Lesson</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <a href="kindergarten.html" class="back-link">← Back to Kindergarten</a>
+  <div class="lesson-number">K</div>
+  <div class="hero-eyebrow">
+    <span class="hero-eyebrow-text">Featured Lesson Preview</span>
+    <div class="hero-eyebrow-divider"></div>
+    <span class="hero-eyebrow-text">Anchored Inquiry · Science</span>
+  </div>
+  <h1>Why This Material? —<br><em>Investigating Everyday Objects</em><br><em>and the Materials They're Made From</em></h1>
+  <div class="hero-meta">
+    <span class="meta-tag highlight">Anchored Inquiry</span>
+    <span class="meta-tag">Unit 4 · Economics &amp; Opportunity</span>
+    <span class="meta-tag">Week 2 · Wednesday</span>
+    <span class="meta-tag">50 minutes</span>
+    <span class="meta-tag">~Week 26 of the Year</span>
+    <span class="meta-tag">Wonder &amp; Stewardship Phase</span>
+  </div>
+  <p class="hero-intro">
+    This featured lesson shows how real science, hands-on investigation, and authentic reasoning live in the same kindergarten classroom. Students examine familiar everyday objects, identify what they are made from, describe the properties of those materials, and explain why those materials were chosen — building toward the economic understanding that goods are made with intention.
+  </p>
+</div>
+
+<!-- CONTEXT STRIP -->
+<div class="context-strip">
+  <div class="context-inner">
+    <div class="context-item">
+      <div class="context-label">Weekly Theme</div>
+      <div class="context-value">"What are things made of — and why does it matter what something is made from?"</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Building On</div>
+      <div class="context-value">Tuesday's materials investigation stations — students explored 6 materials, recorded properties in material journals</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Building Toward</div>
+      <div class="context-value">Thursday's design challenge · Friday's connection to community goods and economics</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Action Project</div>
+      <div class="context-value">Community Market — Week 6 Exhibition</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content-wrap">
+  <div class="main-grid">
+
+    <!-- LEFT: LESSON CONTENT -->
+    <div class="lesson-content">
+
+      <!-- Where We Are -->
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin:40px 0 32px;">
+        <div class="section-eyebrow" style="margin-bottom:12px;">Where We Are</div>
+        <p style="font-size:0.92rem;line-height:1.85;color:#3D3028;margin-bottom:12px;">Students are in Week 2 of Unit 4 — approximately Week 26 of the school year. On Monday they encountered the week's phenomenon: a paper bag and a plastic bag doing the same job from different materials. On Tuesday they rotated through investigation stations examining real materials — wood, metal, cloth, clay, paper, rubber — recording observable properties in their material journals.</p>
+        <p style="font-size:0.88rem;line-height:1.8;color:var(--muted);font-style:italic;">Today students apply that understanding to familiar everyday objects — moving from <em>what is this material like?</em> to <em>why was this material chosen for this purpose?</em> The reasoning deepens from PS.K.1.1 (classifying by properties) to PS.K.1.2 (understanding material choice). Same week, more abstract. This is the progression.</p>
+      </div>
+
+      <!-- Weekly Progression -->
+      <div class="progression-bar">
+        <div class="progression-label">Weekly Science Progression · Unit 4 Week 2</div>
+        <div class="progression-days">
+          <div class="prog-day">
+            <span class="prog-day-label">Monday</span>
+            <span class="prog-day-desc">Phenomenon launch — two bags, same job, different materials · PS.K.1.1</span>
+          </div>
+          <div class="prog-day">
+            <span class="prog-day-label">Tuesday</span>
+            <span class="prog-day-desc">Investigation stations — 6 materials, record properties in journals · PS.K.1.1</span>
+          </div>
+          <div class="prog-day active">
+            <span class="prog-day-label">Wednesday ←</span>
+            <span class="prog-day-desc">Why This Material? — everyday objects, explaining material choice · PS.K.1.1 + PS.K.1.2</span>
+          </div>
+          <div class="prog-day">
+            <span class="prog-day-label">Thursday</span>
+            <span class="prog-day-desc">Design challenge — choose a material, justify the choice · PS.K.1.2</span>
+          </div>
+          <div class="prog-day">
+            <span class="prog-day-label">Friday</span>
+            <span class="prog-day-desc">Goods in our community are made from materials — connect to economics · PS.K.1.2 + K.E.1.2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timing Overview -->
+      <div class="timing-overview">
+        <div class="timing-block connect">
+          <div class="timing-duration">5 min</div>
+          <div class="timing-phase">Connect</div>
+        </div>
+        <div class="timing-block discover">
+          <div class="timing-duration">15 min</div>
+          <div class="timing-phase">Discover</div>
+        </div>
+        <div class="timing-block makesense">
+          <div class="timing-duration">12 min</div>
+          <div class="timing-phase">Make Sense</div>
+        </div>
+        <div class="timing-block apply">
+          <div class="timing-duration">13 min</div>
+          <div class="timing-phase">Apply</div>
+        </div>
+        <div class="timing-block reflect">
+          <div class="timing-duration">5 min</div>
+          <div class="timing-phase">Reflect</div>
+        </div>
+      </div>
+
+      <!-- Objectives -->
+      <div class="objectives-section">
+        <div class="section-eyebrow">Objectives</div>
+
+        <div class="objective-card">
+          <div class="objective-card-label content">Content Objective</div>
+          <div class="objective-card-body">
+            Students will <strong>identify</strong> what familiar everyday objects are made from, <strong>describe</strong> the physical properties of those materials, and <strong>explain</strong> why those materials make sense for the object's purpose.
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="objective-card-label language">Language Objective</div>
+          <div class="objective-card-body">
+            Students will <strong>explain</strong> their reasoning about material choice using property and materials vocabulary — from pointing and using sentence frames with teacher support <em>(WIDA Levels 1–2)</em>, to structured oral explanations using <em>"This ___ is made of ___ because ___"</em> with a partner <em>(Levels 3–4)</em>, to independently explaining material choice using two property words <em>(Level 5)</em>.
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="objective-card-label kid">Kid-Friendly Objective</div>
+          <div class="objective-card-body">
+            <em>"Today I will <strong>identify</strong> what everyday objects are made from and explain WHY that material makes sense — using what I know about properties. I'll know I've got it when I can tell my partner: <strong>This ___ is made of ___ because ___.</strong>"</em>
+            <p class="teacher-note">Teacher explanation: "Properties are words that describe what a material is like — hard, soft, bendy, smooth, rough, waterproof. When we explain <em>why</em> a material was chosen, we use those property words as reasons."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase Blocks -->
+      <div class="phases-section">
+        <div class="section-eyebrow">Lesson Plan · Connect · Discover · Make Sense · Apply · Reflect</div>
+
+        <!-- CONNECT -->
+        <div class="phase-block phase-connect">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Connect</div>
+              <div class="phase-meta">5 min · Rug · Cultural Ignition</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Activate prior knowledge from Tuesday's investigation stations. Establish today's scientific purpose. Read kid-friendly objective.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+
+            <div class="phase-step">
+              <div class="phase-step-label">Return to the Phenomenon</div>
+              <p>Teacher holds up Tuesday's paper bag and plastic bag — still posted or available as physical objects. Points to the material journals students completed yesterday.</p>
+              <div class="teacher-prompt">"Yesterday we investigated materials — we touched them, described them, and recorded their properties. Who remembers something they found out? Turn and tell your partner one property word you used."</div>
+              <p>30 seconds partner talk. 2–3 students share. Teacher celebrates property vocabulary that surfaces — <em>hard, soft, bendy, rough, smooth, waterproof.</em></p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Bridge to Today</div>
+              <div class="teacher-prompt">"We figured out what materials are like. Today we're going to figure out something harder — <em>why</em> people chose those materials to make things. A rain boot is made of rubber. Why rubber? A cooking pot is made of metal. Why metal? We're going to be material detectives today."</div>
+              <p>Teacher reads kid-friendly objective aloud. Brief explanation of <em>properties as reasons.</em></p>
+            </div>
+
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>The material journals from Tuesday are a shared visual reference — multilingual learners can access today's context through their own drawings before English processing begins. Activating prior visual work reduces cognitive load at the lesson's most critical moment: earning attention before new content arrives.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- DISCOVER -->
+        <div class="phase-block phase-discover">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Discover</div>
+              <div class="phase-meta">15 min · Rug · Explicit Modeling</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Teacher models the three-question detective process using two everyday objects. Students watch, respond, and begin internalizing the structure before applying it themselves.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+
+            <div class="phase-step">
+              <div class="phase-step-label">Setup — The Object Collection</div>
+              <p>Teacher places six familiar everyday objects on the rug where students can see them clearly. Objects represent a range of materials and community purposes.</p>
+              <div class="object-list">
+                <div class="object-item">
+                  <span class="object-name">Rain Boot</span>
+                  <span class="object-material">Made of: Rubber · waterproof, flexible, smooth</span>
+                  <span class="object-why">"Rubber keeps water out — water slides right off."</span>
+                </div>
+                <div class="object-item">
+                  <span class="object-name">Cooking Pot</span>
+                  <span class="object-material">Made of: Metal · hard, strong, conducts heat</span>
+                  <span class="object-why">"Metal is strong and can get very hot without melting."</span>
+                </div>
+                <div class="object-item">
+                  <span class="object-name">T-Shirt</span>
+                  <span class="object-material">Made of: Cloth · soft, flexible, absorbs water</span>
+                  <span class="object-why">"Cloth is soft and bendy — comfortable against skin."</span>
+                </div>
+                <div class="object-item">
+                  <span class="object-name">Wooden Spoon</span>
+                  <span class="object-material">Made of: Wood · hard, smooth, does not conduct heat well</span>
+                  <span class="object-why">"Wood doesn't get hot when you stir — safe to hold."</span>
+                </div>
+                <div class="object-item">
+                  <span class="object-name">Paper Cup</span>
+                  <span class="object-material">Made of: Paper (coated) · light, flexible</span>
+                  <span class="object-why">"Paper is light and easy to carry. Coated paper holds liquid briefly."</span>
+                </div>
+                <div class="object-item">
+                  <span class="object-name">Brick</span>
+                  <span class="object-material">Made of: Clay (fired) · very hard, heavy, durable, rough</span>
+                  <span class="object-why">"Brick is very hard and heavy — strong enough to build walls that last."</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Teacher Models — Rain Boot</div>
+              <p>Teacher picks up the rain boot. Thinks aloud through three questions, modeling the detective process explicitly.</p>
+              <div class="teacher-prompt">"My first question is: what is this made of? I look at it, I touch it — it feels smooth and a little flexible. I think this is rubber."</div>
+              <div class="teacher-prompt">"My second question: what are rubber's properties? I know from yesterday — rubber is <em>waterproof, flexible,</em> and <em>smooth.</em> Water slides right off."</div>
+              <div class="teacher-prompt">"My third question — the hardest one: <em>why</em> did someone choose rubber to make a boot? A boot is for keeping feet dry in the rain. If it's waterproof, water can't get in. That's why — rubber was chosen because it's waterproof."</div>
+              <p>Teacher writes on chart paper: <em>"The rain boot is made of rubber because rubber is waterproof."</em></p>
+              <p>Points to the sentence frame card: <em>"This ___ is made of ___ because ___."</em></p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Guided Practice — Cooking Pot</div>
+              <p>Teacher picks up the cooking pot. This time, students help at each step.</p>
+              <div class="teacher-prompt">"Let's figure this one out together. First question — what is this made of? What do you think? Turn and tell."</div>
+              <p>30 seconds. Students share. Teacher confirms: metal.</p>
+              <div class="teacher-prompt">"What do we know about metal from Tuesday? What are metal's properties?"</div>
+              <p>Students contribute: <em>hard, strong, heavy, gets hot.</em> Teacher adds to chart.</p>
+              <div class="teacher-prompt">"Now the hardest question. Why metal for a cooking pot? It has to sit on a stove, get very hot, and hold food without melting or breaking. Could we make this pot out of paper? Out of cloth? Why not?"</div>
+              <div class="student-says">
+                <div class="student-says-label">Student thinking</div>
+                "Paper would burn." &nbsp;·&nbsp; "Cloth would melt." &nbsp;·&nbsp; "Metal stays strong when it's hot."
+              </div>
+              <p>Teacher writes: <em>"The cooking pot is made of metal because metal is strong and can get very hot."</em></p>
+            </div>
+
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>The three-question sequence — what is it made of? what are its properties? why was it chosen? — is a predictable, repeating structure students can internalize and apply regardless of English proficiency. Students at Levels 1–2 can point to a material in their journal, then point to a property word card, then gesture agreement or disagreement with a proposed reason. The structure provides access; the repetition builds confidence.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- MAKE SENSE -->
+        <div class="phase-block phase-makesense">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Make Sense</div>
+              <div class="phase-meta">12 min · Rug → Partners · Active Processing</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Students process the concept through partner investigation and a deliberate contradiction — the wrong material for the job — that deepens reasoning about which property matters most.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+
+            <div class="phase-step">
+              <div class="phase-step-label">Partner Investigation — T-Shirt and Wooden Spoon</div>
+              <p>Teacher places the t-shirt and wooden spoon in the center of the rug. Partners work through the three detective questions — one object each, then share.</p>
+              <div class="teacher-prompt">"With your partner — work through the three detective questions for your object. What is it made of? What are that material's properties? Why was that material chosen? Use the sentence frame when you share."</div>
+              <p>3 minutes partner investigation. Teacher circulates, listening for property vocabulary and causal reasoning. Notes which students are using <em>because</em> and which are stopping at description.</p>
+              <p>Partners share: 2–3 pairs present to the group. Teacher asks: "Does anyone want to add a reason? Is there another property that matters here?"</p>
+              <div class="student-says">
+                <div class="student-says-label">Sample student reasoning</div>
+                "The t-shirt is made of cloth because cloth is soft. It feels good on your skin and it can stretch."<br>
+                "The wooden spoon is made of wood because wood doesn't get hot. When you stir the soup your hand stays safe."
+              </div>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Wrong Material — The Contradiction Check</div>
+              <p>Teacher introduces a deliberate mistake to deepen reasoning. Holds up the paper cup.</p>
+              <div class="teacher-prompt">"Here's a tricky one. Someone said we should make rain boots out of paper because paper is light and easy to carry. That sounds good — but would paper boots work? Talk to your partner."</div>
+              <p>30 seconds. Students discuss.</p>
+              <div class="teacher-prompt">"What's the problem with paper boots?"</div>
+              <div class="student-says">
+                <div class="student-says-label">Student reasoning</div>
+                "Paper soaks up water." &nbsp;·&nbsp; "Your feet would get wet." &nbsp;·&nbsp; "Paper isn't waterproof."
+              </div>
+              <div class="teacher-prompt">"Exactly. Paper isn't waterproof — so even though it's light, it's the wrong material for the job. The property that matters most for rain boots is being waterproof. Not every property matters for every object — the job tells you which property matters most."</div>
+              <p>Teacher adds to chart: <em>"The job tells you which property matters most."</em></p>
+            </div>
+
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>The contradiction check is a high-access cognitive task. Students at every proficiency level can recognize that paper boots would soak through. The reasoning is physical and immediate — not language-dependent. Students at WIDA Levels 1–2 can demonstrate understanding through gesture and expression before they produce the English explanation.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- APPLY -->
+        <div class="phase-block phase-apply">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Apply</div>
+              <div class="phase-meta">13 min · Tables · Independent Work</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Each student investigates two objects, records drawings in their material journal, and writes or dictates their explanation sentence. Teacher circulates with scientific conference questions.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+
+            <div class="phase-step">
+              <div class="phase-step-label">Transition</div>
+              <div class="teacher-prompt">"Now it's your turn to be the material detective. When you get to your table — you'll find two objects waiting. Work through the three questions for both objects, draw each one in your material journal, and write or dictate your sentence: <em>This ___ is made of ___ because ___.</em> I'll come around to talk about your thinking."</div>
+              <p>Tables are set up in advance: each table has two of the six objects, the material property word bank card, and the sentence frame card. Material journals open to Wednesday's page.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Independent Work</div>
+              <p>Students work independently — examining their two objects, recording observational drawings in their material journal, writing or dictating their explanation sentences. Teacher circulates with brief scientific conferences:</p>
+              <div class="teacher-prompt">"Tell me about your object. What is it made of?"</div>
+              <div class="teacher-prompt">"What's a property of that material?"</div>
+              <div class="teacher-prompt">"Now the hard part — why was that material chosen? What job does this object have to do?"</div>
+              <div class="teacher-prompt">"Can you say your sentence? <em>This ___ is made of ___ because ___.</em>"</div>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Early Finishers</div>
+              <p>Students who complete both objects: draw one object that is not at their table and explain why its material makes sense. Or consider: what would happen if you made this object from a different material? Draw the result and label why it wouldn't work.</p>
+            </div>
+
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Differentiation</div>
+              <p><strong>Levels 1–2:</strong> Drawing and labeling accepted as a complete response. Students use the material property word bank to point to or copy property labels rather than writing independently. Teacher scribes the explanation sentence in English while student dictates in home language. A careful observational drawing is science — it communicates understanding.</p>
+              <p><strong>Levels 3–4:</strong> Sentence frame provides oral and written structure. Teacher supports during conferring. Home language allowed for drafting before bridging to English.</p>
+              <p><strong>Level 5:</strong> Write explanation sentence independently. Include two property words as reasons. Challenge: think of a material that would NOT work for your object and explain why.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- REFLECT -->
+        <div class="phase-block phase-reflect">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Reflect</div>
+              <div class="phase-meta">5 min · Rug · Metacognitive Close</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Students share material journal pages and explanation sentences. New vocabulary added to word wall. Lesson closes with the connection to the unit's driving question.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+
+            <div class="phase-step">
+              <div class="phase-step-label">Share and Celebrate</div>
+              <p>2–3 students share their material journal page — hold up the drawing, read or say their explanation sentence.</p>
+              <div class="teacher-prompt">"Let's hear from a few material detectives. Hold up your drawing and tell us: This ___ is made of ___ because ___."</div>
+              <p>Teacher celebrates property vocabulary and causal reasoning. Adds new vocabulary to the class word wall: <em>material · property · waterproof · flexible · rigid · absorb · conduct · durable.</em></p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Connect to the Driving Question</div>
+              <div class="teacher-prompt">"We've been asking: how do people in our community make, grow, and share what we need? We've been thinking about this rain boot and this cooking pot — these are <em>goods.</em> Someone made them. Someone chose their materials carefully. Tomorrow we're going to find out: if you were going to make something for our Community Market, what material would you use? And why?"</div>
+              <p>Add to the wonder wall: <em>"The job tells you which property matters most."</em></p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Objective Return</div>
+              <div class="teacher-prompt">"We said today we would identify what objects are made from and explain why. Turn and tell your partner — pick one object from today. Say your sentence."</div>
+              <p>30 seconds partner talk. Lesson closes.</p>
+            </div>
+
+            <div class="assessment-note">
+              <div class="assessment-note-label">Formative Assessment</div>
+              <p>Material journals collected after the lesson. Teacher notes: who is using property vocabulary accurately; who is making the causal connection (<em>because</em>) vs. stopping at description; who needs additional support distinguishing properties from purposes; who is ready for the Thursday design challenge with confidence.</p>
+              <p>The explanation sentence — <em>This ___ is made of ___ because ___</em> — is the primary evidence artifact. A student who can complete this sentence with an accurate property word has demonstrated PS.K.1.2 at the K level. A student who offers two reasons has exceeded it.</p>
+            </div>
+
+            <div class="localization-note">
+              <div class="localization-note-label">Localization Note</div>
+              <p>The six objects in this lesson are illustrative examples, not the only right choices. Teachers should select or supplement with objects familiar in their specific community. A coastal community might include a fishing net. An agricultural community might include a clay water jug or a woven basket. A classroom with families who cook in woks, cast iron, or clay pots should see those objects alongside the stainless steel pot.</p>
+              <p><strong>What is non-negotiable:</strong> the three-question structure, the sentence frame, and the connection to the driving question. The objects that carry those questions should reflect the community in the room.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!-- end phases -->
+
+    </div>
+    <!-- end lesson content -->
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- Standards -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header sage">Standards</div>
+        <div class="sidebar-card-body">
+          <ul class="standards-list">
+            <li>
+              <span class="std-code">PS.K.1.1</span>
+              <span>Classify objects by physical properties: size, color, shape, texture, weight</span>
+            </li>
+            <li>
+              <span class="std-code">PS.K.1.2</span>
+              <span>How materials are used based on their physical properties</span>
+            </li>
+            <li>
+              <span class="std-code">NC.K.MD.2</span>
+              <span>Classify objects into given categories; count by category</span>
+            </li>
+            <li>
+              <span class="std-code">SL.K.4</span>
+              <span>Describe familiar objects and explain details</span>
+            </li>
+            <li>
+              <span class="std-code">SL.K.6</span>
+              <span>Speak audibly; express thoughts and feelings clearly</span>
+            </li>
+            <li>
+              <span class="std-code">L.K.6</span>
+              <span>Vocabulary acquisition: material, property, waterproof, flexible, rigid, absorb, conduct, durable</span>
+            </li>
+            <li>
+              <span class="std-code">WIDA ELD-SC.K</span>
+              <span>Language of Science — Inform + Explain</span>
+            </li>
+            <li>
+              <span class="std-code">WIDA ELD-SI.K</span>
+              <span>Language for Social &amp; Instructional Purposes</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Materials -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header terracotta">Materials</div>
+        <div class="sidebar-card-body">
+          <ul class="materials-list">
+            <li>Six everyday objects: rain boot, cooking pot (cold), t-shirt, wooden spoon, paper cup, brick or clay tile</li>
+            <li>Material journals from Tuesday — open to Wednesday's page</li>
+            <li>Material property word bank card per table — words with illustrated icons</li>
+            <li>Sentence frame card per table</li>
+            <li>Chart paper and marker for teacher modeling</li>
+            <li>Class word wall — materials and properties vocabulary</li>
+            <li>Crayons or colored pencils for journal drawings</li>
+            <li>Optional: bilingual property labels on objects in home languages present in the classroom</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sentence Frames -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header plum">Sentence Frames</div>
+        <div class="sidebar-card-body">
+          <div class="sentence-frame">"This ___ is made of ___."</div>
+          <div class="sentence-frame">"This ___ is made of ___ because ___."</div>
+          <div class="sentence-frame">"This ___ is made of ___ because ___ is ___. If it were made of ___, it wouldn't work because ___."</div>
+          <div class="sentence-frame">"The job of this object is to ___. That's why ___ is the right material."</div>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:10px;font-style:italic;">Frames 1–2 are the primary target. Frame 3 is the Level 5 challenge extension. Frame 4 is an alternate for students who find the primary frame awkward.</p>
+        </div>
+      </div>
+
+      <!-- Language Functions -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header gold">Language Functions</div>
+        <div class="sidebar-card-body">
+          <p><strong>Describe</strong><br>Observe and name what a material is like using property vocabulary — hard, soft, flexible, rigid, smooth, rough, waterproof, absorbent.</p>
+          <p><strong>Explain</strong><br>Give a reason for why a material was chosen for a specific purpose. Connect the property to the job the object has to do.</p>
+          <p style="margin-top:10px;font-size:0.82rem;color:var(--muted);font-style:italic;">Both functions are introduced in the kid-friendly objective and reinforced throughout every phase. Students move from describing (what is this material like?) to explaining (why does that property matter for this object?) — the developmental leap of today's lesson.</p>
+        </div>
+      </div>
+
+      <!-- Unit Connection -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header slate">Unit 4 Connection</div>
+        <div class="sidebar-card-body">
+          <p><strong>Driving Question</strong><br>"How do people in our community make, grow, and share what we need — and how do we make sure everyone has enough?"</p>
+          <p style="margin-top:8px;"><strong>Action Project</strong><br>Community Market — Week 6 Exhibition. Students will use the material knowledge built this week when they design and make their market contributions in Weeks 3–5.</p>
+          <p style="margin-top:8px;"><strong>The Connection</strong><br>Every good sold or traded at the Community Market will be made from a material. Students who understand why rubber keeps water out and why metal can withstand heat are students who can make intentional choices about what to make and how to make it well. The science of materials gives economic production its rigor.</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- end sidebar -->
+
+  </div>
+  <!-- end main grid -->
+</div>
+<!-- end content-wrap -->
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-label">Rights &amp; Use</div>
+    <p><strong>© 2026 The Anchored Learner. All rights reserved.</strong></p>
+    <p>
+      This sample lesson is provided to illustrate the design and instructional approach of The Anchored Learner. It is not licensed for reuse, redistribution, adaptation, or classroom implementation without explicit written permission.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
