@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anchored Literacy · Our Community Words · The Anchored Learner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1410;
+  --parchment: #F7F3ED;
+  --cream: #FDFAF6;
+  --terracotta: #B85C38;
+  --terracotta-light: #F2E0D8;
+  --gold: #C9953A;
+  --gold-light: #F5EDD8;
+  --sage: #5C7A5F;
+  --sage-light: #DFE9E0;
+  --slate: #4A6278;
+  --slate-light: #DCE5ED;
+  --plum: #6B4E71;
+  --plum-light: #EDE3EF;
+  --muted: #7A6E65;
+  --border: rgba(26,20,16,0.1);
+  --block-color: #6B4E71;
+  --block-light: #EDE3EF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+/* ── NAV ── */
+.top-nav {
+  background: var(--ink);
+  padding: 12px 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--cream);
+  font-style: italic;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-block-tag {
+  background: var(--plum);
+  color: var(--cream);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  padding: 64px 8vw 56px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -150px; right: -150px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(107,78,113,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(107,78,113,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.hero-eyebrow-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--plum);
+  color: #B48FBA;
+}
+.hero-eyebrow-divider {
+  width: 32px;
+  height: 1px;
+  background: rgba(107,78,113,0.4);
+}
+.lesson-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 300;
+  color: rgba(253,250,246,0.06);
+  line-height: 1;
+  position: absolute;
+  right: 8vw;
+  top: 40px;
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--cream);
+  max-width: 680px;
+  margin-bottom: 16px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: #B48FBA;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.meta-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(253,250,246,0.15);
+  color: rgba(253,250,246,0.65);
+}
+.meta-tag.highlight {
+  background: var(--plum);
+  border-color: var(--plum);
+  color: var(--cream);
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(253,250,246,0.75);
+}
+.back-link:hover { color: var(--cream); }
+.hero-intro {
+  max-width: 760px;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: rgba(253,250,246,0.88);
+  line-height: 1.7;
+}
+
+/* ── LAYOUT ── */
+.content-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+/* ── CONTEXT STRIP ── */
+.context-strip {
+  background: var(--plum);
+  padding: 24px 8vw;
+}
+.context-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+.context-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.5);
+  margin-bottom: 4px;
+}
+.context-value {
+  font-size: 0.88rem;
+  color: var(--cream);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ── MAIN GRID ── */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  padding: 48px 0 80px;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.sidebar-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sidebar-card-header {
+  padding: 14px 20px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.sidebar-card-header.plum       { background: var(--plum);       color: var(--cream); }
+.sidebar-card-header.gold       { background: var(--gold);       color: var(--ink); }
+.sidebar-card-header.terracotta { background: var(--terracotta); color: var(--cream); }
+.sidebar-card-header.slate      { background: var(--slate);      color: var(--cream); }
+.sidebar-card-header.sage       { background: var(--sage);       color: var(--cream); }
+.sidebar-card-body {
+  padding: 16px 20px;
+}
+.sidebar-card-body p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #3D3028;
+  margin-bottom: 8px;
+}
+.sidebar-card-body p:last-child { margin-bottom: 0; }
+.sidebar-card-body strong {
+  font-weight: 500;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.standards-list {
+  list-style: none;
+  padding: 0;
+}
+.standards-list li {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #3D3028;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.standards-list li:last-child { border-bottom: none; }
+.std-code {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--plum);
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.materials-list {
+  list-style: none;
+  padding: 0;
+}
+.materials-list li {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #3D3028;
+  padding: 5px 0 5px 16px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.materials-list li:last-child { border-bottom: none; }
+.materials-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--plum);
+  font-size: 0.7rem;
+  top: 7px;
+}
+
+.sentence-frame {
+  background: var(--plum-light);
+  border-left: 3px solid var(--plum);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--plum);
+  line-height: 1.6;
+}
+
+/* ── OBJECTIVES ── */
+.objectives-section { margin-bottom: 40px; }
+.section-eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.objective-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.objective-card-label {
+  padding: 10px 18px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+.objective-card-label.content  { background: var(--plum-light);  color: var(--plum); }
+.objective-card-label.language { background: var(--slate-light);  color: var(--slate); }
+.objective-card-label.kid      { background: var(--gold-light);  color: #7A5C1A; }
+.objective-card-body {
+  padding: 16px 18px;
+  background: var(--cream);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #3D3028;
+}
+.objective-card-body em { font-style: italic; color: var(--ink); }
+.objective-card-body .teacher-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ── PHASE BLOCKS ── */
+.phases-section { margin-bottom: 0; }
+
+.phase-block {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.phase-header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  min-height: 64px;
+}
+.phase-color-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 20px;
+}
+.phase-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.2;
+}
+.phase-meta {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(253,250,246,0.6);
+  margin-top: 2px;
+}
+.phase-header-right {
+  background: var(--parchment);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid var(--border);
+}
+.phase-summary {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+.phase-body {
+  background: var(--cream);
+  padding: 24px 28px;
+  border-top: 1px solid var(--border);
+}
+.phase-step {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.phase-step:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.phase-step-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.phase-step p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #3D3028;
+  margin-bottom: 8px;
+}
+.phase-step p:last-child { margin-bottom: 0; }
+
+.teacher-prompt {
+  background: var(--gold-light);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: #5A4010;
+  line-height: 1.65;
+  margin: 8px 0;
+}
+
+.mll-note {
+  background: var(--plum-light);
+  border-left: 3px solid var(--plum);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.mll-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 6px;
+}
+.mll-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #3D2840;
+  margin-bottom: 6px;
+}
+.mll-note p:last-child { margin-bottom: 0; }
+
+.assessment-note {
+  background: var(--plum-light);
+  border-left: 3px solid var(--plum);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.assessment-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 6px;
+}
+.assessment-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #3D2840;
+  margin-bottom: 6px;
+}
+.assessment-note p:last-child { margin-bottom: 0; }
+
+.literacy-note {
+  background: var(--slate-light);
+  border-left: 3px solid var(--slate);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 12px;
+}
+.literacy-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 6px;
+}
+.literacy-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #2A3A48;
+  margin-bottom: 6px;
+}
+.literacy-note p:last-child { margin-bottom: 0; }
+
+.localization-note {
+  background: var(--terracotta-light);
+  border-left: 3px solid var(--terracotta);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.localization-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 6px;
+}
+.localization-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #4A2010;
+  margin-bottom: 6px;
+}
+.localization-note p:last-child { margin-bottom: 0; }
+
+/* Phase colors — plum-primary for literacy */
+.phase-connect   .phase-color-block { background: var(--plum); }
+.phase-discover  .phase-color-block { background: var(--sage); }
+.phase-makesense .phase-color-block { background: var(--slate); }
+.phase-apply     .phase-color-block { background: var(--terracotta); }
+.phase-reflect   .phase-color-block { background: var(--gold); }
+.phase-reflect .phase-name { color: var(--ink); }
+.phase-reflect .phase-meta { color: rgba(26,20,16,0.5); }
+
+.phase-connect   .phase-step-label { color: var(--plum); }
+.phase-discover  .phase-step-label { color: var(--sage); }
+.phase-makesense .phase-step-label { color: var(--slate); }
+.phase-apply     .phase-step-label { color: var(--terracotta); }
+.phase-reflect   .phase-step-label { color: #8B6820; }
+
+/* ── PROGRESSION BAR ── */
+.progression-bar {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+.progression-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.progression-days {
+  display: flex;
+  gap: 4px;
+}
+.prog-day {
+  flex: 1;
+  padding: 8px 6px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--muted);
+  background: var(--parchment);
+  border: 1px solid var(--border);
+}
+.prog-day.active {
+  background: var(--plum);
+  color: var(--cream);
+  border-color: var(--plum);
+}
+.prog-day.inquiry {
+  background: var(--sage-light);
+  color: var(--sage);
+  border-color: rgba(92,122,95,0.3);
+}
+.prog-day.math {
+  background: var(--slate-light);
+  color: var(--slate);
+  border-color: rgba(74,98,120,0.3);
+}
+.prog-day-label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+.prog-day-desc {
+  font-size: 0.65rem;
+  opacity: 0.8;
+}
+
+/* ── TIMING OVERVIEW ── */
+.timing-overview {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.timing-block {
+  flex: 1;
+  padding: 14px 10px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  background: var(--cream);
+}
+.timing-block:last-child { border-right: none; }
+.timing-duration {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.timing-phase {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.timing-location {
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.timing-block.connect   .timing-duration { color: var(--plum); }
+.timing-block.discover  .timing-duration { color: var(--sage); }
+.timing-block.makesense .timing-duration { color: var(--slate); }
+.timing-block.apply     .timing-duration { color: var(--terracotta); }
+.timing-block.reflect   .timing-duration { color: #8B6820; }
+
+/* ── WORD BANK ── */
+.word-bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+.word-chip {
+  background: var(--plum-light);
+  border: 1px solid rgba(107,78,113,0.2);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--plum);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .sidebar { order: -1; }
+  .hero { padding: 48px 6vw; }
+  .lesson-number { display: none; }
+  .phase-header { grid-template-columns: 140px 1fr; }
+  .progression-days { flex-wrap: wrap; }
+  .prog-day { min-width: calc(50% - 4px); }
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  padding: 64px 8vw;
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+}
+.footer-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+.footer-content { max-width: 720px; }
+.footer-content p {
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.footer-content p strong { font-weight: 500; color: var(--ink); }
+.footer-content p:last-child { margin-bottom: 0; }
+</style>
+
+<link rel="icon" type="image/x-icon" href="favicon_tal.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_tal_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_tal_32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon_tal_64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="favicon_tal_128.png">
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <a href="index.html" class="nav-brand">The Anchored Learner</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="kindergarten.html">Kindergarten</a>
+    <a href="contact.html">Contact</a>
+    <span class="nav-block-tag">Featured Lesson</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <a href="kindergarten.html" class="back-link">← Back to Kindergarten</a>
+  <div class="lesson-number">K</div>
+  <div class="hero-eyebrow">
+    <span class="hero-eyebrow-text">Featured Lesson Preview</span>
+    <div class="hero-eyebrow-divider"></div>
+    <span class="hero-eyebrow-text">Anchored Literacy</span>
+  </div>
+  <h1>Our Community Words —<br><em>CVC Blending, Segmenting</em><br><em>&amp; Informational Writing</em></h1>
+  <div class="hero-meta">
+    <span class="meta-tag highlight">Anchored Literacy</span>
+    <span class="meta-tag">Unit 1 · Identity &amp; Community</span>
+    <span class="meta-tag">Week 4</span>
+    <span class="meta-tag">60 minutes</span>
+    <span class="meta-tag">~Week 10 of the Year</span>
+    <span class="meta-tag">Roots &amp; Belonging Phase</span>
+  </div>
+  <p class="hero-intro">
+    This lesson shows how explicit phonics instruction and meaningful community inquiry can share the same hour. Students blend and segment CVC words drawn from the vocabulary of community life, then write about what their community has and needs — connecting the phonics work directly to the week's driving question.
+  </p>
+</div>
+
+<!-- CONTEXT STRIP -->
+<div class="context-strip">
+  <div class="context-inner">
+    <div class="context-item">
+      <div class="context-label">Weekly Inquiry Thread</div>
+      <div class="context-value">"What does our community need to thrive — and does everyone have what they need?"</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Building On</div>
+      <div class="context-value">Wants vs. Needs launch · Community Needs Investigation Centers · week of inquiry vocabulary</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Building Toward</div>
+      <div class="context-value">Community Needs Survey &amp; Graphing · Anchored Math · same week</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Action Project</div>
+      <div class="context-value">"This Is Us" Community Portrait &amp; Class Pledge — Unit 1 culmination</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content-wrap">
+  <div class="main-grid">
+
+    <!-- LEFT: LESSON CONTENT -->
+    <div class="lesson-content">
+
+      <!-- Where We Are -->
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin:40px 0 32px;">
+        <div class="section-eyebrow" style="margin-bottom:12px;">Where We Are</div>
+        <p style="font-size:0.92rem;line-height:1.85;color:#3D3028;margin-bottom:12px;">Students are in Week 4 of Unit 1 — approximately Week 10 of the school year. By this point in many Kindergarten phonics sequences, students are beginning to blend and segment CVC words with short vowel sounds. Teachers should align the specific words and vowel patterns in this lesson to their adopted structured literacy program.</p>
+        <p style="font-size:0.88rem;line-height:1.8;color:var(--muted);font-style:italic;">This week the inquiry has been asking: what does our community need, and does everyone have what they need? Today's Anchored Literacy block runs alongside that inquiry work. The phonics skill — CVC blending and segmenting — is the primary instructional focus. The community word bank connects the phonics work to the vocabulary students have been building all week, making the decoding and encoding feel purposeful rather than abstract.</p>
+      </div>
+
+      <!-- Weekly Progression -->
+      <div class="progression-bar">
+        <div class="progression-label">Unit 1 · Week 4 Thematic Arc — Where This Lesson Sits</div>
+        <div class="progression-days">
+          <div class="prog-day inquiry">
+            <span class="prog-day-label">Inquiry · Mon</span>
+            <span class="prog-day-desc">Wants vs. Needs launch &amp; wonder · Anchored Inquiry</span>
+          </div>
+          <div class="prog-day inquiry">
+            <span class="prog-day-label">Inquiry · Tue–Wed</span>
+            <span class="prog-day-desc">Community Needs Centers · living things · access &amp; fairness wonder</span>
+          </div>
+          <div class="prog-day active">
+            <span class="prog-day-label">Literacy ←</span>
+            <span class="prog-day-desc">CVC community words · blending, segmenting, writing</span>
+          </div>
+          <div class="prog-day math">
+            <span class="prog-day-label">Math</span>
+            <span class="prog-day-desc">Community Needs Survey &amp; Graphing · Anchored Math</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timing Overview -->
+      <div class="timing-overview">
+        <div class="timing-block connect">
+          <div class="timing-duration">5 min</div>
+          <div class="timing-phase">Connect</div>
+          <div class="timing-location">Rug</div>
+        </div>
+        <div class="timing-block discover">
+          <div class="timing-duration">12 min</div>
+          <div class="timing-phase">Discover</div>
+          <div class="timing-location">Rug · Active</div>
+        </div>
+        <div class="timing-block makesense">
+          <div class="timing-duration">5 min</div>
+          <div class="timing-phase">Make Sense</div>
+          <div class="timing-location">Rug</div>
+        </div>
+        <div class="timing-block apply">
+          <div class="timing-duration">33 min</div>
+          <div class="timing-phase">Apply</div>
+          <div class="timing-location">Rug → Tables</div>
+        </div>
+        <div class="timing-block reflect">
+          <div class="timing-duration">5 min</div>
+          <div class="timing-phase">Reflect</div>
+          <div class="timing-location">Rug</div>
+        </div>
+      </div>
+
+      <!-- Objectives -->
+      <div class="objectives-section">
+        <div class="section-eyebrow">Objectives</div>
+
+        <div class="objective-card">
+          <div class="objective-card-label content">Content Objective</div>
+          <div class="objective-card-body">
+            Students will <strong>blend and segment</strong> CVC words with short vowel sounds and <strong>compose</strong> a labeled drawing with an informational sentence about a community word.
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="objective-card-label language">Language Objective</div>
+          <div class="objective-card-body">
+            Students will <strong>describe</strong> community words using phonics and vocabulary language — from tapping and writing initial sounds with support <em>(WIDA Levels 1–2)</em>, to blending and writing CVC words using sentence frames <em>(Levels 3–4)</em>, to independently blending, segmenting, encoding, and composing an informational sentence <em>(Level 5)</em>.
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="objective-card-label kid">Kid-Friendly Objective</div>
+          <div class="objective-card-body">
+            <em>"Today I will <strong>blend and write</strong> words from our community, so that I can describe what a community has and needs. I'll know I've got it if I can tap the sounds in a community word, write it, and tell my partner what it means."</em>
+            <p class="teacher-note">Teacher explanation: "Blend means to put sounds together to make a word. Segment means to break a word into its separate sounds."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase Blocks -->
+      <div class="phases-section">
+        <div class="section-eyebrow">Lesson Plan · Connect · Discover · Make Sense · Apply · Reflect</div>
+
+        <!-- CONNECT -->
+        <div class="phase-block phase-connect">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Connect</div>
+              <div class="phase-meta">5 min · Rug · Cultural Ignition</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Activate inquiry vocabulary from the week. Bridge to the phonics work. Read kid-friendly objective.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Opening</div>
+              <p>Students gather on the rug. Teacher connects to the week's inquiry work — pointing to the wonder wall or community vocabulary that has accumulated.</p>
+              <div class="teacher-prompt">"This week we've been thinking about what communities need. What's one word you remember — something a community has or needs?"</div>
+              <p>Brief pause. 2–3 students share. Teacher honors every response, pointing to the word wall or wonder wall if the word appears there.</p>
+              <div class="teacher-prompt">"Today we're going to work with words like those — community words. We're going to read them, write them, and then write about one."</div>
+              <p>Teacher reads kid-friendly objective. "Blend means to put sounds together to make a word. Segment means to break a word apart into its sounds."</p>
+            </div>
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>Students may name community words from the inquiry in their home language. Celebrate: "How do you say that in English? Let's add both words to our word wall." The connection to this week's inquiry vocabulary reduces the language load before phonics work begins — students are reading and writing words they've already been thinking with.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DISCOVER -->
+        <div class="phase-block phase-discover">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Discover</div>
+              <div class="phase-meta">12 min · Rug · Active Phonics</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Oral warm-up, blending practice, stand up/sit down phoneme sort, word wall bridge. Fast, physical, and rhythmic — bodies moving before whiteboards come out.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Setup</div>
+              <p>Whiteboards and markers distributed. Students hold them in their laps. Teacher holds CVC community word cards — not yet shown, just ready.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Oral Warm-Up · 3 min · No Print</div>
+              <p>Teacher says a CVC community word. Students: (1) repeat the word, (2) tap sounds on their arm — one tap per sound, (3) hold up fingers — one per sound, (4) call out the number of sounds.</p>
+              <div class="teacher-prompt">"Net. /n/ /e/ /t/. Three sounds. Tap with me."</div>
+              <p>Class taps together — net · can · hut · pet · mat. Fast, rhythmic, physical.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Blending Practice · 4 min</div>
+              <p>Teacher says sounds in isolation. Students blend, say the word, write on whiteboards.</p>
+              <div class="teacher-prompt">"/c/ /a/ /n/ — what word? Say it. Write it. Hold it up."</div>
+              <p>Teacher scans quickly: "I see brave writers. You wrote the sounds you heard." Repeat with: hut · job · pet · mat. After each word — teacher shows picture card. Students check whiteboard. Invented spelling celebrated without correction.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Stand Up / Sit Down · 3 min</div>
+              <p>Teacher says a word. Students stand if it has a short /e/ sound. Sit if not.</p>
+              <p style="font-style:italic;color:var(--plum);margin:6px 0 6px 12px;">net — stand · can — sit · bed — stand · hut — sit · pet — stand · mat — sit · mud — sit · fig — sit</p>
+              <p>Energy high. Bodies moving.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Word Wall Bridge · 2 min</div>
+              <p>Teacher holds up each CVC word card — students read chorally. Cards go on the word wall in the community vocabulary section. "When you write today look for these words on our wall."</p>
+            </div>
+
+            <div class="literacy-note">
+              <div class="literacy-note-label">Structured Literacy Note</div>
+              <p>Use your school's adopted structured literacy program's routines for blending, segmenting, and sound-spelling work. The tapping, chaining, and whiteboard encoding routines shown here should match what students are already learning for consistency. The CVC word bank — net, can, hut, pet, job, mat, bed — is a design recommendation, not a requirement. Teachers should substitute words from their program's current word lists where needed.</p>
+              <p>The short /e/ sort shown in Stand Up/Sit Down can be swapped for any short vowel that matches where students are in the scope and sequence at this point in the year.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAKE SENSE -->
+        <div class="phase-block phase-makesense">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Make Sense</div>
+              <div class="phase-meta">5 min · Rug · Anchor Chart Build</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Bridge from phonics to writing. Build the anchor chart from student responses. Students generate the content they'll use in Apply.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Anchor Chart</div>
+              <p>Teacher points to a blank two-column chart: <em>"Our community has ___. Our community needs ___."</em></p>
+              <div class="teacher-prompt">"We just read community words — net, can, hut, job. What does our community actually have? What does it need? Turn and tell your partner."</div>
+              <p>45 seconds. 3–4 students share. Teacher records in student language — two columns, has/needs:</p>
+              <p style="font-style:italic;color:var(--ink);margin-left:12px;">"They have schools" · "We need water" · "We have a park" · "We need safe places"</p>
+              <p>"When you write today you can look at this chart to help you choose your word and your reason. The chart stays up."</p>
+            </div>
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>The anchor chart built from student responses gives multilingual learners a shared visual resource during independent writing. Students at WIDA Levels 1–2 can point to a word on the chart and draw it without needing to generate vocabulary independently. The teacher's act of recording student language exactly — not paraphrasing — signals that every student's words are valid writing material.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- APPLY -->
+        <div class="phase-block phase-apply">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Apply</div>
+              <div class="phase-meta">33 min · Rug → Tables · Modeled Writing + Independent</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Modeled writing first on the rug — teacher thinks aloud through a community word. Shared writing together. Then students work independently: draw, label, write. Teacher circulates with brief writing conferences.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Modeled Writing · 5 min · Rug</div>
+              <p>Teacher at board, students on rug watching. Thinks aloud writing about <em>net</em>:</p>
+              <div class="teacher-prompt">"Net — I know this word from our word wall. N-E-T." Writes it. "A community needs a net because..." pauses. "A net can help people fish. Fishing is how some families get food."</div>
+              <p>Writes sentence with think-aloud through each word — using invented spelling explicitly:</p>
+              <div class="teacher-prompt">"A — A. Community — KOM — I hear /k/ /o/ /m/, I'll write those sounds. Needs — NEDZ. A — A. Net — N-E-T, I know that one."</div>
+              <p>Reads full sentence back pointing to each word. "My writing doesn't look exactly like a book — and that's okay. I wrote the sounds I know. That's what brave writers do."</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Shared Writing · 3 min · Rug</div>
+              <div class="teacher-prompt">"Now let's write one together. Which community word should we write about?"</div>
+              <p>Class suggests. Students contribute sounds. Teacher scribes. Class reads chorally.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Independent Writing · 20 min · Tables</div>
+              <div class="teacher-prompt">"Now it's your turn. Think about a community word — from our word wall, the anchor chart, or your own community. When you get to your table: draw your word first. Then label it. Then write your sentence. I'll be coming around to help."</div>
+              <p>Clear transition. Students move to tables — writing pages, pencils, crayons, sentence frame cards already set up. Students work independently: draw first → label → attempt sentence with invented spelling.</p>
+              <p>Teacher circulates with brief writing conferences:</p>
+              <div class="teacher-prompt">"Tell me about your drawing." · "What sound do you hear at the beginning? Write that down." · "Read your sentence back to me." · "What does your community word have to do with what people need?"</div>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Early Finishers</div>
+              <p>Students who finish: draw a second community word on the back and label it · add a second sentence · draw something their community has AND something it needs, and label both.</p>
+            </div>
+
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Differentiation</div>
+              <p><strong>Levels 1–2:</strong> Drawing is a complete response. Label with initial sound only. Teacher scribes dictated sentence. Home language label celebrated alongside English — the word wall gets both.</p>
+              <p><strong>Levels 3–4:</strong> Sentence stem provides structure. Invented spelling expected and celebrated.</p>
+              <p><strong>Level 5:</strong> Full sentence independently. May attempt a second sentence or add a second community word.</p>
+              <p style="margin-top:8px;"><strong>Multilingual extension:</strong> Students may draw community structures from their cultural context — a masjid, a mercado, a tobacco barn, a bodega. "What do you call it? Let's write that word — in your language AND in English." That word goes on the word wall.</p>
+            </div>
+
+            <div class="assessment-note">
+              <div class="assessment-note-label">Invented Spelling Note</div>
+              <p>Never cross out or correct invented spelling during independent writing time. A student who writes KAN IZ WUT WE NED is demonstrating sophisticated sound-spelling knowledge — they are applying CVC patterns and high-frequency word attempts simultaneously. Celebrate it explicitly. The phonics work and the writing work belong together.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- REFLECT -->
+        <div class="phase-block phase-reflect">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Reflect</div>
+              <div class="phase-meta">5 min · Rug · Metacognitive Close</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Students share writing pages. Community words added to the word wall. Lesson closes by honoring the real meaning inside the phonics work.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Share</div>
+              <p>Students bring writing pages to the rug. 2–3 students share — hold up drawing, read sentence aloud. Class responds with the appreciation protocol they already know.</p>
+              <p>Teacher adds 2–3 student community words to the word wall — from students' writing where possible.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Phonics Return</div>
+              <div class="teacher-prompt">"Turn and tell your partner — tap the sounds in your community word together. How many sounds? How do you know?"</div>
+              <p>30 seconds partner work. 1–2 pairs share.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Closing</div>
+              <div class="teacher-prompt">"Every word on your page comes from somewhere. The words in our community — net, can, hut, pet — they're not just phonics words. They're real. And you read them, wrote them, and explained them. That's what readers and writers do."</div>
+            </div>
+
+            <div class="assessment-note">
+              <div class="assessment-note-label">Formative Assessment</div>
+              <p>Writing pages collected after the lesson. Teacher notes: who is accurately blending CVC words in decoding and encoding, who is applying short vowel patterns in writing, who is attempting full sentences vs. labels only, whose community and cultural knowledge is surfacing in drawings and word choices. These notes inform small group phonics instruction and the next week's writing scaffold.</p>
+            </div>
+
+            <div class="localization-note">
+              <div class="localization-note-label">Localization Note</div>
+              <p>The CVC word bank in this lesson — net, can, hut, pet, job, mat, bed — draws lightly from community and needs vocabulary. These are illustrative choices, not fixed requirements. Teachers should supplement with words that are decodable at this point in their program's scope and sequence and that connect meaningfully to their specific community context.</p>
+              <p><strong>Essential to the framework:</strong> the CVC blending and segmenting skill, the informational writing structure (draw + label + sentence), the WIDA-differentiated objectives, and the connection to the week's community inquiry vocabulary.</p>
+              <p><strong>Intended for localization:</strong> the specific CVC words used, which should be drawn from both the program's current word lists and the community vocabulary present in the classroom.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- end phases -->
+
+    </div>
+    <!-- end lesson content -->
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- Standards -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header plum">Standards</div>
+        <div class="sidebar-card-body">
+          <ul class="standards-list">
+            <li>
+              <span class="std-code">RF.K.2</span>
+              <span>Demonstrate understanding of spoken words, syllables, and sounds — phoneme segmentation and blending</span>
+            </li>
+            <li>
+              <span class="std-code">RF.K.3</span>
+              <span>Know and apply grade-level phonics and word analysis skills; one-to-one letter-sound correspondences; CVC words</span>
+            </li>
+            <li>
+              <span class="std-code">W.K.2</span>
+              <span>Use drawing, dictating, and writing to compose informative/explanatory texts</span>
+            </li>
+            <li>
+              <span class="std-code">L.K.6</span>
+              <span>Vocabulary acquisition — community, needs, wants; words from the unit's driving question</span>
+            </li>
+            <li>
+              <span class="std-code">SL.K.1</span>
+              <span>Participate in collaborative conversations with peers and adults</span>
+            </li>
+            <li>
+              <span class="std-code">SL.K.6</span>
+              <span>Speak audibly and express thoughts and feelings clearly</span>
+            </li>
+            <li>
+              <span class="std-code">WIDA ELD-SI.K</span>
+              <span>Language for Social &amp; Instructional Purposes — Inform</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Materials -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header terracotta">Materials</div>
+        <div class="sidebar-card-body">
+          <ul class="materials-list">
+            <li>CVC community word cards — pictured and labeled, one set for teacher modeling</li>
+            <li>Individual whiteboards and markers — one per student</li>
+            <li>Elkonin sound boxes — 3 boxes, on whiteboard or printed card</li>
+            <li>Blank two-column anchor chart — "Our community has ___ / Our community needs ___"</li>
+            <li>Writing page per student — drawing box + label line + sentence stem</li>
+            <li>Pencils and crayons</li>
+            <li>Sentence frame card per table</li>
+            <li>Word wall — community vocabulary section started from inquiry work</li>
+          </ul>
+          <p style="margin-top:12px;"><strong>CVC Word Bank</strong></p>
+          <div class="word-bank">
+            <span class="word-chip">net</span>
+            <span class="word-chip">can</span>
+            <span class="word-chip">hut</span>
+            <span class="word-chip">pet</span>
+            <span class="word-chip">job</span>
+            <span class="word-chip">mat</span>
+            <span class="word-chip">bed</span>
+            <span class="word-chip">mud</span>
+            <span class="word-chip">tap</span>
+            <span class="word-chip">fig</span>
+          </div>
+          <p style="margin-top:10px;font-size:0.8rem;color:var(--muted);font-style:italic;">Each card: image on front, word printed clearly below. Substitute words from your program's current word lists as needed.</p>
+        </div>
+      </div>
+
+      <!-- Sentence Frames -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header plum">Sentence Frames</div>
+        <div class="sidebar-card-body">
+          <div class="sentence-frame">"A community needs ___."</div>
+          <div class="sentence-frame">"A community needs ___ because ___."</div>
+          <div class="sentence-frame">"My community has ___."</div>
+          <div class="sentence-frame">"My community needs ___ because ___."</div>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:10px;font-style:italic;">Frames 1 and 3 are the primary target. Frames 2 and 4 are the challenge extension for students who are ready to add a reason.</p>
+        </div>
+      </div>
+
+      <!-- Language Functions -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header gold">Language Functions</div>
+        <div class="sidebar-card-body">
+          <p><strong>Blend</strong><br>Put separate sounds together to say or read a word. The physical and oral foundation for decoding.</p>
+          <p><strong>Segment</strong><br>Break a spoken word into its individual sounds. The foundation for encoding — hearing sounds before writing them.</p>
+          <p><strong>Describe</strong><br>Use words to tell about a community word — what it is, what it does, why a community has or needs it.</p>
+          <p style="margin-top:10px;font-size:0.82rem;color:var(--muted);font-style:italic;">Blend and segment are introduced in the kid-friendly objective and practiced in every phase of Discover. Describe moves to the foreground in Make Sense and Apply — connecting the phonics work to the inquiry's driving question.</p>
+        </div>
+      </div>
+
+      <!-- Unit Connection -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header slate">Unit 1 Connection</div>
+        <div class="sidebar-card-body">
+          <p><strong>Driving Question</strong><br>"What does our community need to thrive — and does everyone have what they need?"</p>
+          <p style="margin-top:8px;"><strong>Action Project</strong><br>"This Is Us" Community Portrait &amp; Class Pledge — Unit 1 culmination. Student writing pages from this lesson may contribute to the portrait.</p>
+          <p style="margin-top:8px;"><strong>The Connection</strong><br>The CVC words in this lesson — net, can, hut, job — are not decoration on the phonics skill. They are the vocabulary of community life. Students who can read and write these words are students who can name what their community has and what it needs. That naming is the foundation of the inquiry.</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- end sidebar -->
+
+  </div>
+  <!-- end main grid -->
+</div>
+<!-- end content-wrap -->
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-label">Rights &amp; Use</div>
+    <p><strong>© 2026 The Anchored Learner. All rights reserved.</strong></p>
+    <p>
+      This sample lesson is provided to illustrate the design and instructional approach of The Anchored Learner. It is not licensed for reuse, redistribution, adaptation, or classroom implementation without explicit written permission.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
