@@ -360,6 +360,92 @@ body {
   background: var(--slate);
 }
 
+  .k-sample-sequence {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.k-sample-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 30px;
+}
+
+.k-sample-step {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.k-sample-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  color: var(--ink);
+}
+
+.k-sample-card p {
+  font-size: 0.96rem;
+  line-height: 1.85;
+  color: #3D3028;
+  margin-bottom: 20px;
+}
+
+.k-sample-card.inquiry .k-sample-step { color: var(--sage); }
+.k-sample-card.literacy .k-sample-step { color: var(--plum); }
+.k-sample-card.math .k-sample-step { color: var(--slate); }
+
+.k-sequence-note {
+  margin-top: 32px;
+  padding: 32px;
+  border-radius: 14px;
+  border: 1px solid var(--gold-light);
+  background: linear-gradient(135deg, rgba(201,149,58,0.08), rgba(245,237,216,0.7));
+  max-width: 840px;
+}
+
+.k-sequence-note p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #3D3028;
+}
+
+.k-additional-lessons {
+  margin-top: 40px;
+}
+
+.k-additional-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+  max-width: 980px;
+}
+
+.k-additional-grid .k-feature-callout {
+  margin-top: 0;
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .k-sample-sequence,
+  .k-additional-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .k-sample-card,
+  .k-sequence-note {
+    padding: 24px;
+  }
+}
+  
 .site-footer {
   padding: 64px 10vw 64px;
   background: var(--cream);
@@ -553,7 +639,7 @@ body {
     </div>
 
     <p class="body-text">
-      The unit arcs and sample lessons shared here are not scripts. They are guides that show what becomes possible when academic content is anchored in real-world issues, community context, and the belief that even young children can begin acting as contributors and change agents. The framework provides the architecture. Teachers and students bring it to life together.
+      The unit arcs and sample learning sequence and lessons shared here are not scripts. They are guides that show what becomes possible when academic content is anchored in real-world issues, community context, and the belief that even young children can begin acting as contributors and change agents. The framework provides the architecture. Teachers and students bring it to life together.
     </p>
   </section>
 
@@ -697,7 +783,7 @@ body {
     <div class="section-num">06</div>
     <div class="section-titles">
       <span class="section-label">Sample Learning Sequence</span>
-      <h2>One inquiry. <em>Multiple disciplines. A coherent learning arc.</em></h2>
+      <h2>One inquiry. <em>Three connected learning experiences.</em></h2>
     </div>
   </div>
 
@@ -723,11 +809,11 @@ body {
 
     <article class="k-sample-card inquiry">
       <div class="k-sample-step">01 · Anchored Inquiry</div>
-      <h3>Wants vs. Needs</h3>
+      <h3>What Does Our Community Need?</h3>
       <p>
-        Students build the foundational concept of needs and wants, using discussion, sorting, oral language, and picture-based reasoning to begin thinking about what people and communities require to thrive.
+        Students move from the foundational distinction between wants and needs into hands-on investigation centers that explore living things, community resources, and questions of access and fairness.
       </p>
-      <a href="wants-vs-needs.html" class="k-button">View Anchored Inquiry Lesson →</a>
+      <a href="community-needs-inquiry.html" class="k-button">View Anchored Inquiry Lesson →</a>
     </article>
 
     <article class="k-sample-card literacy">
@@ -739,17 +825,8 @@ body {
       <a href="our-community-words.html" class="k-button">View Anchored Literacy Lesson →</a>
     </article>
 
-    <article class="k-sample-card investigation">
-      <div class="k-sample-step">03 · Community Investigation</div>
-      <h3>Community Needs Investigation Centers</h3>
-      <p>
-        Students explore community needs through hands-on centers, comparing the needs of living things, examining community resources, and beginning to wonder whether everyone has what they need.
-      </p>
-      <a href="community-needs-centers.html" class="k-button">View Investigation Centers →</a>
-    </article>
-
     <article class="k-sample-card math">
-      <div class="k-sample-step">04 · Anchored Math</div>
+      <div class="k-sample-step">03 · Anchored Math</div>
       <h3>What Does Our Community Need Most?</h3>
       <p>
         Students collect, represent, and analyze class data about community needs. They count, sort, compare groups, and use mathematical language to explain what their classroom community identifies as most important.
@@ -765,8 +842,43 @@ body {
       Together, these lessons show how concepts are introduced, explored, and revisited across contexts; how foundational academic skills are applied within a meaningful inquiry; and how students move from individual thinking toward collective understanding. The sequence also contributes directly to the Unit 1 culminating project: the <strong>“This Is Us” Community Portrait &amp; Class Pledge</strong>.
     </p>
   </div>
-</section>
 
+  <div class="k-additional-lessons">
+    <div class="section-header" style="margin-top:64px;margin-bottom:28px;">
+      <div class="section-num" style="font-size:3rem;">+</div>
+      <div class="section-titles">
+        <span class="section-label">Additional Sample Lessons</span>
+        <h2>More windows into <em>the Kindergarten year</em></h2>
+      </div>
+    </div>
+
+    <p class="body-text">
+      The lessons below come from other Kindergarten units and offer additional views into how The Anchored Learner connects foundational academics, language development, cultural knowledge, inquiry, and real-world meaning across the year.
+    </p>
+
+    <div class="k-additional-grid">
+
+      <div class="k-feature-callout">
+        <p class="k-feature-kicker">Anchored Math · Unit 2: Health &amp; Wellbeing</p>
+        <h3 style="margin-bottom:0.4rem;">Balanced Plate</h3>
+        <p class="k-feature-text">
+          Students sort foods, count and compare quantities, write numerals, and connect math to the foods and stories that shape everyday life.
+        </p>
+        <a href="balanced-plate.html" class="k-button">View Full Anchored Math Lesson →</a>
+      </div>
+
+      <div class="k-feature-callout">
+        <p class="k-feature-kicker">Anchored Inquiry · Unit 4: Economics &amp; Opportunity</p>
+        <h3 style="margin-bottom:0.4rem;">Why This Material?</h3>
+        <p class="k-feature-text">
+          Students examine everyday objects, identify what they are made from, describe the properties of those materials, and explain why those materials were chosen.
+        </p>
+        <a href="why-this-material.html" class="k-button">View Full Anchored Inquiry Lesson →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
   <section class="section" id="closing">
     <div class="section-header">
       <div class="section-num">07</div>
