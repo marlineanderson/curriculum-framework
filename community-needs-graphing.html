@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anchored Math · Community Needs Survey & Graphing · The Anchored Learner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1410;
+  --parchment: #F7F3ED;
+  --cream: #FDFAF6;
+  --terracotta: #B85C38;
+  --terracotta-light: #F2E0D8;
+  --gold: #C9953A;
+  --gold-light: #F5EDD8;
+  --sage: #5C7A5F;
+  --sage-light: #DFE9E0;
+  --slate: #4A6278;
+  --slate-light: #DCE5ED;
+  --plum: #6B4E71;
+  --plum-light: #EDE3EF;
+  --muted: #7A6E65;
+  --border: rgba(26,20,16,0.1);
+  --block-color: #4A6278;
+  --block-light: #DCE5ED;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+/* ── NAV ── */
+.top-nav {
+  background: var(--ink);
+  padding: 12px 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--cream);
+  font-style: italic;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-block-tag {
+  background: var(--slate);
+  color: var(--cream);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  padding: 64px 8vw 56px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -150px; right: -150px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74,98,120,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,149,58,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.hero-eyebrow-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #7BACC4;
+}
+.hero-eyebrow-divider {
+  width: 32px;
+  height: 1px;
+  background: rgba(74,98,120,0.4);
+}
+.lesson-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 300;
+  color: rgba(253,250,246,0.06);
+  line-height: 1;
+  position: absolute;
+  right: 8vw;
+  top: 40px;
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--cream);
+  max-width: 640px;
+  margin-bottom: 16px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: #7BACC4;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.meta-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(253,250,246,0.15);
+  color: rgba(253,250,246,0.65);
+}
+.meta-tag.highlight {
+  background: var(--slate);
+  border-color: var(--slate);
+  color: var(--cream);
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(253,250,246,0.75);
+}
+.back-link:hover { color: var(--cream); }
+.hero-intro {
+  max-width: 760px;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: rgba(253,250,246,0.88);
+  line-height: 1.7;
+}
+
+/* ── LAYOUT ── */
+.content-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+/* ── CONTEXT STRIP ── */
+.context-strip {
+  background: var(--slate);
+  padding: 24px 8vw;
+}
+.context-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+.context-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.5);
+  margin-bottom: 4px;
+}
+.context-value {
+  font-size: 0.88rem;
+  color: var(--cream);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ── MAIN GRID ── */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  padding: 48px 0 80px;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.sidebar-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sidebar-card-header {
+  padding: 14px 20px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.sidebar-card-header.slate      { background: var(--slate);      color: var(--cream); }
+.sidebar-card-header.gold       { background: var(--gold);       color: var(--ink); }
+.sidebar-card-header.terracotta { background: var(--terracotta); color: var(--cream); }
+.sidebar-card-header.plum       { background: var(--plum);       color: var(--cream); }
+.sidebar-card-header.sage       { background: var(--sage);       color: var(--cream); }
+.sidebar-card-body {
+  padding: 16px 20px;
+}
+.sidebar-card-body p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #3D3028;
+  margin-bottom: 8px;
+}
+.sidebar-card-body p:last-child { margin-bottom: 0; }
+.sidebar-card-body strong {
+  font-weight: 500;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.standards-list {
+  list-style: none;
+  padding: 0;
+}
+.standards-list li {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #3D3028;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.standards-list li:last-child { border-bottom: none; }
+.std-code {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--slate);
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.materials-list {
+  list-style: none;
+  padding: 0;
+}
+.materials-list li {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #3D3028;
+  padding: 5px 0 5px 16px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.materials-list li:last-child { border-bottom: none; }
+.materials-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--slate);
+  font-size: 0.7rem;
+  top: 7px;
+}
+
+.sentence-frame {
+  background: var(--slate-light);
+  border-left: 3px solid var(--slate);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+/* ── CATEGORY CARDS ── */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+}
+.category-card {
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+}
+.category-icon {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+  display: block;
+}
+.category-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--slate);
+  line-height: 1.3;
+}
+
+/* ── OBJECTIVES ── */
+.objectives-section { margin-bottom: 40px; }
+.section-eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.objective-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.objective-card-label {
+  padding: 10px 18px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+.objective-card-label.content  { background: var(--slate-light); color: var(--slate); }
+.objective-card-label.language { background: var(--plum-light);  color: var(--plum); }
+.objective-card-label.kid      { background: var(--gold-light);  color: #7A5C1A; }
+.objective-card-body {
+  padding: 16px 18px;
+  background: var(--cream);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #3D3028;
+}
+.objective-card-body em { font-style: italic; color: var(--ink); }
+.objective-card-body .teacher-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ── PHASE BLOCKS ── */
+.phases-section { margin-bottom: 0; }
+
+.phase-block {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.phase-header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  min-height: 64px;
+}
+.phase-color-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 20px;
+}
+.phase-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.2;
+}
+.phase-meta {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(253,250,246,0.6);
+  margin-top: 2px;
+}
+.phase-header-right {
+  background: var(--parchment);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid var(--border);
+}
+.phase-summary {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+.phase-body {
+  background: var(--cream);
+  padding: 24px 28px;
+  border-top: 1px solid var(--border);
+}
+.phase-step {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.phase-step:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.phase-step-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.phase-step p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #3D3028;
+  margin-bottom: 8px;
+}
+.phase-step p:last-child { margin-bottom: 0; }
+
+.teacher-prompt {
+  background: var(--gold-light);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: #5A4010;
+  line-height: 1.65;
+  margin: 8px 0;
+}
+
+.mll-note {
+  background: var(--plum-light);
+  border-left: 3px solid var(--plum);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.mll-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 6px;
+}
+.mll-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #3D2840;
+  margin-bottom: 6px;
+}
+.mll-note p:last-child { margin-bottom: 0; }
+
+.assessment-note {
+  background: var(--slate-light);
+  border-left: 3px solid var(--slate);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.assessment-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 6px;
+}
+.assessment-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #2A3A48;
+  margin-bottom: 6px;
+}
+.assessment-note p:last-child { margin-bottom: 0; }
+
+.equity-note {
+  background: var(--sage-light);
+  border-left: 3px solid var(--sage);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 12px;
+}
+.equity-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 6px;
+}
+.equity-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #2A3A28;
+  margin-bottom: 6px;
+}
+.equity-note p:last-child { margin-bottom: 0; }
+
+.localization-note {
+  background: var(--terracotta-light);
+  border-left: 3px solid var(--terracotta);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.localization-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 6px;
+}
+.localization-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #4A2010;
+  margin-bottom: 6px;
+}
+.localization-note p:last-child { margin-bottom: 0; }
+
+/* Phase colors */
+.phase-connect   .phase-color-block { background: var(--plum); }
+.phase-discover  .phase-color-block { background: var(--sage); }
+.phase-makesense .phase-color-block { background: var(--slate); }
+.phase-apply     .phase-color-block { background: var(--terracotta); }
+.phase-reflect   .phase-color-block { background: var(--gold); }
+.phase-reflect .phase-name { color: var(--ink); }
+.phase-reflect .phase-meta { color: rgba(26,20,16,0.5); }
+
+.phase-connect   .phase-step-label { color: var(--plum); }
+.phase-discover  .phase-step-label { color: var(--sage); }
+.phase-makesense .phase-step-label { color: var(--slate); }
+.phase-apply     .phase-step-label { color: var(--terracotta); }
+.phase-reflect   .phase-step-label { color: #8B6820; }
+
+/* ── PROGRESSION BAR ── */
+.progression-bar {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+.progression-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.progression-days {
+  display: flex;
+  gap: 4px;
+}
+.prog-day {
+  flex: 1;
+  padding: 8px 6px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--muted);
+  background: var(--parchment);
+  border: 1px solid var(--border);
+}
+.prog-day.active {
+  background: var(--slate);
+  color: var(--cream);
+  border-color: var(--slate);
+}
+.prog-day.inquiry {
+  background: var(--sage-light);
+  color: var(--sage);
+  border-color: rgba(92,122,95,0.3);
+}
+.prog-day.literacy {
+  background: var(--plum-light);
+  color: var(--plum);
+  border-color: rgba(107,78,113,0.3);
+}
+.prog-day-label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+.prog-day-desc {
+  font-size: 0.65rem;
+  opacity: 0.8;
+}
+
+/* ── TIMING OVERVIEW ── */
+.timing-overview {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.timing-block {
+  flex: 1;
+  padding: 14px 10px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  background: var(--cream);
+}
+.timing-block:last-child { border-right: none; }
+.timing-duration {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.timing-phase {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.timing-location {
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.timing-block.connect   .timing-duration { color: var(--plum); }
+.timing-block.discover  .timing-duration { color: var(--sage); }
+.timing-block.makesense .timing-duration { color: var(--slate); }
+.timing-block.apply     .timing-duration { color: var(--terracotta); }
+.timing-block.reflect   .timing-duration { color: #8B6820; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .sidebar { order: -1; }
+  .hero { padding: 48px 6vw; }
+  .lesson-number { display: none; }
+  .phase-header { grid-template-columns: 140px 1fr; }
+  .progression-days { flex-wrap: wrap; }
+  .prog-day { min-width: calc(50% - 4px); }
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  padding: 64px 8vw;
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+}
+.footer-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+.footer-content { max-width: 720px; }
+.footer-content p {
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.footer-content p strong { font-weight: 500; color: var(--ink); }
+.footer-content p:last-child { margin-bottom: 0; }
+</style>
+
+<link rel="icon" type="image/x-icon" href="favicon_tal.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_tal_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_tal_32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon_tal_64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="favicon_tal_128.png">
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <a href="index.html" class="nav-brand">The Anchored Learner</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="kindergarten.html">Kindergarten</a>
+    <a href="contact.html">Contact</a>
+    <span class="nav-block-tag">Featured Lesson</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <a href="kindergarten.html" class="back-link">← Back to Kindergarten</a>
+  <div class="lesson-number">K</div>
+  <div class="hero-eyebrow">
+    <span class="hero-eyebrow-text">Featured Lesson Preview</span>
+    <div class="hero-eyebrow-divider"></div>
+    <span class="hero-eyebrow-text">Anchored Math</span>
+  </div>
+  <h1>What Does Our Community<br>Need Most? —<br><em>Survey, Counting &amp;</em><br><em>Comparing Groups</em></h1>
+  <div class="hero-meta">
+    <span class="meta-tag highlight">Anchored Math</span>
+    <span class="meta-tag">Unit 1 · Identity &amp; Community</span>
+    <span class="meta-tag">Week 4</span>
+    <span class="meta-tag">45 minutes</span>
+    <span class="meta-tag">~Week 10 of the Year</span>
+    <span class="meta-tag">Roots &amp; Belonging Phase</span>
+  </div>
+  <p class="hero-intro">
+    This lesson shows how data collection, counting, and comparison can be grounded in something real. Students vote on what their community needs most, build a class graph, and use mathematical language to describe and justify what the data shows — connecting number sense directly to the week's driving question.
+  </p>
+</div>
+
+<!-- CONTEXT STRIP -->
+<div class="context-strip">
+  <div class="context-inner">
+    <div class="context-item">
+      <div class="context-label">Weekly Inquiry Thread</div>
+      <div class="context-value">"What does our community need to thrive — and does everyone have what they need?"</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Building On</div>
+      <div class="context-value">Wants vs. Needs launch · Community Needs Investigation Centers · week of inquiry work</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Building Toward</div>
+      <div class="context-value">Reflect discussion — does everyone in our real community have this? · Action project contribution</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Action Project</div>
+      <div class="context-value">"This Is Us" Community Portrait &amp; Class Pledge — Unit 1 culmination</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content-wrap">
+  <div class="main-grid">
+
+    <!-- LEFT: LESSON CONTENT -->
+    <div class="lesson-content">
+
+      <!-- Where We Are -->
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin:40px 0 32px;">
+        <div class="section-eyebrow" style="margin-bottom:12px;">Where We Are</div>
+        <p style="font-size:0.92rem;line-height:1.85;color:#3D3028;margin-bottom:12px;">Students are in Week 4 of Unit 1 — approximately Week 10 of the school year. They have spent this week exploring what communities need and whether everyone has what they need. Today's Anchored Math block extends that inquiry work by giving students a way to collect, represent, and analyze class data about community needs.</p>
+        <p style="font-size:0.88rem;line-height:1.8;color:var(--muted);font-style:italic;">Students use counting, sorting, and comparison — skills introduced earlier in the year — within a real and meaningful context. The math deepens the inquiry rather than running parallel to it: by the end of the lesson, students have used data to say something true about what their classroom community believes matters most.</p>
+      </div>
+
+      <!-- Weekly Progression -->
+      <div class="progression-bar">
+        <div class="progression-label">Unit 1 · Week 4 Thematic Arc — Where This Lesson Sits</div>
+        <div class="progression-days">
+          <div class="prog-day inquiry">
+            <span class="prog-day-label">Inquiry · Mon</span>
+            <span class="prog-day-desc">Wants vs. Needs launch &amp; wonder · Anchored Inquiry</span>
+          </div>
+          <div class="prog-day inquiry">
+            <span class="prog-day-label">Inquiry · Tue–Wed</span>
+            <span class="prog-day-desc">Community Needs Centers · living things · fairness and access questions</span>
+          </div>
+          <div class="prog-day literacy">
+            <span class="prog-day-label">Literacy</span>
+            <span class="prog-day-desc">CVC community words · blending, segmenting, writing</span>
+          </div>
+          <div class="prog-day active">
+            <span class="prog-day-label">Math ←</span>
+            <span class="prog-day-desc">Community Needs Survey &amp; Graphing · Anchored Math</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timing Overview -->
+      <div class="timing-overview">
+        <div class="timing-block connect">
+          <div class="timing-duration">5 min</div>
+          <div class="timing-phase">Connect</div>
+          <div class="timing-location">Rug</div>
+        </div>
+        <div class="timing-block discover">
+          <div class="timing-duration">10 min</div>
+          <div class="timing-phase">Discover</div>
+          <div class="timing-location">Rug</div>
+        </div>
+        <div class="timing-block makesense">
+          <div class="timing-duration">10 min</div>
+          <div class="timing-phase">Make Sense</div>
+          <div class="timing-location">Rug</div>
+        </div>
+        <div class="timing-block apply">
+          <div class="timing-duration">15 min</div>
+          <div class="timing-phase">Apply</div>
+          <div class="timing-location">Tables</div>
+        </div>
+        <div class="timing-block reflect">
+          <div class="timing-duration">5 min</div>
+          <div class="timing-phase">Reflect</div>
+          <div class="timing-location">Rug</div>
+        </div>
+      </div>
+
+      <!-- Objectives -->
+      <div class="objectives-section">
+        <div class="section-eyebrow">Objectives</div>
+
+        <div class="objective-card">
+          <div class="objective-card-label content">Content Objective</div>
+          <div class="objective-card-body">
+            Students will <strong>collect, represent, and compare</strong> data about community needs to determine which needs are most commonly identified by the class.
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="objective-card-label language">Language Objective</div>
+          <div class="objective-card-body">
+            Students will <strong>describe and justify</strong> comparisons between groups using number and comparison language — from pointing and counting with support <em>(WIDA Levels 1–2)</em>, to using sentence frames with a partner <em>(Levels 3–4)</em>, to independently explaining their reasoning <em>(Level 5)</em>.
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="objective-card-label kid">Kid-Friendly Objective</div>
+          <div class="objective-card-body">
+            <em>"Today I will <strong>compare</strong> what our class thinks a community needs most, so that I can explain which needs are greater and how I know. I'll know I've got it if I can tell my partner which need has the most votes and why."</em>
+            <p class="teacher-note">Teacher explanation: "Compare means to look at two groups and decide which has more, which has less, or if they are the same. Justify means to explain how you know."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase Blocks -->
+      <div class="phases-section">
+        <div class="section-eyebrow">Lesson Plan · Connect · Discover · Make Sense · Apply · Reflect</div>
+
+        <!-- CONNECT -->
+        <div class="phase-block phase-connect">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Connect</div>
+              <div class="phase-meta">5 min · Rug · Cultural Ignition</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Connect to prior inquiry work. Establish the mathematical purpose for today. Read kid-friendly objective.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Opening</div>
+              <p>Teacher connects to the week's inquiry work — pointing to the wonder wall, the anchor chart from the wants/needs lesson, or any community needs vocabulary accumulated this week.</p>
+              <div class="teacher-prompt">"This week we've been thinking and wondering about what communities need. What's one thing you think a community really needs? Turn and tell your partner."</div>
+              <p>45 seconds partner talk. 2–3 students share. Teacher validates all responses — no response is wrong here.</p>
+              <div class="teacher-prompt">"Today we're going to find out what OUR class thinks is most important for a community to have — and we're going to use math to figure it out."</div>
+              <p>Teacher reads kid-friendly objective. Brief explanation of <em>compare</em> and <em>justify</em>.</p>
+            </div>
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>The connection to this week's inquiry vocabulary reduces the language demand before the math work begins. Students are counting and comparing words and concepts they have already been thinking with — the mathematical task builds on familiar content rather than introducing new vocabulary simultaneously.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DISCOVER -->
+        <div class="phase-block phase-discover">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Discover</div>
+              <div class="phase-meta">10 min · Rug · Voting & Graph Build</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Teacher introduces the five category cards and models voting. Each student places one vote on the class graph. The data is real — collected from the students in the room.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Introduce Categories</div>
+              <p>Teacher holds up each category card one at a time — image visible, word read aloud.</p>
+              <div class="category-grid">
+                <div class="category-card">
+                  <span class="category-icon">🍎</span>
+                  <span class="category-label">Food</span>
+                </div>
+                <div class="category-card">
+                  <span class="category-icon">💧</span>
+                  <span class="category-label">Water</span>
+                </div>
+                <div class="category-card">
+                  <span class="category-icon">🏠</span>
+                  <span class="category-label">Shelter</span>
+                </div>
+                <div class="category-card">
+                  <span class="category-icon">🌳</span>
+                  <span class="category-label">Safe Places to Play</span>
+                </div>
+                <div class="category-card">
+                  <span class="category-icon">🤝</span>
+                  <span class="category-label">People Who Help</span>
+                </div>
+              </div>
+              <div class="teacher-prompt">"Are these needs or wants?" </div>
+              <p>Students respond. Brief discussion — teacher validates that all five are needs. "Today you're going to choose which one YOU think is most important for a community."</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Model Voting</div>
+              <div class="teacher-prompt">"I think food is really important for a community — without food, people can't stay healthy and strong. So I'm putting my vote here."</div>
+              <p>Teacher places a sticky note or voting card on the food column of the class graph. "Each of you will get one vote. You'll choose what YOU think is most important — there is no wrong answer."</p>
+              <p>Students come up one at a time and place their vote. Teacher organizes votes into a clear visual graph as they accumulate — columns growing visibly.</p>
+            </div>
+
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>Category cards with images alongside words allow students at all proficiency levels to understand and choose independently. Voting is a physical, low-language action — students participate fully before any counting or comparison language is required.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAKE SENSE -->
+        <div class="phase-block phase-makesense">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Make Sense</div>
+              <div class="phase-meta">10 min · Rug · Count & Notice</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Class counts each category together. Numbers recorded clearly. Students notice patterns in the data before they are asked to describe or justify them.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Count Together</div>
+              <div class="teacher-prompt">"Now we have data from our whole class. Let's count each category together."</div>
+              <p>Teacher points to each column. Class counts aloud together — one vote at a time. Teacher records the number clearly next to or below each column.</p>
+              <p style="font-style:italic;color:var(--slate);margin-left:12px;">"Food has ___ votes. Water has ___ votes. Shelter has ___ votes..."</p>
+              <p>All five categories counted and labeled.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Notice</div>
+              <div class="teacher-prompt">"Now look at our graph. What do you notice?"</div>
+              <p>2–3 student responses. Teacher records noticings in student language on chart paper or beside the graph. Does not correct or redirect — all noticings are valid data observations.</p>
+              <p>Teacher listens for: references to more/less/equal, references to specific categories, references to their own vote. All of these are mathematical thinking.</p>
+            </div>
+
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>Asking "What do you notice?" before asking students to compare or justify significantly lowers the language barrier. Students at WIDA Levels 1–2 can point to the tallest column or hold up fingers to show a number — both are valid noticings. The noticings from the group give multilingual learners models of comparison language before they are asked to produce it independently in Apply.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- APPLY -->
+        <div class="phase-block phase-apply">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Apply</div>
+              <div class="phase-meta">15 min · Tables · Independent Work</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Students work with the class graph data — counting each category, comparing two groups, and using sentence frames to describe what the data shows. Teacher circulates with mathematical conference questions.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Transition</div>
+              <div class="teacher-prompt">"Now it's your turn to be data analysts. When you get to your table you'll have a recording sheet — or you can look at our class graph up here. Your job: count each category, choose two groups to compare, and write or tell a sentence about what you found. Use your sentence frames."</div>
+              <p>Clear transition. Students move to tables — recording sheets or simplified graph copies, sentence frame cards, pencils and crayons already set up.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Independent Work</div>
+              <p>Students count each category from the class graph or their recording sheet, then compare two groups of their choosing. Teacher circulates with brief mathematical conferences:</p>
+              <div class="teacher-prompt">"Which group has more? How do you know?"</div>
+              <div class="teacher-prompt">"Can you show me? Point to the numbers."</div>
+              <div class="teacher-prompt">"What surprised you about our data?"</div>
+              <div class="teacher-prompt">"Which need do you think is most important? Does our class agree with you?"</div>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Early Finishers</div>
+              <p>Students who finish: compare a third category to one they already compared · draw what the category with the most votes looks like in their own community · write or dictate a sentence about what the data tells us.</p>
+            </div>
+
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Differentiation</div>
+              <p><strong>Levels 1–2:</strong> Pointing to the taller column and counting aloud is a complete response. Teacher scribes the comparison sentence in English. Oral justification accepted in home language.</p>
+              <p><strong>Levels 3–4:</strong> Sentence frames provide oral and written structure throughout.</p>
+              <p><strong>Level 5:</strong> Independent comparison and justification. May attempt more than one comparison or write a sentence explaining what the data means for their community.</p>
+              <p style="margin-top:8px;"><strong>Multilingual extension:</strong> Students may discuss their reasoning in their home language with a partner before sharing in English. Both the mathematical thinking and the reasoning are the goal — the English is the vehicle, not the destination.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- REFLECT -->
+        <div class="phase-block phase-reflect">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Reflect</div>
+              <div class="phase-meta">5 min · Rug · Metacognitive Close</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Students share data findings. Lesson closes by shifting from the math back to the inquiry's deeper question — does everyone have what our data says matters most?</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Share</div>
+              <div class="teacher-prompt">"What does our class think a community needs most?"</div>
+              <p>2–3 students respond using data — pointing to the graph, referencing numbers, using comparison language. Teacher celebrates mathematical vocabulary: <em>more, fewer, greater than, less than, equal.</em></p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">The Deeper Question</div>
+              <p>Teacher shifts the register — from math to inquiry:</p>
+              <div class="teacher-prompt">"Our class voted. We used math to find out what we think a community needs most. Now I want to ask you something harder — do you think everyone in our real community actually has this?"</div>
+              <p>Pause. Let students sit with the question. 1–2 responses invited — but no answer is required. The wondering is the point.</p>
+              <div class="teacher-prompt">"This week we've been asking what our community needs — and whether everyone has what they need. Today we used math to think about that. Numbers are one way we understand the world around us."</div>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Objective Return</div>
+              <div class="teacher-prompt">"Turn and tell your partner — which need had the most votes, and how do you know?"</div>
+              <p>30 seconds partner talk. 1–2 pairs share.</p>
+            </div>
+
+            <div class="phase-step">
+              <div class="phase-step-label">Closing</div>
+              <div class="teacher-prompt">"Mathematicians don't just count — they use numbers to understand the world. Today you used math to understand what our community thinks is important. That's real mathematical thinking."</div>
+            </div>
+
+            <div class="assessment-note">
+              <div class="assessment-note-label">Formative Assessment</div>
+              <p>Teacher observes during Apply and Reflect: who is counting groups accurately, who demonstrates understanding of greater/less than, who is using comparison language independently vs. with frame support, who is connecting the data back to the community context. Notes inform future math instruction and small group support.</p>
+            </div>
+
+            <div class="equity-note">
+              <div class="equity-note-label">Inquiry Connection</div>
+              <p>The closing question — "Do you think everyone in our real community has this?" — is not a math question. It is the equity thread of the unit surfacing through the math lesson. It should be held gently: offered, not pushed. Students who answer are thinking out loud about justice. Students who stay quiet may be sitting with something real. Both responses are valid. The wondering goes on the wonder wall.</p>
+            </div>
+
+            <div class="localization-note">
+              <div class="localization-note-label">Localization Note</div>
+              <p>The five voting categories — food, water, shelter, safe places to play, people who help — are illustrative examples drawn from the unit's needs/wants framework. Teachers should review and adapt these categories to reflect needs that are meaningful and relevant in their specific community context.</p>
+              <p><strong>Essential to the framework:</strong> the data collection and graphing structure, the counting and comparison objectives, the WIDA-differentiated language support, and the closing connection back to the unit's driving question.</p>
+              <p><strong>Intended for localization:</strong> the specific voting categories, which should reflect community needs that students have actually encountered and discussed during the inquiry work earlier in the week.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- end phases -->
+
+    </div>
+    <!-- end lesson content -->
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- Standards -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header slate">Standards</div>
+        <div class="sidebar-card-body">
+          <ul class="standards-list">
+            <li>
+              <span class="std-code">NC.K.MD.2/3</span>
+              <span>Classify objects and count the number in each category; represent data</span>
+            </li>
+            <li>
+              <span class="std-code">NC.K.CC.4/5</span>
+              <span>Understand the relationship between numbers and quantities; count to answer "how many?"</span>
+            </li>
+            <li>
+              <span class="std-code">NC.K.CC.6</span>
+              <span>Identify whether a group of objects is greater than, less than, or equal to another group — using matching and counting strategies</span>
+            </li>
+            <li>
+              <span class="std-code">SL.K.1</span>
+              <span>Participate in collaborative conversations with diverse partners</span>
+            </li>
+            <li>
+              <span class="std-code">SL.K.6</span>
+              <span>Speak audibly and express thoughts and feelings clearly</span>
+            </li>
+            <li>
+              <span class="std-code">WIDA ELD-SI.K</span>
+              <span>Language for Social &amp; Instructional Purposes — Compare · Justify · Describe</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Materials -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header terracotta">Materials</div>
+        <div class="sidebar-card-body">
+          <ul class="materials-list">
+            <li>Category cards — visual + labeled: food · water · shelter · safe places to play · people who help</li>
+            <li>Sticky notes or voting cards — one per student</li>
+            <li>Large class graph — chart paper or pocket chart, columns pre-labeled with category cards</li>
+            <li>Recording sheet (optional) — simplified graph for students to draw + write numbers</li>
+            <li>Sentence frame cards — one per table</li>
+            <li>Markers for recording vote totals</li>
+            <li>Anchor chart: "A healthy community needs ___" — started earlier in the week</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sentence Frames -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header slate">Sentence Frames</div>
+        <div class="sidebar-card-body">
+          <div class="sentence-frame">"___ has ___ votes."</div>
+          <div class="sentence-frame">"___ has more than ___."</div>
+          <div class="sentence-frame">"___ has fewer than ___."</div>
+          <div class="sentence-frame">"They are equal because ___."</div>
+          <div class="sentence-frame">"Our class thinks ___ is most important because ___."</div>
+        </div>
+      </div>
+
+      <!-- Language Functions -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header gold">Language Functions</div>
+        <div class="sidebar-card-body">
+          <p><strong>Compare</strong><br>Look at two groups and decide which has more, which has less, or if they are the same.</p>
+          <p><strong>Justify</strong><br>Explain how you know — give a reason using numbers or the data from the graph.</p>
+          <p><strong>Describe</strong><br>Use words and numbers to tell what the data shows about what the class values.</p>
+          <p style="margin-top:10px;font-size:0.82rem;color:var(--muted);font-style:italic;">All three functions are introduced in the kid-friendly objective and reinforced across every phase. Students move from noticing (Make Sense) to describing and justifying (Apply and Reflect).</p>
+        </div>
+      </div>
+
+      <!-- Unit Connection -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header slate">Unit 1 Connection</div>
+        <div class="sidebar-card-body">
+          <p><strong>Driving Question</strong><br>"What does our community need to thrive — and does everyone have what they need?"</p>
+          <p style="margin-top:8px;"><strong>Action Project</strong><br>"This Is Us" Community Portrait &amp; Class Pledge. Students may reference class data when contributing to the portrait — naming what their classroom community said it values most.</p>
+          <p style="margin-top:8px;"><strong>The Connection</strong><br>The voting categories in this lesson come directly from the inquiry work earlier in the week. The data students collect is not hypothetical — it is a real record of what this classroom community believes matters. That record belongs to them.</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- end sidebar -->
+
+  </div>
+  <!-- end main grid -->
+</div>
+<!-- end content-wrap -->
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-label">Rights &amp; Use</div>
+    <p><strong>© 2026 The Anchored Learner. All rights reserved.</strong></p>
+    <p>
+      This sample lesson is provided to illustrate the design and instructional approach of The Anchored Learner. It is not licensed for reuse, redistribution, adaptation, or classroom implementation without explicit written permission.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
