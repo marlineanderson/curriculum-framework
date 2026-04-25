@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anchored Inquiry · What Does Our Community Need? · The Anchored Learner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1410;
+  --parchment: #F7F3ED;
+  --cream: #FDFAF6;
+  --terracotta: #B85C38;
+  --terracotta-light: #F2E0D8;
+  --gold: #C9953A;
+  --gold-light: #F5EDD8;
+  --sage: #5C7A5F;
+  --sage-light: #DFE9E0;
+  --slate: #4A6278;
+  --slate-light: #DCE5ED;
+  --plum: #6B4E71;
+  --plum-light: #EDE3EF;
+  --muted: #7A6E65;
+  --border: rgba(26,20,16,0.1);
+  --block-color: #5C7A5F;
+  --block-light: #DFE9E0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+/* ── NAV ── */
+.top-nav {
+  background: var(--ink);
+  padding: 12px 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--cream);
+  font-style: italic;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-block-tag {
+  background: var(--sage);
+  color: var(--cream);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  padding: 64px 8vw 56px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -150px; right: -150px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(92,122,95,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(92,122,95,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.hero-eyebrow-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #8FBF93;
+}
+.hero-eyebrow-divider {
+  width: 32px;
+  height: 1px;
+  background: rgba(92,122,95,0.4);
+}
+.lesson-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 300;
+  color: rgba(253,250,246,0.06);
+  line-height: 1;
+  position: absolute;
+  right: 8vw;
+  top: 40px;
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--cream);
+  max-width: 680px;
+  margin-bottom: 16px;
+}
+.hero h1 em { font-style: italic; color: #8FBF93; }
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.meta-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(253,250,246,0.15);
+  color: rgba(253,250,246,0.65);
+}
+.meta-tag.highlight {
+  background: var(--sage);
+  border-color: var(--sage);
+  color: var(--cream);
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(253,250,246,0.75);
+}
+.back-link:hover { color: var(--cream); }
+.hero-intro {
+  max-width: 760px;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: rgba(253,250,246,0.88);
+  line-height: 1.7;
+}
+
+/* ── LAYOUT ── */
+.content-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+/* ── CONTEXT STRIP ── */
+.context-strip {
+  background: var(--sage);
+  padding: 24px 8vw;
+}
+.context-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+.context-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.5);
+  margin-bottom: 4px;
+}
+.context-value {
+  font-size: 0.88rem;
+  color: var(--cream);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ── MAIN GRID ── */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  padding: 48px 0 80px;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.sidebar-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sidebar-card-header {
+  padding: 14px 20px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.sidebar-card-header.sage       { background: var(--sage);       color: var(--cream); }
+.sidebar-card-header.gold       { background: var(--gold);       color: var(--ink); }
+.sidebar-card-header.terracotta { background: var(--terracotta); color: var(--cream); }
+.sidebar-card-header.plum       { background: var(--plum);       color: var(--cream); }
+.sidebar-card-header.slate      { background: var(--slate);      color: var(--cream); }
+.sidebar-card-body {
+  padding: 16px 20px;
+}
+.sidebar-card-body p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #3D3028;
+  margin-bottom: 8px;
+}
+.sidebar-card-body p:last-child { margin-bottom: 0; }
+.sidebar-card-body strong {
+  font-weight: 500;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.standards-list {
+  list-style: none;
+  padding: 0;
+}
+.standards-list li {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #3D3028;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.standards-list li:last-child { border-bottom: none; }
+.std-code {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--sage);
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.materials-list {
+  list-style: none;
+  padding: 0;
+}
+.materials-list li {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #3D3028;
+  padding: 5px 0 5px 16px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.materials-list li:last-child { border-bottom: none; }
+.materials-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--sage);
+  font-size: 0.7rem;
+  top: 7px;
+}
+
+.sentence-frame {
+  background: var(--sage-light);
+  border-left: 3px solid var(--sage);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--sage);
+  line-height: 1.6;
+}
+
+/* ── OBJECTIVES ── */
+.objectives-section { margin-bottom: 40px; }
+.section-eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.objective-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.objective-card-label {
+  padding: 10px 18px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+.objective-card-label.content  { background: var(--sage-light);  color: var(--sage); }
+.objective-card-label.language { background: var(--plum-light);  color: var(--plum); }
+.objective-card-label.kid      { background: var(--gold-light);  color: #7A5C1A; }
+.objective-card-body {
+  padding: 16px 18px;
+  background: var(--cream);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #3D3028;
+}
+.objective-card-body em { font-style: italic; color: var(--ink); }
+.objective-card-body .teacher-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ── DAY DIVIDER ── */
+.day-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0 32px;
+}
+.day-divider-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--sage);
+  white-space: nowrap;
+}
+.day-divider-sub {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.day-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── PHASE BLOCKS ── */
+.phases-section { margin-bottom: 0; }
+
+.phase-block {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.phase-header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  min-height: 64px;
+}
+.phase-color-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 20px;
+}
+.phase-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.2;
+}
+.phase-meta {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(253,250,246,0.6);
+  margin-top: 2px;
+}
+.phase-header-right {
+  background: var(--parchment);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid var(--border);
+}
+.phase-summary {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+.phase-body {
+  background: var(--cream);
+  padding: 24px 28px;
+  border-top: 1px solid var(--border);
+}
+.phase-step {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.phase-step:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.phase-step-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.phase-step p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #3D3028;
+  margin-bottom: 8px;
+}
+.phase-step p:last-child { margin-bottom: 0; }
+
+.teacher-prompt {
+  background: var(--gold-light);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: #5A4010;
+  line-height: 1.65;
+  margin: 8px 0;
+}
+
+.mll-note {
+  background: var(--plum-light);
+  border-left: 3px solid var(--plum);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.mll-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 6px;
+}
+.mll-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #3D2840;
+  margin-bottom: 6px;
+}
+.mll-note p:last-child { margin-bottom: 0; }
+
+.assessment-note {
+  background: var(--sage-light);
+  border-left: 3px solid var(--sage);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.assessment-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 6px;
+}
+.assessment-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #2A3A28;
+  margin-bottom: 6px;
+}
+.assessment-note p:last-child { margin-bottom: 0; }
+
+.equity-note {
+  background: var(--terracotta-light);
+  border-left: 3px solid var(--terracotta);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 12px;
+}
+.equity-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 6px;
+}
+.equity-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #4A2010;
+  margin-bottom: 6px;
+}
+.equity-note p:last-child { margin-bottom: 0; }
+
+.localization-note {
+  background: var(--terracotta-light);
+  border-left: 3px solid var(--terracotta);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin-top: 16px;
+}
+.localization-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 6px;
+}
+.localization-note p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #4A2010;
+  margin-bottom: 6px;
+}
+.localization-note p:last-child { margin-bottom: 0; }
+
+/* Phase colors */
+.phase-connect   .phase-color-block { background: var(--plum); }
+.phase-discover  .phase-color-block { background: var(--sage); }
+.phase-makesense .phase-color-block { background: var(--slate); }
+.phase-apply     .phase-color-block { background: var(--terracotta); }
+.phase-reflect   .phase-color-block { background: var(--gold); }
+.phase-reflect .phase-name { color: var(--ink); }
+.phase-reflect .phase-meta { color: rgba(26,20,16,0.5); }
+
+.phase-connect   .phase-step-label { color: var(--plum); }
+.phase-discover  .phase-step-label { color: var(--sage); }
+.phase-makesense .phase-step-label { color: var(--slate); }
+.phase-apply     .phase-step-label { color: var(--terracotta); }
+.phase-reflect   .phase-step-label { color: #8B6820; }
+
+/* ── PROGRESSION BAR ── */
+.progression-bar {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+.progression-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.progression-days {
+  display: flex;
+  gap: 4px;
+}
+.prog-day {
+  flex: 1;
+  padding: 8px 6px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--muted);
+  background: var(--parchment);
+  border: 1px solid var(--border);
+}
+.prog-day.active {
+  background: var(--sage);
+  color: var(--cream);
+  border-color: var(--sage);
+}
+.prog-day.active-secondary {
+  background: #4A7A4D;
+  color: var(--cream);
+  border-color: #4A7A4D;
+}
+.prog-day.literacy {
+  background: var(--plum-light);
+  color: var(--plum);
+  border-color: rgba(107,78,113,0.3);
+}
+.prog-day.math {
+  background: var(--slate-light);
+  color: var(--slate);
+  border-color: rgba(74,98,120,0.3);
+}
+.prog-day-label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+.prog-day-desc {
+  font-size: 0.65rem;
+  opacity: 0.8;
+}
+
+/* ── TIMING OVERVIEW ── */
+.timing-overview {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.timing-block {
+  flex: 1;
+  padding: 14px 10px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  background: var(--cream);
+}
+.timing-block:last-child { border-right: none; }
+.timing-duration {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.timing-phase {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.timing-location {
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.timing-block.connect   .timing-duration { color: var(--plum); }
+.timing-block.discover  .timing-duration { color: var(--sage); }
+.timing-block.makesense .timing-duration { color: var(--slate); }
+.timing-block.apply     .timing-duration { color: var(--terracotta); }
+.timing-block.reflect   .timing-duration { color: #8B6820; }
+
+/* ── CENTERS OVERVIEW TABLE ── */
+.centers-overview {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 32px 0;
+}
+.centers-overview-header {
+  background: var(--sage);
+  padding: 14px 20px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.centers-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.centers-table th {
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--parchment);
+  border-bottom: 1px solid var(--border);
+}
+.centers-table td {
+  padding: 12px 16px;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: #3D3028;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.centers-table tr:last-child td { border-bottom: none; }
+.center-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--sage);
+  white-space: nowrap;
+}
+.center-day-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 4px;
+}
+.center-day-tag.tuesday  { background: var(--sage-light);  color: var(--sage); }
+.center-day-tag.wednesday { background: var(--slate-light); color: var(--slate); }
+.center-type-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+/* ── CENTER DETAIL BLOCKS ── */
+.center-detail {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.center-detail-header {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  min-height: 64px;
+}
+.center-num-block {
+  background: var(--sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--cream);
+}
+.center-header-right {
+  background: var(--parchment);
+  padding: 14px 20px;
+  border-left: 1px solid var(--border);
+}
+.center-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.center-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.center-body {
+  padding: 20px 24px;
+  border-top: 1px solid var(--border);
+}
+.center-body p {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: #3D3028;
+  margin-bottom: 10px;
+}
+.center-body p:last-child { margin-bottom: 0; }
+.center-body strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+.center-steps {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+.center-steps li {
+  font-size: 0.86rem;
+  line-height: 1.7;
+  color: #3D3028;
+  padding: 6px 0 6px 24px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.center-steps li:last-child { border-bottom: none; }
+.center-steps li::before {
+  content: attr(data-step);
+  position: absolute;
+  left: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--sage);
+  top: 8px;
+}
+
+/* ── ROTATION DIAGRAM ── */
+.rotation-diagram {
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: center;
+}
+.rotation-group {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-align: center;
+}
+.rotation-group-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.rotation-group-path {
+  font-size: 0.78rem;
+  color: var(--sage);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.rotation-arrow {
+  font-size: 1.2rem;
+  color: var(--sage);
+  text-align: center;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .sidebar { order: -1; }
+  .hero { padding: 48px 6vw; }
+  .lesson-number { display: none; }
+  .phase-header { grid-template-columns: 140px 1fr; }
+  .progression-days { flex-wrap: wrap; }
+  .prog-day { min-width: calc(50% - 4px); }
+  .rotation-diagram { grid-template-columns: 1fr; }
+  .rotation-arrow { transform: rotate(90deg); }
+  .centers-table th:nth-child(3),
+  .centers-table td:nth-child(3) { display: none; }
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  padding: 64px 8vw;
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+}
+.footer-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+.footer-content { max-width: 720px; }
+.footer-content p {
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.footer-content p strong { font-weight: 500; color: var(--ink); }
+.footer-content p:last-child { margin-bottom: 0; }
+</style>
+
+<link rel="icon" type="image/x-icon" href="favicon_tal.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_tal_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_tal_32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon_tal_64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="favicon_tal_128.png">
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <a href="index.html" class="nav-brand">The Anchored Learner</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="kindergarten.html">Kindergarten</a>
+    <a href="contact.html">Contact</a>
+    <span class="nav-block-tag">Featured Lesson</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <a href="kindergarten.html" class="back-link">← Back to Kindergarten</a>
+  <div class="lesson-number">K</div>
+  <div class="hero-eyebrow">
+    <span class="hero-eyebrow-text">Featured Lesson Preview</span>
+    <div class="hero-eyebrow-divider"></div>
+    <span class="hero-eyebrow-text">Anchored Inquiry · Science &amp; Social Studies</span>
+  </div>
+  <h1>What Does Our<br>Community Need? —<br><em>Wants &amp; Needs, Living Things,</em><br><em>and the Fairness &amp; Access Question</em></h1>
+  <div class="hero-meta">
+    <span class="meta-tag highlight">Anchored Inquiry</span>
+    <span class="meta-tag">Unit 1 · Identity &amp; Community</span>
+    <span class="meta-tag">Week 4 · Monday–Wednesday</span>
+    <span class="meta-tag">60 min × 3 days</span>
+    <span class="meta-tag">~Week 10 of the Year</span>
+    <span class="meta-tag">Roots &amp; Belonging Phase</span>
+  </div>
+  <p class="hero-intro">
+    This three-day inquiry sequence moves students from a foundational question — what is the difference between a want and a need? — to a harder one: does everyone in our community have what they need? Monday launches the concept. Tuesday and Wednesday deepen it through hands-on investigation centers. The equity thread runs underneath all three days, held gently and opened carefully.
+  </p>
+</div>
+
+<!-- CONTEXT STRIP -->
+<div class="context-strip">
+  <div class="context-inner">
+    <div class="context-item">
+      <div class="context-label">Driving Question</div>
+      <div class="context-value">"What does our community need to thrive — and does everyone have what they need?"</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Building On</div>
+      <div class="context-value">Three weeks of identity and community exploration — who we are, where we come from, what makes our community special</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Building Toward</div>
+      <div class="context-value">Thursday's community partner visitor · Anchored Math survey &amp; graphing · Anchored Literacy CVC community words</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Action Project</div>
+      <div class="context-value">"This Is Us" Community Portrait &amp; Class Pledge — Unit 1 culmination</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content-wrap">
+  <div class="main-grid">
+
+    <!-- LEFT: LESSON CONTENT -->
+    <div class="lesson-content">
+
+      <!-- Where We Are -->
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin:40px 0 32px;">
+        <div class="section-eyebrow" style="margin-bottom:12px;">Where We Are</div>
+        <p style="font-size:0.92rem;line-height:1.85;color:#3D3028;margin-bottom:12px;">Students are in Week 4 of Unit 1 — approximately Week 10 of the school year. For three weeks they have explored their own identities, their families, and the communities that shape them. This week the inquiry zooms out: from celebrating community to asking what communities need, and whether everyone has what they need.</p>
+        <p style="font-size:0.88rem;line-height:1.8;color:var(--muted);font-style:italic;">Monday builds the foundational concept — wants versus needs — through a read-aloud and sorting work. Tuesday plants the equity seed through <em>Maddi's Fridge</em> before students move into investigation centers. Wednesday deepens through creative and expressive centers. By the end of Wednesday, every student has investigated all four aspects of the driving question.</p>
+      </div>
+
+      <!-- Weekly Progression -->
+      <div class="progression-bar">
+        <div class="progression-label">Unit 1 · Week 4 Thematic Arc — Where This Lesson Sits</div>
+        <div class="progression-days">
+          <div class="prog-day active">
+            <span class="prog-day-label">Inquiry · Mon ←</span>
+            <span class="prog-day-desc">Wants vs. Needs launch &amp; wonder</span>
+          </div>
+          <div class="prog-day active-secondary">
+            <span class="prog-day-label">Inquiry · Tue–Wed ←</span>
+            <span class="prog-day-desc">Community Needs Centers · living things · fairness and access questions</span>
+          </div>
+          <div class="prog-day literacy">
+            <span class="prog-day-label">Literacy</span>
+            <span class="prog-day-desc">CVC community words · blending, segmenting, writing</span>
+          </div>
+          <div class="prog-day math">
+            <span class="prog-day-label">Math</span>
+            <span class="prog-day-desc">Community Needs Survey &amp; Graphing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shared Objectives -->
+      <div class="objectives-section">
+        <div class="section-eyebrow">Objectives · Three-Day Arc</div>
+
+        <div class="objective-card">
+          <div class="objective-card-label content">Content Objective</div>
+          <div class="objective-card-body">
+            <strong>Monday:</strong> Students will identify the difference between wants and needs and categorize personal items accordingly.<br>
+            <strong>Tuesday–Wednesday:</strong> Students will compare the needs of different living things and evaluate whether the people in their community have access to what they need to thrive.
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="objective-card-label language">Language Objective</div>
+          <div class="objective-card-body">
+            Students will <strong>describe and justify</strong> their thinking about wants, needs, and community access using content vocabulary — from pointing and placing with sentence stem support <em>(WIDA Levels 1–2)</em>, to structured oral responses with a partner <em>(Levels 3–4)</em>, to independently explaining and justifying thinking <em>(Level 5)</em>.
+          </div>
+        </div>
+
+        <div class="objective-card">
+          <div class="objective-card-label kid">Kid-Friendly Objective</div>
+          <div class="objective-card-body">
+            <em>"Today I will identify the difference between wants and needs, so that I can describe why some things are needs and some things are wants — and begin to wonder whether everyone in our community has what they need. I'll know I've got it if I can tell my partner one thing I need, one thing I want, and explain how I know."</em>
+            <p class="teacher-note">Teacher explanation: "Identify means to find something and name it. Describe means to tell someone about something."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- DAY 1 — MONDAY                          -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="day-divider">
+        <span class="day-divider-label">Monday</span>
+        <span class="day-divider-sub">Day 1 · Launch &amp; Wonder · 60 minutes</span>
+        <div class="day-divider-line"></div>
+      </div>
+
+      <p style="font-size:0.88rem;line-height:1.8;color:var(--muted);font-style:italic;margin-bottom:24px;">Read-aloud: <em>Wants vs. Needs vs. Robots</em> by Michael Rex. Building toward: Tuesday's read-aloud is <em>Maddi's Fridge</em> by Lois Brandt — plants the equity seed before centers.</p>
+
+      <!-- Monday Timing -->
+      <div class="timing-overview">
+        <div class="timing-block connect">
+          <div class="timing-duration">5 min</div>
+          <div class="timing-phase">Connect</div>
+          <div class="timing-location">Rug</div>
+        </div>
+        <div class="timing-block discover">
+          <div class="timing-duration">15 min</div>
+          <div class="timing-phase">Discover</div>
+          <div class="timing-location">Rug · Read-Aloud</div>
+        </div>
+        <div class="timing-block makesense">
+          <div class="timing-duration">5 min</div>
+          <div class="timing-phase">Make Sense</div>
+          <div class="timing-location">Rug</div>
+        </div>
+        <div class="timing-block apply">
+          <div class="timing-duration">27 min</div>
+          <div class="timing-phase">Apply</div>
+          <div class="timing-location">Tables</div>
+        </div>
+        <div class="timing-block reflect">
+          <div class="timing-duration">8 min</div>
+          <div class="timing-phase">Reflect</div>
+          <div class="timing-location">Rug</div>
+        </div>
+      </div>
+
+      <div class="phases-section">
+        <div class="section-eyebrow">Monday · Connect · Discover · Make Sense · Apply · Reflect</div>
+
+        <!-- CONNECT -->
+        <div class="phase-block phase-connect">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Connect</div>
+              <div class="phase-meta">5 min · Rug · Cultural Ignition</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Open with food and family — something every student can access immediately. Establish the day's inquiry purpose and read the kid-friendly objective.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Opening</div>
+              <div class="teacher-prompt">"Think about a food your family makes at home. Something special. Picture it."</div>
+              <p>Brief pause. "Turn and tell your partner — what food are you thinking about?" 45 seconds partner talk. 2–3 students share.</p>
+              <div class="teacher-prompt">"Every one of those foods is part of who you are. Today we're going to work with some ideas about what we need and what we want."</div>
+              <p>Teacher reads kid-friendly objective. Brief explanation of <em>identify</em> and <em>describe</em>.</p>
+            </div>
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>Students may share food names in their home language. Celebrate: "How do you say that in English? Let's add both words to our word wall." Opening with food and family activates cultural wealth before academic vocabulary is introduced.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DISCOVER -->
+        <div class="phase-block phase-discover">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Discover</div>
+              <div class="phase-meta">15 min · Rug · Read-Aloud</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Read-aloud of <em>Wants vs. Needs vs. Robots</em>. Two think-aloud pauses. Teacher builds a wants/needs chart from student responses after the read.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Read-Aloud</div>
+              <p>Teacher introduces <em>Wants vs. Needs vs. Robots</em> — warm, expressive. Two deliberate think-aloud pauses:</p>
+              <p><strong>Pause 1</strong> — when a robot trades a need for a want:</p>
+              <div class="teacher-prompt">"Did that robot just give away something it needed? What do you think will happen? Turn and tell your partner." 30 seconds. 1–2 responses.</div>
+              <p><strong>Pause 2</strong> — when the robot realizes its mistake:</p>
+              <div class="teacher-prompt">"Have you ever really wanted something but didn't need it? Turn and tell your partner." 30 seconds. 1–2 responses. Continue to end.</div>
+            </div>
+            <div class="phase-step">
+              <div class="phase-step-label">Chart Build</div>
+              <p>After the read-aloud, teacher builds a two-column chart (Need / Want) with 3–4 student responses per column. Records in student language exactly.</p>
+              <div class="teacher-prompt">"A need is something we can't live without. A want is something we'd love — but we could be okay without it."</div>
+              <p>One more turn and tell: "Is a pet a need or a want? How do you know?" 30 seconds. 2–3 students share. Celebrate the debate — the debatable ones are the most interesting.</p>
+            </div>
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Note</div>
+              <p>The picture book provides a visual narrative context that supports comprehension across proficiency levels. Students at WIDA Levels 1–2 can participate in the think-aloud pauses through gesture, expression, and pointing before producing English. The two-column chart gives a persistent visual anchor for the rest of the lesson.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAKE SENSE -->
+        <div class="phase-block phase-makesense">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Make Sense</div>
+              <div class="phase-meta">5 min · Rug · Concept Consolidation</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Review the chart together. Surface the tricky part — wanting something very much doesn't make it a need. Students prepare to sort independently.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Chart Review</div>
+              <p>Teacher reviews the chart together — pointing to student responses in each column.</p>
+              <div class="teacher-prompt">"What do you notice about the things in the need column? What do they have in common?"</div>
+              <p>2–3 responses. Teacher listens for: survival, body, living things.</p>
+              <div class="teacher-prompt">"Here's the tricky part — some things feel like needs because we want them so much. But wanting something really badly doesn't make it a need. Keep that in mind when you sort."</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- APPLY -->
+        <div class="phase-block phase-apply">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Apply</div>
+              <div class="phase-meta">27 min · Tables · Sorting & Recording</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Students sort picture cards into needs and wants independently. Natural conversation with partners encouraged. Recording sheet follows sorting. Teacher circulates with conferring questions.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Transition</div>
+              <p>Students move to tables — sorting mats, picture cards, recording sheets, and sentence frame cards already set up. Teacher models with one card:</p>
+              <div class="teacher-prompt">"Food. I need food because without food my body can't grow. Food goes in the need column. Your turn. Talk to your partner. Use your sentence frames. Go."</div>
+            </div>
+            <div class="phase-step">
+              <div class="phase-step-label">Independent Sorting</div>
+              <p>Students sort independently — natural conversation with partners encouraged. Teacher circulates:</p>
+              <div class="teacher-prompt">"Why did you put that in the need column?" · "Could you survive without it?" · "What about friends — do people need friends?" · "You and your partner disagree — that's great. Tell each other why."</div>
+              <p>When students finish sorting (~10 minutes): complete recording sheet — draw one need and one want. Label or dictate.</p>
+              <p><strong>Early finishers:</strong> flip sorting mat over and draw one more need and one more want from their own life — not in the card set.</p>
+            </div>
+            <div class="mll-note">
+              <div class="mll-note-label">MLL Differentiation</div>
+              <p><strong>Levels 1–2:</strong> Sorting by placing cards is a complete response. Teacher scribes dictated sentence.</p>
+              <p><strong>Levels 3–4:</strong> Sentence frames throughout. Oral justification accepted in home language.</p>
+              <p><strong>Level 5:</strong> Write own justification sentence independently.</p>
+              <p style="margin-top:8px;"><strong>Multilingual extension:</strong> Celebrate home language words for any picture cards. "How do you say water in your language? Let's add that."</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- REFLECT -->
+        <div class="phase-block phase-reflect">
+          <div class="phase-header">
+            <div class="phase-color-block">
+              <div class="phase-name">Reflect</div>
+              <div class="phase-meta">8 min · Rug · Bridge to the Week</div>
+            </div>
+            <div class="phase-header-right">
+              <p class="phase-summary">Students share sorting decisions. Lesson bridges from personal needs to community needs. The week's driving question is named. Wonders go on the wonder wall.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div class="phase-step">
+              <div class="phase-step-label">Share</div>
+              <p>Students return to the rug with sorting mats and recording sheets. Turn and tell: "Tell your partner — one thing you put in your need column and why. Then one thing in your want column and why." 60 seconds. 3–4 pairs share.</p>
+            </div>
+            <div class="phase-step">
+              <div class="phase-step-label">Bridge to the Week</div>
+              <div class="teacher-prompt">"Today we thought about what WE need and want. This week we're going to zoom out and think about what our COMMUNITY needs — and whether everyone has what they need. What do you wonder about that?"</div>
+              <p>1–2 wonders added to the wonder wall. Teacher previews: "Tomorrow we're going to read a story about two best friends — and then we're going to be investigators."</p>
+            </div>
+            <div class="assessment-note">
+              <div class="assessment-note-label">Formative Assessment</div>
+              <p>Recording sheets reviewed — who understands the distinction, who is debating the debatable cards (friends, books, pets). Notes inform Tuesday's <em>Maddi's Fridge</em> discussion and center facilitation.</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end Monday phases -->
+
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- DAY 2–3 — TUESDAY & WEDNESDAY           -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="day-divider">
+        <span class="day-divider-label">Tuesday &amp; Wednesday</span>
+        <span class="day-divider-sub">Days 2–3 · Investigation Centers · 60 min × 2</span>
+        <div class="day-divider-line"></div>
+      </div>
+
+      <p style="font-size:0.88rem;line-height:1.8;color:var(--muted);font-style:italic;margin-bottom:24px;">Tuesday read-aloud: <em>Maddi's Fridge</em> by Lois Brandt. Two-day center structure: Tuesday — Centers 1 &amp; 2 only · Wednesday — Centers 3 &amp; 4 only. Each day: Connect 10 min → Centers 40 min (two centers running, groups switch at 20 min) → Reflect 10 min.</p>
+
+      <!-- Centers Overview -->
+      <div class="centers-overview">
+        <div class="centers-overview-header">Centers Overview · Four Investigations</div>
+        <table class="centers-table">
+          <thead>
+            <tr>
+              <th>Center</th>
+              <th>Focus</th>
+              <th>Standards</th>
+              <th>Day</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="center-num">1</span></td>
+              <td><strong>Living Things Needs Web</strong> — Sort picture cards and build needs webs for a person, plant, and animal. Compare what different living things need.</td>
+              <td style="font-size:0.78rem;color:var(--sage);">LS.K.1.1</td>
+              <td><span class="center-day-tag tuesday">Tuesday</span></td>
+            </tr>
+            <tr>
+              <td><span class="center-num">2</span></td>
+              <td><strong>Helping Our Community Fridge</strong> — Fill a community fridge with what a family needs. Wonder sticker activity plants the equity seed: does every family have enough?</td>
+              <td style="font-size:0.78rem;color:var(--sage);">K.E.1.1</td>
+              <td><span class="center-day-tag tuesday">Tuesday</span></td>
+            </tr>
+            <tr>
+              <td><span class="center-num">3</span></td>
+              <td><strong>My Community Drawing &amp; Labeling</strong> — Draw own community: what it has and what it needs. Individual product. First contribution toward the community portrait action project.</td>
+              <td style="font-size:0.78rem;color:var(--sage);">W.K.2</td>
+              <td><span class="center-day-tag wednesday">Wednesday</span></td>
+            </tr>
+            <tr>
+              <td><span class="center-num">4</span></td>
+              <td><strong>Build Your Community</strong> — Build the community you want to live in using loose parts. Photo + audio recording captures individual builds.</td>
+              <td style="font-size:0.78rem;color:var(--sage);">PS.K.1.2</td>
+              <td><span class="center-day-tag wednesday">Wednesday</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Rotation Diagram -->
+      <div style="margin-bottom:32px;">
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Group Rotation · Each Day</div>
+        <div class="rotation-diagram">
+          <div class="rotation-group">
+            <div class="rotation-group-label">Group A</div>
+            <div class="rotation-group-path">Center 1 (or 3) · 20 min<br>↓<br>Center 2 (or 4) · 20 min</div>
+          </div>
+          <div class="rotation-arrow">⇄</div>
+          <div class="rotation-group">
+            <div class="rotation-group-label">Group B</div>
+            <div class="rotation-group-path">Center 2 (or 4) · 20 min<br>↓<br>Center 1 (or 3) · 20 min</div>
+          </div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--muted);font-style:italic;margin-top:8px;">Teacher circulates between both centers. Priority on Tuesday: Center 1 (science concepts may need support) then Center 2 (equity conversation needs gentle facilitation). Priority on Wednesday: Center 3 (writing/dictation support) and Center 4 (audio recordings).</p>
+      </div>
+
+      <!-- Tuesday Structure -->
+      <div class="section-eyebrow">Tuesday · Connect · Centers · Reflect</div>
+
+      <div class="phase-block phase-connect">
+        <div class="phase-header">
+          <div class="phase-color-block">
+            <div class="phase-name">Connect</div>
+            <div class="phase-meta">10 min · Rug · Read-Aloud</div>
+          </div>
+          <div class="phase-header-right">
+            <p class="phase-summary"><em>Maddi's Fridge</em> read-aloud plants the equity seed before centers. One think-aloud pause. Brief center tour before groups disperse.</p>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-step">
+            <div class="phase-step-label">Read-Aloud</div>
+            <p>Teacher reads kid-friendly objective. <em>Maddi's Fridge</em> read-aloud — unhurried, expressive. One think-aloud pause when Sofia discovers Maddi's empty fridge:</p>
+            <div class="teacher-prompt">"How do you think Sofia feels? How do you think Maddi feels? Turn and tell your partner." 30 seconds. 2 students share. Continue to end.</div>
+            <p>After read-aloud: "Maddi's family didn't have enough food. Food is a need. What do you think every family's fridge should have?" 2–3 responses.</p>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-label">Center Tour · 4 minutes</div>
+            <p>Teacher walks class to Center 1 — shows materials, demonstrates one step, points to anchor chart. 2 minutes. Repeats for Center 2. Groups assigned and posted visibly with name cards.</p>
+          </div>
+          <div class="equity-note">
+            <div class="equity-note-label">Equity Note</div>
+            <p><em>Maddi's Fridge</em> surfaces food insecurity directly. It may connect to real experiences in the room. Read with care and warmth — not as a teaching moment about poverty, but as a story about friendship, trust, and what it means to help. The wonder wall receives any questions that arise. Nothing is resolved. Wondering is the goal.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-block phase-apply">
+        <div class="phase-header">
+          <div class="phase-color-block">
+            <div class="phase-name">Centers</div>
+            <div class="phase-meta">40 min · Centers 1 &amp; 2</div>
+          </div>
+          <div class="phase-header-right">
+            <p class="phase-summary">Two groups rotate through Centers 1 and 2. Switch at 20 minutes. Teacher circulates — science support at Center 1, equity facilitation at Center 2.</p>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-step">
+            <div class="phase-step-label">Transition Signal at 20 Minutes</div>
+            <div class="teacher-prompt">"Investigators — five more minutes. Start wrapping up. Be ready to share one thing you discovered." At 20 min: "Time to switch."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-block phase-reflect">
+        <div class="phase-header">
+          <div class="phase-color-block">
+            <div class="phase-name">Reflect</div>
+            <div class="phase-meta">10 min · Rug</div>
+          </div>
+          <div class="phase-header-right">
+            <p class="phase-summary">Students share one discovery. Thread back to <em>Maddi's Fridge</em>. Wonders added to wonder wall. Preview Wednesday.</p>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-step">
+            <div class="phase-step-label">Share & Wonder</div>
+            <p>Turn and tell: "Tell your partner — one thing you discovered at your centers today." 60 seconds. 3–4 students share. Teacher records on chart paper in student language.</p>
+            <div class="teacher-prompt">"What are you still wondering about whether everyone has what they need?"</div>
+            <p>2–3 wonders added to wonder wall. Preview: "Tomorrow you'll investigate two more questions — what does YOUR community have and need, and what would your ideal community look like?"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wednesday Structure -->
+      <div style="margin-top:40px;">
+        <div class="section-eyebrow">Wednesday · Connect · Centers · Full Debrief</div>
+      </div>
+
+      <div class="phase-block phase-connect">
+        <div class="phase-header">
+          <div class="phase-color-block">
+            <div class="phase-name">Connect</div>
+            <div class="phase-meta">10 min · Rug</div>
+          </div>
+          <div class="phase-header-right">
+            <p class="phase-summary">Recall Tuesday's discoveries. Center tour for Centers 3 and 4. Same groups, centers switched.</p>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-step">
+            <div class="phase-step-label">Recall</div>
+            <div class="teacher-prompt">"Yesterday you were investigators. Let's remember what we discovered." Quick turn and tell: "Tell your partner one thing you found out yesterday." 30 seconds. 2–3 share. Teacher points to Tuesday's chart.</div>
+            <p>Center tour — 4 minutes · 2 minutes per center. Groups assigned — same groups as Tuesday, new centers.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-block phase-apply">
+        <div class="phase-header">
+          <div class="phase-color-block">
+            <div class="phase-name">Centers</div>
+            <div class="phase-meta">40 min · Centers 3 &amp; 4</div>
+          </div>
+          <div class="phase-header-right">
+            <p class="phase-summary">Two groups rotate through Centers 3 and 4. Switch at 20 minutes. Teacher prioritizes writing/dictation support at Center 3 and audio recording facilitation at Center 4.</p>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-step">
+            <div class="phase-step-label">Transition Signal at 20 Minutes</div>
+            <div class="teacher-prompt">"Investigators — five more minutes. Start wrapping up." At 20 min: "Time to switch."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-block phase-reflect">
+        <div class="phase-header">
+          <div class="phase-color-block">
+            <div class="phase-name">Reflect</div>
+            <div class="phase-meta">10 min · Rug · Full Two-Day Debrief</div>
+          </div>
+          <div class="phase-header-right">
+            <p class="phase-summary">Richest reflect of the week. Structured share across all four centers. Equity wonder held gently. Discovery chart built alongside the wonder wall. Preview Thursday.</p>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-step">
+            <div class="phase-step-label">Structured Share</div>
+            <p>One discovery from each center represented:</p>
+            <div class="teacher-prompt">"Who explored Living Things? Who filled the Community Fridge? Who drew their community? Who built their community?"</div>
+            <p>Teacher builds a class discovery chart alongside the wonder wall — student language, student ideas. Both charts stay up for the rest of the unit.</p>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-label">The Equity Wonder</div>
+            <div class="teacher-prompt">"We've been wondering all week — does everyone in our community have what they need? What do you think now? What are you still wondering?"</div>
+            <p>No right answer given. No resolution offered. Wondering is the goal. Any responses go on the wonder wall. Students who need to sit with it quietly are doing the work too.</p>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-label">Preview Thursday</div>
+            <div class="teacher-prompt">"Tomorrow we're going to have a special visitor from our community — someone who works to make sure people have what they need. What questions do you have for them?"</div>
+            <p>1–2 student questions written down visibly. They will be used Thursday.</p>
+          </div>
+          <div class="assessment-note">
+            <div class="assessment-note-label">Formative Assessment</div>
+            <p>All center products reviewed after Wednesday — needs webs, fridge recordings, community drawings, audio recordings. Teacher notes: who is making the connection between living things' needs and human community needs, whose equity wondering is deepening, whose cultural community knowledge is surfacing in drawings and builds. Notes inform Thursday's community partner conversation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Details -->
+      <div style="margin-top:48px;">
+        <div class="section-eyebrow">Center Details · What Students Do</div>
+      </div>
+
+      <!-- Center 1 -->
+      <div class="center-detail">
+        <div class="center-detail-header">
+          <div class="center-num-block">1</div>
+          <div class="center-header-right">
+            <div class="center-title">Living Things Needs Web</div>
+            <div class="center-meta">
+              <span class="center-day-tag tuesday">Tuesday</span>
+              <span class="center-type-tag">Science · LS.K.1.1</span>
+              <span class="center-type-tag">Investigative</span>
+            </div>
+          </div>
+        </div>
+        <div class="center-body">
+          <p><strong>Purpose:</strong> Students investigate what different living things need to thrive — comparing needs of a person, plant, and animal of their choice. Plants the science seed for the equity wonder: if all living things have needs, do all people have what they need?</p>
+          <p><strong>Materials:</strong> Picture cards (sun · water · food · shelter · soil · air · sleep · exercise · love/care · space to grow) · Three web templates per pair — Person / Plant / Animal · Crayons · Glue sticks · Sentence frame card · Anchor chart</p>
+          <p><strong>What students do:</strong></p>
+          <ol class="center-steps">
+            <li data-step="1">Look through picture cards and name each one — 5 min</li>
+            <li data-step="2">Build all three webs — decide which cards belong on each living thing's web, draw or glue cards, write/dictate sentence frames — 12 min</li>
+            <li data-step="3">Compare all three webs side by side — 3 min</li>
+          </ol>
+          <p><strong>Key discussion prompts:</strong> "Does a plant need food the same way a person does?" · "Does a person need soil? What about sunshine?" · "What do all three living things need?"</p>
+          <div class="mll-note">
+            <div class="mll-note-label">MLL Note</div>
+            <p>Levels 1–2: Pointing and drawing are valid responses. Multilingual extension: "We have two words for water — that's powerful. Let's add both to the word wall."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center 2 -->
+      <div class="center-detail">
+        <div class="center-detail-header">
+          <div class="center-num-block">2</div>
+          <div class="center-header-right">
+            <div class="center-title">Helping Our Community Fridge</div>
+            <div class="center-meta">
+              <span class="center-day-tag tuesday">Tuesday</span>
+              <span class="center-type-tag">Social Studies · K.E.1.1</span>
+              <span class="center-type-tag">Investigative</span>
+            </div>
+          </div>
+        </div>
+        <div class="center-body">
+          <p><strong>Purpose:</strong> Students fill a community fridge with what a family needs — connected to <em>Maddi's Fridge</em>. A wonder sticker activity plants the equity seed: does every family have enough?</p>
+          <p><strong>Materials:</strong> Large paper fridge template or pocket chart · Picture cards: needs (milk · eggs · bread · fruit · vegetables · rice · beans · water) and wants/non-essential (candy · cupcakes · soda · toys · fancy items) · Recording sheet · Wonder stickers (question marks) · Crayons · Anchor chart</p>
+          <p><strong>What students do:</strong></p>
+          <ol class="center-steps">
+            <li data-step="1">Sort picture cards — does this help a hungry family? Place helpful food cards in the fridge — 10 min</li>
+            <li data-step="2">Wonder sticker activity — for each need card, does everyone in our community have this? Place a question mark sticker if they wonder — 7 min</li>
+            <li data-step="3">Each partner completes: "I wonder if every family has ___ because ___." — 3 min</li>
+          </ol>
+          <div class="equity-note">
+            <div class="equity-note-label">Equity Note</div>
+            <p>The wonder sticker activity may surface real experiences. Honor personal responses with care: "Thank you for sharing that. That's important." No fixing. No explaining. Just honoring. The question mark sticker is the right tool here — it holds the wondering without demanding resolution.</p>
+          </div>
+          <div class="mll-note">
+            <div class="mll-note-label">MLL Note</div>
+            <p>Placing physical stickers is a complete, low-language action that communicates understanding. The wonder sticker requires only that students notice a possible gap — not that they explain it in English.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center 3 -->
+      <div class="center-detail">
+        <div class="center-detail-header">
+          <div class="center-num-block">3</div>
+          <div class="center-header-right">
+            <div class="center-title">My Community Drawing &amp; Labeling</div>
+            <div class="center-meta">
+              <span class="center-day-tag wednesday">Wednesday</span>
+              <span class="center-type-tag">Writing · W.K.2</span>
+              <span class="center-type-tag">Investigative</span>
+            </div>
+          </div>
+        </div>
+        <div class="center-body">
+          <p><strong>Purpose:</strong> Students represent their own community through drawing and labeling — capturing what their community has and what it needs. Individual product. First contribution toward the Unit 1 community portrait action project.</p>
+          <p><strong>Materials:</strong> My Community page per student — top half: "My community has ___." / bottom half: "My community needs ___." with drawing space and label lines · Crayons and pencils · Unit vocabulary bank card · Sentence frame card · Teacher sticky notes for dictation support · Anchor chart</p>
+          <p><strong>What students do:</strong></p>
+          <ol class="center-steps">
+            <li data-step="1">Turn and talk with partner — picture your neighborhood, what do you see? — 3 min</li>
+            <li data-step="2">Draw their actual community and label — 14 min</li>
+            <li data-step="3">Share with partner using "I drew ___ because ___." — 3 min</li>
+          </ol>
+          <p><strong>Key teacher prompts:</strong> "What do you see when you walk outside your door?" · "What does your family do in your community?" · "What do you wish your community had more of?"</p>
+          <div class="mll-note">
+            <div class="mll-note-label">MLL Note</div>
+            <p>Home language labels celebrated alongside English. "You drew [the masjid / the tobacco barn / the mercado]. Tell me about that. Can we add that word to our word wall?" Portfolio note: Pages kept and revisited in Week 5.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center 4 -->
+      <div class="center-detail">
+        <div class="center-detail-header">
+          <div class="center-num-block">4</div>
+          <div class="center-header-right">
+            <div class="center-title">Build Your Community</div>
+            <div class="center-meta">
+              <span class="center-day-tag wednesday">Wednesday</span>
+              <span class="center-type-tag">Multisensory · PS.K.1.2</span>
+              <span class="center-type-tag">Creative</span>
+            </div>
+          </div>
+        </div>
+        <div class="center-body">
+          <p><strong>Purpose:</strong> Students build the community they want to live in using loose parts — one that has everything living things need. Individual builds side by side with natural partner conversation. NC Science standard PS.K.1.2 addressed through material choice reasoning.</p>
+          <p><strong>Materials:</strong> Loose parts (wooden blocks · fabric scraps · natural materials · small figures · cardboard · cotton balls · craft sticks) · Large base sheet per pair divided down the middle · Community needs reference card · Sentence frame card · Tablet or phone for photo and audio recording · Anchor chart</p>
+          <p><strong>What students do:</strong></p>
+          <ol class="center-steps">
+            <li data-step="1">Plan — look at needs reference card, talk with partner: "What does our community need to have?" — 3 min</li>
+            <li data-step="2">Build individual community on own half of base sheet — 12 min</li>
+            <li data-step="3">Teacher or student takes photo. Each partner records audio description using sentence frames — 5 min</li>
+          </ol>
+          <p><strong>Science connection PS.K.1.2:</strong> Teacher focuses circulation on material choice reasoning: "Why did you choose that material for the shelter? Is fabric a good material for a road?"</p>
+          <p><strong>Closing comparison:</strong> "One thing our communities both have is ___." · "One thing that's different is ___."</p>
+          <div class="mll-note">
+            <div class="mll-note-label">MLL Note</div>
+            <p>Building is a complete response. Students name parts in home language during audio recording. Cultural note: Students may build structures reflecting their cultural community — mosque, mercado, tobacco barn. Celebrate explicitly. The audio recording captures student voice and thinking in whatever language it comes in.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="localization-note" style="margin-top:8px;">
+        <div class="localization-note-label">Localization Note</div>
+        <p>The texts, picture cards, and community examples in this lesson sequence are illustrative choices drawn from one community context. Teachers should select or supplement with texts and materials that reflect the specific families, languages, and community structures present in their classroom.</p>
+        <p><strong>Essential to the framework:</strong> the three-day arc from personal wants/needs to community needs to equity wondering, the five-phase lesson structure, the WIDA-differentiated language support, and the connection to the unit's driving question and action project.</p>
+        <p><strong>Intended for localization:</strong> the specific read-alouds, the picture card sets, and the community examples used in each center — all of which should reflect the community the students actually live in.</p>
+      </div>
+
+    </div>
+    <!-- end lesson content -->
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- Standards -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header sage">Standards</div>
+        <div class="sidebar-card-body">
+          <ul class="standards-list">
+            <li><span class="std-code">K.E.1.1</span><span>Wants and needs; community resources</span></li>
+            <li><span class="std-code">K.C&amp;G.1.4</span><span>How community members work together to meet shared needs</span></li>
+            <li><span class="std-code">I.1.1–1.3</span><span>Inquiry — ask questions, gather information, draw conclusions</span></li>
+            <li><span class="std-code">LS.K.1.1</span><span>Compare the needs of different plants and animals — food, water, air, space</span></li>
+            <li><span class="std-code">PS.K.1.2</span><span>How materials are used based on their properties (Center 4)</span></li>
+            <li><span class="std-code">W.K.2</span><span>Use drawing, dictating, and writing to compose informative texts (Center 3)</span></li>
+            <li><span class="std-code">SL.K.1</span><span>Participate in collaborative conversations</span></li>
+            <li><span class="std-code">SL.K.6</span><span>Speak audibly; express thoughts clearly</span></li>
+            <li><span class="std-code">WIDA ELD-SI.K</span><span>Language for Social &amp; Instructional Purposes — Inform + Explain</span></li>
+            <li><span class="std-code">WIDA ELD-SC.K</span><span>Language of Science — Inform + Explain</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Texts -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header sage">Anchor Texts</div>
+        <div class="sidebar-card-body">
+          <p><strong>Monday</strong><br><em>Wants vs. Needs vs. Robots</em> by Michael Rex<br>Accessible, humorous entry point into the wants/needs distinction. The robots make mistakes students can identify and discuss.</p>
+          <p><strong>Tuesday</strong><br><em>Maddi's Fridge</em> by Lois Brandt<br>Plants the equity seed — food insecurity through the lens of childhood friendship and dignity. Read with care. The wondering it opens is more important than any lesson it teaches.</p>
+          <p style="font-size:0.78rem;color:var(--muted);font-style:italic;margin-top:10px;">Both texts are illustrative choices. Teachers should supplement or substitute with locally relevant texts that reflect the specific community context and the families in the room.</p>
+        </div>
+      </div>
+
+      <!-- Materials -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header terracotta">Materials</div>
+        <div class="sidebar-card-body">
+          <p style="font-size:0.8rem;font-weight:500;color:var(--ink);margin-bottom:6px;">Monday</p>
+          <ul class="materials-list">
+            <li><em>Wants vs. Needs vs. Robots</em> by Michael Rex</li>
+            <li>Personal wants and needs picture cards — one set per student</li>
+            <li>Two-column sorting mat per student — Need / Want</li>
+            <li>Recording sheet — draw one need and one want</li>
+            <li>Sentence frame card per table</li>
+            <li>Chart paper · wonder wall</li>
+          </ul>
+          <p style="font-size:0.8rem;font-weight:500;color:var(--ink);margin-top:14px;margin-bottom:6px;">Tuesday–Wednesday Centers</p>
+          <ul class="materials-list">
+            <li>Center 1: Web templates · picture cards (needs of living things) · glue · crayons</li>
+            <li>Center 2: Fridge template · food/want picture cards · wonder stickers · recording sheet</li>
+            <li>Center 3: My Community page · vocabulary bank · pencils · crayons</li>
+            <li>Center 4: Loose parts · base sheets · tablet or phone for recording · community needs reference card</li>
+            <li>All centers: Sentence frame card · anchor chart</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sentence Frames -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header plum">Sentence Frames</div>
+        <div class="sidebar-card-body">
+          <div class="sentence-frame">"I need ___ because ___."</div>
+          <div class="sentence-frame">"I want ___ but I don't need it because ___."</div>
+          <div class="sentence-frame">"Living things need ___."</div>
+          <div class="sentence-frame">"A ___ needs ___ but a ___ doesn't need ___."</div>
+          <div class="sentence-frame">"I wonder if everyone in our community has ___ because ___."</div>
+          <div class="sentence-frame">"My community has ___. My community needs ___."</div>
+        </div>
+      </div>
+
+      <!-- Language Functions -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header gold">Language Functions</div>
+        <div class="sidebar-card-body">
+          <p><strong>Identify</strong><br>Find and name something — a need, a want, a property of a living thing.</p>
+          <p><strong>Describe</strong><br>Tell about something using content vocabulary — what it is, why it matters, who needs it.</p>
+          <p><strong>Compare</strong><br>Look at two living things and find what is the same and what is different about their needs.</p>
+          <p><strong>Inquire</strong><br>Ask a question that doesn't yet have an answer — about fairness, access, and what communities owe each other.</p>
+          <p style="margin-top:10px;font-size:0.82rem;color:var(--muted);font-style:italic;">Inquire is the language function that carries the equity thread. It is introduced in Monday's Reflect and deepens across Tuesday and Wednesday.</p>
+        </div>
+      </div>
+
+      <!-- Unit Connection -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header slate">Unit 1 Connection</div>
+        <div class="sidebar-card-body">
+          <p><strong>Driving Question</strong><br>"What does our community need to thrive — and does everyone have what they need?"</p>
+          <p style="margin-top:8px;"><strong>Action Project</strong><br>"This Is Us" Community Portrait &amp; Class Pledge. Center 3 drawings are the first direct contributions to the portrait. Center 4 audio recordings capture student voice for the pledge.</p>
+          <p style="margin-top:8px;"><strong>The Equity Thread</strong><br>This lesson does not answer the question of whether everyone has what they need. It opens the question — carefully, with appropriate developmental care — and holds it. The wondering is the curriculum. The pledge that ends the unit is where students begin to answer it together.</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- end sidebar -->
+
+  </div>
+  <!-- end main grid -->
+</div>
+<!-- end content-wrap -->
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-label">Rights &amp; Use</div>
+    <p><strong>© 2026 The Anchored Learner. All rights reserved.</strong></p>
+    <p>
+      This sample lesson is provided to illustrate the design and instructional approach of The Anchored Learner. It is not licensed for reuse, redistribution, adaptation, or classroom implementation without explicit written permission.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
